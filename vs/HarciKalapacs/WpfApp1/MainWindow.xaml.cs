@@ -1,4 +1,5 @@
-﻿using HarciKalapacs.Repository;
+﻿using HarciKalapacs.Model;
+using HarciKalapacs.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,7 @@ namespace WpfApp1
     {
         public MainWindow()
         {
-            // InitializeComponent();
-            Repository repo = new Repository();
-            repo.LoadMap(1);
+            InitializeComponent();
         }
     }
 }

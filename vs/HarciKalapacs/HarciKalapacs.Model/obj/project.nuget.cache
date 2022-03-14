@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "3jtlRy+dX13/Kj0m/RkKhy57Vg7VPHxnfbjZHLzGSblfSo/3zFBfIpa6qBkhyRuP5QJ3DLaszc0RcHZHiHvlZw==",
+  "success": true,
+  "projectFilePath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Norbert\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

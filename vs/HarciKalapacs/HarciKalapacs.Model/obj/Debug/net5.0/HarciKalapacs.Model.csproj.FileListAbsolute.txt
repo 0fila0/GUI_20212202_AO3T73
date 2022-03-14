@@ -1,0 +1,15 @@
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Model\bin\Debug\net5.0\HarciKalapacs.Model.deps.json
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Model\bin\Debug\net5.0\HarciKalapacs.Model.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Model\bin\Debug\net5.0\ref\HarciKalapacs.Model.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Model\bin\Debug\net5.0\HarciKalapacs.Model.pdb
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Model\bin\Debug\net5.0\HarciKalapacs.Repository.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Model\bin\Debug\net5.0\HarciKalapacs.Repository.pdb
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Model\obj\Debug\net5.0\HarciKalapacs.Model.csproj.AssemblyReference.cache
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Model\obj\Debug\net5.0\HarciKalapacs.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Model\obj\Debug\net5.0\HarciKalapacs.Model.AssemblyInfoInputs.cache
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Model\obj\Debug\net5.0\HarciKalapacs.Model.AssemblyInfo.cs
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Model\obj\Debug\net5.0\HarciKalapacs.Model.csproj.CoreCompileInputs.cache
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Model\obj\Debug\net5.0\HarciKalapacs.Model.csproj.CopyComplete
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Model\obj\Debug\net5.0\HarciKalapacs.Model.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Model\obj\Debug\net5.0\ref\HarciKalapacs.Model.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Model\obj\Debug\net5.0\HarciKalapacs.Model.pdb

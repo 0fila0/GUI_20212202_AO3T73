@@ -24,3 +24,10 @@ D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\WpfApp1\obj\Debug\net5
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\WpfApp1\obj\Debug\net5.0-windows\ref\WpfApp1.dll
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\WpfApp1\obj\Debug\net5.0-windows\WpfApp1.pdb
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\WpfApp1\obj\Debug\net5.0-windows\WpfApp1.genruntimeconfig.cache
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\WpfApp1\bin\Debug\net5.0-windows\CommonServiceLocator.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\WpfApp1\bin\Debug\net5.0-windows\Microsoft.Extensions.DependencyInjection.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\WpfApp1\bin\Debug\net5.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\WpfApp1\bin\Debug\net5.0-windows\Microsoft.Toolkit.Mvvm.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\WpfApp1\bin\Debug\net5.0-windows\System.Runtime.CompilerServices.Unsafe.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\WpfApp1\bin\Debug\net5.0-windows\HarciKalapacs.Model.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\WpfApp1\bin\Debug\net5.0-windows\HarciKalapacs.Model.pdb

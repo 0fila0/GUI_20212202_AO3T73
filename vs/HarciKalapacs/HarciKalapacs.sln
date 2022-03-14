@@ -15,7 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VM", "VM", "{AC15AAAE-8856-4497-A169-D0E0BC0C5E3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarciKalapacs.Repository", "HarciKalapacs.Repository\HarciKalapacs.Repository.csproj", "{EEC9820E-D194-4EDB-B426-8C677AF7CE13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HarciKalapacs.Repository", "HarciKalapacs.Repository\HarciKalapacs.Repository.csproj", "{EEC9820E-D194-4EDB-B426-8C677AF7CE13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarciKalapacs.Model", "HarciKalapacs.Model\HarciKalapacs.Model.csproj", "{1C18C0AB-4776-49BC-980E-0C9EC37C187B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{EEC9820E-D194-4EDB-B426-8C677AF7CE13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEC9820E-D194-4EDB-B426-8C677AF7CE13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEC9820E-D194-4EDB-B426-8C677AF7CE13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C18C0AB-4776-49BC-980E-0C9EC37C187B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C18C0AB-4776-49BC-980E-0C9EC37C187B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C18C0AB-4776-49BC-980E-0C9EC37C187B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C18C0AB-4776-49BC-980E-0C9EC37C187B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,6 +44,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{19F82662-9B80-4A52-B876-8E6FB0C5059D} = {084BF4D1-D7F9-4CF9-BE71-B4504A131ABD}
 		{EEC9820E-D194-4EDB-B426-8C677AF7CE13} = {0957C28C-438B-48B1-B2A5-6F293D3749A8}
+		{1C18C0AB-4776-49BC-980E-0C9EC37C187B} = {E2880C49-A8E3-4D8F-88F1-74FFD8CA4DC5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D0DACC4-E3F2-4707-A88B-46AE0F077A93}
