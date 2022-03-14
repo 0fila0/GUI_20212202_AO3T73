@@ -1,0 +1,86 @@
+[
+  {
+    "hp": 75,
+    "xPos": 4,
+    "yPos": 0,
+    "team": 1,
+    "isInTheAir": true
+  },
+  {
+    "hp": 75,
+    "xPos": 5,
+    "yPos": 0,
+    "team": 1,
+    "isInTheAir": true
+  },
+  {
+    "hp": 75,
+    "xPos": 6,
+    "yPos": 0,
+    "team": 1,
+    "isInTheAir": true
+  },
+  {
+    "hp": 75,
+    "xPos": 8,
+    "yPos": 0,
+    "team": 1,
+    "isInTheAir": true
+  },
+  {
+    "hp": 75,
+    "xPos": 9,
+    "yPos": 0,
+    "team": 1,
+    "isInTheAir": true
+  },
+  {
+    "hp": 75,
+    "xPos": 10,
+    "yPos": 0,
+    "team": 1,
+    "isInTheAir": true
+  },
+  {
+    "hp": 75,
+    "xPos": 0,
+    "yPos": 9,
+    "team": 2,
+    "isInTheAir": true
+  },
+  {
+    "hp": 75,
+    "xPos": 5,
+    "yPos": 9,
+    "team": 2,
+    "isInTheAir": true
+  },
+  {
+    "hp": 75,
+    "xPos": 13,
+    "yPos": 10,
+    "team": 2,
+    "isInTheAir": true
+  },
+  {
+    "hp": 75,
+    "xPos": 2,
+    "yPos": 11,
+    "team": 2,
+    "isInTheAir": false
+  },
+  {
+    "hp": 75,
+    "xPos": 0,
+    "yPos": 14,
+    "team": 2,
+    "isInTheAir": false
+  },
+  {
+    "hp": 75,
+    "xPos": 10,
+    "yPos": 14,
+    "team": 2,
+    "isInTheAir": true
+  }
+]

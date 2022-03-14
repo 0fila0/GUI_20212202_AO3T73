@@ -1,0 +1,12 @@
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.csproj.AssemblyReference.cache
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.AssemblyInfoInputs.cache
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.AssemblyInfo.cs
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.csproj.CoreCompileInputs.cache
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\bin\Debug\net5.0\HarciKalapacs.Repository.deps.json
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\bin\Debug\net5.0\HarciKalapacs.Repository.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\bin\Debug\net5.0\ref\HarciKalapacs.Repository.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\bin\Debug\net5.0\HarciKalapacs.Repository.pdb
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\ref\HarciKalapacs.Repository.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.pdb

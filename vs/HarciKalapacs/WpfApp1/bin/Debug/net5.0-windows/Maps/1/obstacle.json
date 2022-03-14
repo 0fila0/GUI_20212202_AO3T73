@@ -1,0 +1,82 @@
+[
+  {
+    "xPos": 1,
+    "yPos": 1,
+    "team": 3
+  },
+  {
+    "xPos": 6,
+    "yPos": 3,
+    "team": 3
+  },
+  {
+    "xPos": 1,
+    "yPos": 4,
+    "team": 3
+  },
+  {
+    "xPos": 9,
+    "yPos": 5,
+    "team": 3
+  },
+  {
+    "xPos": 14,
+    "yPos": 5,
+    "team": 3
+  },
+  {
+    "xPos": 6,
+    "yPos": 6,
+    "team": 3
+  },
+  {
+    "xPos": 14,
+    "yPos": 6,
+    "team": 3
+  },
+  {
+    "xPos": 3,
+    "yPos": 8,
+    "team": 3
+  },
+  {
+    "xPos": 11,
+    "yPos": 8,
+    "team": 3
+  },
+  {
+    "xPos": 3,
+    "yPos": 9,
+    "team": 3
+  },
+  {
+    "xPos": 11,
+    "yPos": 9,
+    "team": 3
+  },
+  {
+    "xPos": 3,
+    "yPos": 10,
+    "team": 3
+  },
+  {
+    "xPos": 9,
+    "yPos": 10,
+    "team": 3
+  },
+  {
+    "xPos": 3,
+    "yPos": 11,
+    "team": 3
+  },
+  {
+    "xPos": 11,
+    "yPos": 11,
+    "team": 3
+  },
+  {
+    "xPos": 7,
+    "yPos": 12,
+    "team": 3
+  }
+]

@@ -1,11 +1,11 @@
 ﻿namespace HarciKalapacs.Repository.GameElements
 {
-    enum Team
+    public enum Team
     {
-        player = 1, enemy = 2
+        player = 1, enemy = 2, natural = 3
     }
 
-    abstract class Units
+    public abstract class Units
     {
         int maxHp;
         int hp;

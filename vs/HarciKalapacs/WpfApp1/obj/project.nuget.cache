@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "lZPFzZidPyijNUES6/206ehXGJSFagMT2/ykAdjDwIE979jLzLzE9C2lOa0UDpJ8c98CJaLfGa1CAQDHzXI4Fg==",
+  "dgSpecHash": "vibO0881P1AjAmleCNPhd2fFRfAIVFZQf4Zj50ByPkn+hcgvPrXf6IeL0aYet2cmY7zrQPDGuw7N9syNDMlBYQ==",
   "success": true,
   "projectFilePath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\WpfApp1\\WpfApp1.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Norbert\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,0 +1,27 @@
+  [
+  {
+    "xPos": 2,
+    "yPos": 0,
+    "team": 1
+  },
+  {
+    "xPos": 12,
+    "yPos": 0,
+    "team": 1
+  },
+  {
+    "xPos": 6,
+    "yPos": 2,
+    "team": 1
+  },
+  {
+    "xPos": 1,
+    "yPos": 11,
+    "team": 2
+  },
+  {
+    "xPos": 6,
+    "yPos": 14,
+    "team": 2
+  }
+]

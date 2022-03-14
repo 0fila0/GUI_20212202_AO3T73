@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HarciKalapacs.Repository\HarciKalapacs.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

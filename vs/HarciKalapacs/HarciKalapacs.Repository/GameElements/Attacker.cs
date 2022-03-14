@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    class Attacker : Controllable
+    abstract class Attacker : Controllable
     {
         int damage;
 
+        public Attacker()
+        {
+
+        }
+
         public int Damage { get => damage; set => damage = value; }
 
-        void Attack(Units target)
+        void Attack(Units target)   
         {
             target.Hp -= this.damage;
         }

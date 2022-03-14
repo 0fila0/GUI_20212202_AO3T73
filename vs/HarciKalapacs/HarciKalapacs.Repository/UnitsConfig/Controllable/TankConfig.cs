@@ -9,7 +9,7 @@
         public const string IdleImage1 = "";
         public const string IdleImage2 = "";
         public const string IdleImage3 = "";
-        public const string DeadImage = "";
+        public const string DyingImage = "";
         public const string AttackImage = "";
     }
 }
