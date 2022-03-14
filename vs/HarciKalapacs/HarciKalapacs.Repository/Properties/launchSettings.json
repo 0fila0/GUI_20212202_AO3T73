@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "HarciKalapacs.UI": {
+      "commandName": "Executable"
+    }
+  }
+}

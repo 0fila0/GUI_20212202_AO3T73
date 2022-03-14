@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\hammer.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\hammer.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommonServiceLocator" Version="2.0.6" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HarciKalapacs.Model\HarciKalapacs.Model.csproj" />
+    <ProjectReference Include="..\HarciKalapacs.Renderer\HarciKalapacs.Renderer.csproj" />
+    <ProjectReference Include="..\HarciKalapacs.Repository\HarciKalapacs.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

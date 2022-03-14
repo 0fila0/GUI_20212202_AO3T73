@@ -89,7 +89,7 @@
                 List<int> map = JsonConvert.DeserializeObject<List<int>>(json);
                 this.mapSize = map;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }

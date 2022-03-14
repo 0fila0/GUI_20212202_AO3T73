@@ -3,21 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{19F82662-9B80-4A52-B876-8E6FB0C5059D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{084BF4D1-D7F9-4CF9-BE71-B4504A131ABD}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BL", "BL", "{6AE1F9BD-8A15-42D8-8DBF-F03E9D4392AC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{E2880C49-A8E3-4D8F-88F1-74FFD8CA4DC5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{0957C28C-438B-48B1-B2A5-6F293D3749A8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VM", "VM", "{AC15AAAE-8856-4497-A169-D0E0BC0C5E3D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HarciKalapacs.Repository", "HarciKalapacs.Repository\HarciKalapacs.Repository.csproj", "{EEC9820E-D194-4EDB-B426-8C677AF7CE13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarciKalapacs.Model", "HarciKalapacs.Model\HarciKalapacs.Model.csproj", "{1C18C0AB-4776-49BC-980E-0C9EC37C187B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HarciKalapacs.Model", "HarciKalapacs.Model\HarciKalapacs.Model.csproj", "{1C18C0AB-4776-49BC-980E-0C9EC37C187B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Renderer", "Renderer", "{0627967F-4B94-4C86-98F8-41C16775FB73}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HarciKalapacs.Renderer", "HarciKalapacs.Renderer\HarciKalapacs.Renderer.csproj", "{3C48FF2F-BB91-43D3-AEAC-87B53CD8F73C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{0919E202-5A37-401B-B0FD-59BC1E1A0F53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarciKalapacs.UI", "HarciKalapacs.UI\HarciKalapacs.UI.csproj", "{DA621CA7-8816-479E-9D8F-0A3E689B8656}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{19F82662-9B80-4A52-B876-8E6FB0C5059D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19F82662-9B80-4A52-B876-8E6FB0C5059D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19F82662-9B80-4A52-B876-8E6FB0C5059D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19F82662-9B80-4A52-B876-8E6FB0C5059D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EEC9820E-D194-4EDB-B426-8C677AF7CE13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EEC9820E-D194-4EDB-B426-8C677AF7CE13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEC9820E-D194-4EDB-B426-8C677AF7CE13}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,14 +35,23 @@ Global
 		{1C18C0AB-4776-49BC-980E-0C9EC37C187B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C18C0AB-4776-49BC-980E-0C9EC37C187B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C18C0AB-4776-49BC-980E-0C9EC37C187B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C48FF2F-BB91-43D3-AEAC-87B53CD8F73C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C48FF2F-BB91-43D3-AEAC-87B53CD8F73C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C48FF2F-BB91-43D3-AEAC-87B53CD8F73C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C48FF2F-BB91-43D3-AEAC-87B53CD8F73C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA621CA7-8816-479E-9D8F-0A3E689B8656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA621CA7-8816-479E-9D8F-0A3E689B8656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA621CA7-8816-479E-9D8F-0A3E689B8656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA621CA7-8816-479E-9D8F-0A3E689B8656}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{19F82662-9B80-4A52-B876-8E6FB0C5059D} = {084BF4D1-D7F9-4CF9-BE71-B4504A131ABD}
 		{EEC9820E-D194-4EDB-B426-8C677AF7CE13} = {0957C28C-438B-48B1-B2A5-6F293D3749A8}
 		{1C18C0AB-4776-49BC-980E-0C9EC37C187B} = {E2880C49-A8E3-4D8F-88F1-74FFD8CA4DC5}
+		{3C48FF2F-BB91-43D3-AEAC-87B53CD8F73C} = {0627967F-4B94-4C86-98F8-41C16775FB73}
+		{DA621CA7-8816-479E-9D8F-0A3E689B8656} = {0919E202-5A37-401B-B0FD-59BC1E1A0F53}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D0DACC4-E3F2-4707-A88B-46AE0F077A93}

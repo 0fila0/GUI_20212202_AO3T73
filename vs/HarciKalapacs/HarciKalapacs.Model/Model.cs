@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace HarciKalapacs.Model
 {
-    public class Model
+    public class Model : IModel
     {
         readonly IRepository repository;
         IEnumerable<Units> allUnits;
