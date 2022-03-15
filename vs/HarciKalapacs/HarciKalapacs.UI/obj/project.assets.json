@@ -81,7 +81,10 @@
         },
         "runtime": {
           "bin/placeholder/HarciKalapacs.Renderer.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
       },
       "HarciKalapacs.Repository/1.0.0": {
         "type": "project",

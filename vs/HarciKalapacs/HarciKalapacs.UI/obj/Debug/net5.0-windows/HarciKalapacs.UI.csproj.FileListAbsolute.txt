@@ -11,10 +11,8 @@ D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\D
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\System.Runtime.CompilerServices.Unsafe.dll
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Model.dll
-D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Renderer.dll
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Repository.dll
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Model.pdb
-D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Renderer.pdb
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Repository.pdb
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.csproj.AssemblyReference.cache
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\MainWindow.g.cs
@@ -33,3 +31,5 @@ D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\D
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\ref\HarciKalapacs.UI.dll
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.pdb
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.genruntimeconfig.cache
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Renderer.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Renderer.pdb

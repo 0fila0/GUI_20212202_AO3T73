@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace HarciKalapacs.Renderer
+﻿namespace HarciKalapacs.Renderer
 {
-    public class MapRenderer
+    class MapRenderer
     {
     }
 }

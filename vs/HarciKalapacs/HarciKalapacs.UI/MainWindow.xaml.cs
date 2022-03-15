@@ -22,7 +22,7 @@ namespace HarciKalapacs.UI
     {
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

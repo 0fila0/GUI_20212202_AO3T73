@@ -2,6 +2,7 @@
 {
     using HarciKalapacs.Model;
     using HarciKalapacs.Repository;
+    using HarciKalapacs.Renderer;
     using Microsoft.Extensions.DependencyInjection;
     using System.IO;
     using System.Reflection;
@@ -18,12 +19,27 @@
         {
             this.repository = App.Current.Services.GetService<IRepository>();
             this.model = App.Current.Services.GetService<IModel>();
-            this.model.LoadMap(1);
 
             this.Loaded += this.WindowLoaded;
+            this.SizeChanged += this.WindowSizeChanged;
         }
 
         private Canvas PreviousCanvas { get; set; }
+
+        private Window Window { get; set; }
+
+        private void WindowSizeChanged(object sender, RoutedEventArgs e)
+        {
+            this.Window = this.Parent as Window;
+            if (this.Window.Title == "Harci kalapács")
+            {
+                Renderer.Config.MainMenuConfig.WindowWidth = this.ActualWidth;
+                Renderer.Config.MainMenuConfig.WindowHeight = this.ActualHeight;
+                Renderer.Config.MainMenuConfig.TopBtXPos = this.ActualWidth / 2;
+                Renderer.Config.MainMenuConfig.TopBtYPos = this.ActualHeight;
+                this.ValidateFrame();
+            }
+        }
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
@@ -35,6 +51,17 @@
             (this.Parent as Window).Icon = iconImage;
 
             Window window = Window.GetWindow(this);
+        }
+
+
+        private void ValidateFrame()
+        {
+            if (this.PreviousCanvas != null)
+            {
+                this.RemoveLogicalChild(this.PreviousCanvas);
+            }
+
+            this.Content = MenuRenderer.MainMenu();
         }
     }
 }
