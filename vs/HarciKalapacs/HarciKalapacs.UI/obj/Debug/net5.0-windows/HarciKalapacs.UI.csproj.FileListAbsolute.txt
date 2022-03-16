@@ -33,3 +33,5 @@ D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\D
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.genruntimeconfig.cache
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Renderer.dll
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Renderer.pdb
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\SoundsRenderer.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\SoundsRenderer.pdb

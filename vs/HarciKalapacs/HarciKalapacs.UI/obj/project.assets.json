@@ -98,6 +98,19 @@
         "runtime": {
           "bin/placeholder/HarciKalapacs.Repository.dll": {}
         }
+      },
+      "SoundsRenderer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/SoundsRenderer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SoundsRenderer.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
       }
     }
   },
@@ -241,6 +254,11 @@
       "type": "project",
       "path": "../HarciKalapacs.Repository/HarciKalapacs.Repository.csproj",
       "msbuildProject": "../HarciKalapacs.Repository/HarciKalapacs.Repository.csproj"
+    },
+    "SoundsRenderer/1.0.0": {
+      "type": "project",
+      "path": "../SoundsRenderer/SoundsRenderer.csproj",
+      "msbuildProject": "../SoundsRenderer/SoundsRenderer.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -249,7 +267,8 @@
       "HarciKalapacs.Model >= 1.0.0",
       "HarciKalapacs.Renderer >= 1.0.0",
       "HarciKalapacs.Repository >= 1.0.0",
-      "Microsoft.Extensions.DependencyInjection >= 6.0.0"
+      "Microsoft.Extensions.DependencyInjection >= 6.0.0",
+      "SoundsRenderer >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -297,6 +316,9 @@
             },
             "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj": {
               "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj"
+            },
+            "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\SoundsRenderer\\SoundsRenderer.csproj": {
+              "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\SoundsRenderer\\SoundsRenderer.csproj"
             }
           }
         }

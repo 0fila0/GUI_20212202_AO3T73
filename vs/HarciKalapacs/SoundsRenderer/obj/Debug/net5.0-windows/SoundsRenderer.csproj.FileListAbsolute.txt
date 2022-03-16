@@ -1,0 +1,12 @@
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\bin\Debug\net5.0-windows\SoundsRenderer.deps.json
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\bin\Debug\net5.0-windows\SoundsRenderer.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\bin\Debug\net5.0-windows\ref\SoundsRenderer.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\bin\Debug\net5.0-windows\SoundsRenderer.pdb
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\obj\Debug\net5.0-windows\SoundsRenderer.csproj.AssemblyReference.cache
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\obj\Debug\net5.0-windows\SoundsRenderer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\obj\Debug\net5.0-windows\SoundsRenderer.AssemblyInfoInputs.cache
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\obj\Debug\net5.0-windows\SoundsRenderer.AssemblyInfo.cs
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\obj\Debug\net5.0-windows\SoundsRenderer.csproj.CoreCompileInputs.cache
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\obj\Debug\net5.0-windows\SoundsRenderer.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\obj\Debug\net5.0-windows\ref\SoundsRenderer.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\obj\Debug\net5.0-windows\SoundsRenderer.pdb

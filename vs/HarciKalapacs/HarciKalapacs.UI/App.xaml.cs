@@ -9,6 +9,7 @@ using CommonServiceLocator;
 using HarciKalapacs.Model;
 using HarciKalapacs.Repository;
 using Microsoft.Extensions.DependencyInjection;
+using SoundsRenderer;
 
 namespace HarciKalapacs.UI
 {
@@ -43,6 +44,7 @@ namespace HarciKalapacs.UI
             // Services
             services.AddSingleton<IRepository, Repository.Repository>();
             services.AddSingleton<IModel, Model.Model>();
+            services.AddSingleton<IMusic, SoundsRenderer.Music>();
 
             return services.BuildServiceProvider();
         }

@@ -23,6 +23,7 @@
     <ProjectReference Include="..\HarciKalapacs.Model\HarciKalapacs.Model.csproj" />
     <ProjectReference Include="..\HarciKalapacs.Renderer\HarciKalapacs.Renderer.csproj" />
     <ProjectReference Include="..\HarciKalapacs.Repository\HarciKalapacs.Repository.csproj" />
+    <ProjectReference Include="..\SoundsRenderer\SoundsRenderer.csproj" />
   </ItemGroup>
 
 </Project>

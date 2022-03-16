@@ -8,12 +8,14 @@
   <ItemGroup>
     <None Remove="Assets\button.png" />
     <None Remove="Assets\mainMenuBackground.png" />
+    <None Remove="Assets\mapMenu.jpg" />
     <None Remove="Assets\selectedButton.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Assets\button.png" />
     <EmbeddedResource Include="Assets\mainMenuBackground.png" />
+    <EmbeddedResource Include="Assets\mapMenu.jpg" />
     <EmbeddedResource Include="Assets\selectedButton.png" />
   </ItemGroup>
 

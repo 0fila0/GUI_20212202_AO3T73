@@ -35,18 +35,6 @@ namespace HarciKalapacs.Renderer
             return mainCanvas;
         }
 
-        private static Canvas SelectMap()
-        {
-            Canvas canvas = new Canvas();
-            return canvas;
-        }
-
-        private static Canvas HelpMenu()
-        {
-            Canvas canvas = new Canvas();
-            return canvas;
-        }
-
         private static ImageBrush GetImage(string image)
         {
             if (image != string.Empty)
@@ -56,13 +44,6 @@ namespace HarciKalapacs.Renderer
                 bitmap.StreamSource = Assembly.GetExecutingAssembly().GetManifestResourceStream(image);
                 bitmap.EndInit();
                 ImageBrush imageBrush = new ImageBrush(bitmap);
-
-                if (!image.Contains("mainMenu"))
-                {
-                    imageBrush.Stretch = Stretch.UniformToFill;
-                    imageBrush.AlignmentX = AlignmentX.Center;
-                    imageBrush.AlignmentY = AlignmentY.Center;
-                }
 
                 return imageBrush;
             }
@@ -93,22 +74,21 @@ namespace HarciKalapacs.Renderer
 
             if (controllerName != "mainGrid")
             {
-                grid.MouseLeftButtonDown += Grid_MouseLeftButtonDown;
                 grid.MouseEnter += Grid_MouseEnter;
                 grid.MouseLeave += Grid_MouseLeave;
+                Label label = new Label
+                {
+                    Content = text,
+                    FontFamily = MainMenuConfig.BtFontFamily,
+                    FontSize = MainMenuConfig.BtFontSize,
+                    Foreground = MainMenuConfig.FontColor,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                };
+
+                grid.Children.Add(label);
             }
 
-            Label label = new Label
-            {
-                Content = text,
-                FontFamily = MainMenuConfig.BtFontFamily,
-                FontSize = MainMenuConfig.BtFontSize,
-                Foreground = MainMenuConfig.FontColor,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center
-            };
-
-            grid.Children.Add(label);
             return grid;
         }
 
@@ -120,11 +100,6 @@ namespace HarciKalapacs.Renderer
         private static void Grid_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
             (sender as Grid).Background = GetImage(MainMenuConfig.BtSelectImage);
-        }
-
-        private static void Grid_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

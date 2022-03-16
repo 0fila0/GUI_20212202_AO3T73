@@ -15,8 +15,8 @@ namespace HarciKalapacs.Renderer.Config
 
         public const string BtImage = "HarciKalapacs.Renderer.Assets.button.png";
         public const string BtSelectImage = "HarciKalapacs.Renderer.Assets.selectedButton.png";
-        public const double BtWidth = 300;
-        public const double BtHeight = 100;
+        public const double BtWidth = 150;
+        public const double BtHeight = 50;
         public const double SpaceBetweenButtons = 150;
         public const int BtFontSize = 15;
 

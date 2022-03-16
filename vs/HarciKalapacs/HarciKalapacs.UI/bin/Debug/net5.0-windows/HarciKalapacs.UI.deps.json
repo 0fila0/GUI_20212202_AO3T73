@@ -12,7 +12,8 @@
           "HarciKalapacs.Model": "1.0.0",
           "HarciKalapacs.Renderer": "1.0.0",
           "HarciKalapacs.Repository": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection": "6.0.0"
+          "Microsoft.Extensions.DependencyInjection": "6.0.0",
+          "SoundsRenderer": "1.0.0"
         },
         "runtime": {
           "HarciKalapacs.UI.dll": {}
@@ -82,6 +83,11 @@
         "runtime": {
           "HarciKalapacs.Repository.dll": {}
         }
+      },
+      "SoundsRenderer/1.0.0": {
+        "runtime": {
+          "SoundsRenderer.dll": {}
+        }
       }
     }
   },
@@ -137,6 +143,11 @@
       "sha512": ""
     },
     "HarciKalapacs.Repository/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SoundsRenderer/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
