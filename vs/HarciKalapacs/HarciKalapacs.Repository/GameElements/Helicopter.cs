@@ -12,9 +12,6 @@ namespace HarciKalapacs.Repository.GameElements
         {
             this.MaxHp = UnitsConfig.Controllable.HelicopterConfig.MaxHp;
             this.MaxMove = UnitsConfig.Controllable.HelicopterConfig.MaxMove;
-            this.IdleImage1 = UnitsConfig.Controllable.HelicopterConfig.IdleImage1;
-            this.IdleImage2 = UnitsConfig.Controllable.HelicopterConfig.IdleImage2;
-            this.IdleImage3 = UnitsConfig.Controllable.HelicopterConfig.IdleImage3;
             this.Vision = UnitsConfig.Controllable.HelicopterConfig.Vision;
             this.Damage = UnitsConfig.Controllable.HelicopterConfig.Damage;
             this.DyingImage = UnitsConfig.Controllable.HelicopterConfig.DyingImage;

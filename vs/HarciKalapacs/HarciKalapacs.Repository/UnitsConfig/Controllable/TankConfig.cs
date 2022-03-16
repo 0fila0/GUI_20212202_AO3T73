@@ -6,9 +6,6 @@
         public const int Damage = 30;
         public const int Vision = 3;
         public const int MaxMove = 2;
-        public const string IdleImage1 = "";
-        public const string IdleImage2 = "";
-        public const string IdleImage3 = "";
         public const string DyingImage = "";
         public const string AttackImage = "";
     }

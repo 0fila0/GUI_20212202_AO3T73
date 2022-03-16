@@ -84,6 +84,7 @@
                     forts.ForEach(x => this.allUnits.Add(x));
                 }
 
+                this.allUnits.ForEach(x => x.IdleImage1 = "");
                 path = relativePath + @"\mapSize.json";
                 json = ReadJsonFile(path);
                 List<int> map = JsonConvert.DeserializeObject<List<int>>(json);

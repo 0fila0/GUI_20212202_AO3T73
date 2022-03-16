@@ -9,6 +9,8 @@ namespace HarciKalapacs.Repository
 {
     public interface IRepository
     {
+        public IEnumerable<int> MapSize { get; }
+
         public IEnumerable<Units> AllUnits { get; }
 
         /// <summary>

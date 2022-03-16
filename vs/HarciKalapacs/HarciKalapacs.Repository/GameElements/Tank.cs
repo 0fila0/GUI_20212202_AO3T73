@@ -12,9 +12,6 @@ namespace HarciKalapacs.Repository.GameElements
         {
             this.MaxHp = UnitsConfig.Controllable.TankConfig.MaxHp;
             this.MaxMove = UnitsConfig.Controllable.TankConfig.MaxMove;
-            this.IdleImage1 = UnitsConfig.Controllable.TankConfig.IdleImage1;
-            this.IdleImage2 = UnitsConfig.Controllable.TankConfig.IdleImage2;
-            this.IdleImage3 = UnitsConfig.Controllable.TankConfig.IdleImage3;
             this.Vision = UnitsConfig.Controllable.TankConfig.Vision;
             this.Damage = UnitsConfig.Controllable.TankConfig.Damage;
             this.DyingImage = UnitsConfig.Controllable.TankConfig.DyingImage;

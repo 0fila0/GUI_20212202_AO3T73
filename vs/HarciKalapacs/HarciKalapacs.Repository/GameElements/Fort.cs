@@ -11,7 +11,6 @@ namespace HarciKalapacs.Repository.GameElements
         public Fort()
         {
             this.MaxHp = UnitsConfig.Base.FortConfig.MaxHp;
-            this.IdleImage1 = UnitsConfig.Base.FortConfig.IdleImage1;
 
             if (this.Hp == 0)
             {

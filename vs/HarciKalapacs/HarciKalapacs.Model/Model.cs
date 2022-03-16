@@ -8,6 +8,7 @@ namespace HarciKalapacs.Model
     public class Model : IModel
     {
         readonly IRepository repository;
+        IEnumerable<int> mapSize;
         IEnumerable<Units> allUnits;
 
         public Model(IRepository repository)
@@ -18,10 +19,13 @@ namespace HarciKalapacs.Model
 
         public IEnumerable<Units> AllUnits { get => allUnits; set => allUnits = value; }
 
+        public IEnumerable<int> MapSize { get => mapSize; set => mapSize = value; }
+
         public bool LoadMap(int level)
         {
             bool success = this.repository.LoadMap(level);
             this.AllUnits = this.repository.AllUnits;
+            this.MapSize = this.repository.MapSize;
             return success;
         }
     }

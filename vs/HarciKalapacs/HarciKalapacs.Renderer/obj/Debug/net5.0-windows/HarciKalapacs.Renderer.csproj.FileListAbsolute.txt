@@ -10,3 +10,6 @@ D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Renderer
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Renderer\obj\Debug\net5.0-windows\HarciKalapacs.Renderer.dll
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Renderer\obj\Debug\net5.0-windows\ref\HarciKalapacs.Renderer.dll
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Renderer\obj\Debug\net5.0-windows\HarciKalapacs.Renderer.pdb
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Renderer\bin\Debug\net5.0-windows\HarciKalapacs.Repository.dll
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Renderer\bin\Debug\net5.0-windows\HarciKalapacs.Repository.pdb
+D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Renderer\obj\Debug\net5.0-windows\HarciKalapacs.Renderer.csproj.CopyComplete

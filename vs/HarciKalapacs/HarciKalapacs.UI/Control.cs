@@ -13,6 +13,9 @@
     using System;
     using System.Windows.Threading;
     using SoundsRenderer;
+    using System.Collections.Generic;
+    using HarciKalapacs.Repository.GameElements;
+    using System.Windows.Input;
 
     class Control : ContentControl
     {
@@ -48,7 +51,10 @@
             Renderer.Config.MainMenuConfig.WindowHeight = this.ActualHeight;
             Renderer.Config.MainMenuConfig.TopBtXPos = this.ActualWidth / 2;
             Renderer.Config.MainMenuConfig.TopBtYPos = this.ActualHeight;
-            this.ValidateFrame(sender);
+            if (this.ActualContent != Contents.InGame)
+            {
+                this.ValidateFrame(sender);
+            }
         }
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
@@ -84,6 +90,10 @@
                     case "btBack":
                         this.ActualContent = Contents.MainMenu;
                         break;
+                    case "bt2":
+                        this.model.LoadMap(1);
+                        this.ActualContent = Contents.InGame;
+                        break;
                 }
             }
 
@@ -97,6 +107,9 @@
                     this.Content = SelectMapRenderer.SelectMap();
                     break;
                 case Contents.InGame:
+                    int width = (this.model.MapSize as List<int>)[0];
+                    int height = (this.model.MapSize as List<int>)[1];
+                    this.Content = MapRenderer.Map(width, height, this.model.AllUnits as List<Units>);
                     break;
                 default:
                     this.Content = MenuRenderer.MainMenu();
@@ -109,6 +122,7 @@
         private void EventsSubscribe()
         {
             Canvas mainCanvas = (Canvas)this.Content;
+            mainCanvas.MouseMove += MainCanvas_MouseMove;
             Grid mainGrid = mainCanvas.Children[0] as Grid;
 
             // Grids in mainGrid.
@@ -131,6 +145,22 @@
             }
         }
 
+        /// <summary>
+        /// Navigation on the map.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainCanvas_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (this.ActualContent == Contents.InGame)
+            {
+                Canvas m = this.Content as Canvas;
+                Grid g = m.Children[0] as Grid;
+                Point before = Mouse.GetPosition(this);
+                g.Margin = new Thickness(800 - before.X * (2250 / this.MainWindow.Width), 600 - before.Y * (3500 / this.MainWindow.Height), 0, 0);
+            }
+        }
+
         private void Grid_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Grid grid = sender as Grid;
@@ -144,10 +174,11 @@
                     this.ValidateFrame(sender);
                     break;
                 case "btBack":
+                    (this.Content as Canvas).Children.Clear();
                     this.ValidateFrame(sender);
                     break;
                 case "bt2":
-
+                    this.ValidateFrame(sender);
                     break;
             }
         }

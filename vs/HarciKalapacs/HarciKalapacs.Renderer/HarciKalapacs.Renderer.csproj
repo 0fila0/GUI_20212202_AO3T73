@@ -7,16 +7,26 @@
 
   <ItemGroup>
     <None Remove="Assets\button.png" />
+    <None Remove="Assets\enemyTankIdle1.png" />
     <None Remove="Assets\mainMenuBackground.png" />
     <None Remove="Assets\mapMenu.jpg" />
     <None Remove="Assets\selectedButton.png" />
+    <None Remove="Assets\tankIdle1.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Assets\button.png" />
+    <EmbeddedResource Include="Assets\enemyTankIdle1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Assets\mainMenuBackground.png" />
     <EmbeddedResource Include="Assets\mapMenu.jpg" />
     <EmbeddedResource Include="Assets\selectedButton.png" />
+    <EmbeddedResource Include="Assets\tankIdle1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HarciKalapacs.Repository\HarciKalapacs.Repository.csproj" />
   </ItemGroup>
 
 </Project>

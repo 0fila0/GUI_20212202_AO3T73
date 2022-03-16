@@ -1,5 +1,8 @@
 ﻿using HarciKalapacs.Renderer.Config;
+using HarciKalapacs.Repository.GameElements;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,36 +13,54 @@ namespace HarciKalapacs.Renderer
 {
     public static class MapRenderer
     {
-        public static Canvas Map()
+        public static Canvas Map(int width, int height, List<Units> units)
         {
             Canvas mainCanvas = new Canvas();
-            mainCanvas.Background = GetImage(SelectMapConfig.BackgroundImageName);
+            mainCanvas.Background = Brushes.Black;
 
             List<Grid> grids = new List<Grid>();
 
             // Map buttons.
-            //grids.Add(GetGrid("bt1", SelectMapConfig.BtWidth, SelectMapConfig.BtHeight, "Easy", SelectMapConfig.BtImage));
-            grids.Add(GetGrid("bt2", SelectMapConfig.BtWidth, SelectMapConfig.BtHeight, "Medium", SelectMapConfig.BtImage));
-            //grids.Add(GetGrid("bt3", SelectMapConfig.BtWidth, SelectMapConfig.BtHeight, "Hard", SelectMapConfig.BtImage));
-
-            // MainGrid contains only map buttons.
-            Grid mainGrid = GetGrid("mainGrid", MainMenuConfig.WindowWidth, MainMenuConfig.WindowHeight, string.Empty, string.Empty);
-            mainGrid.Margin = new Thickness(0, MainMenuConfig.WindowHeight / (grids.Count + 2), 0, 0);
-            grids.ForEach(x => mainGrid.Children.Add(x));
-
             // Buttons' positions.
-            double space = 0;   // -MainMenuConfig.WindowWidth / grids.Count;
-            foreach (Grid grid in grids)
+            double horizontalSpace = 0;
+            double verticalSpace = 0;
+            int x = 0;
+            int y = 0;
+            for (x = 0; x < height; x++)
             {
-                grid.Margin = new Thickness(space, 0, 0, 0);
-                space += MainMenuConfig.WindowWidth / grids.Count;
+                horizontalSpace = 0;
+                for (y = 0; y < width; y++)
+                {
+                    // Tile name:  tile_xPos_yPos
+                    Grid oneTile = GetGrid("tile_" + x + "_" + y, MapConfig.TileWidth, MapConfig.TileHeight, "", MapConfig.TileImage);
+                    oneTile.Margin = new Thickness(horizontalSpace, verticalSpace, 0, 0);
+                    grids.Add(oneTile);
+                    horizontalSpace += MapConfig.TileWidth;
+                }
+
+                verticalSpace += MapConfig.TileHeight;
             }
 
+            foreach (Units unit in units)
+            {
+                Thickness unitMargin = grids.Where(x => x.Name == "tile_" + unit.XPos + "_" + unit.YPos).Select(x => x.Margin).FirstOrDefault();
+                Grid soldier = GetGrid("unit_" + unit.XPos + "_" + unit.YPos, MapConfig.TileWidth, MapConfig.TileHeight - 20, "", unit.IdleImage1);
+                unitMargin.Top += 10;
+                soldier.Margin = unitMargin;
+                soldier.IsHitTestVisible = false;
+                grids.Add(soldier);
+            }
+
+            // MainGrid contains only map buttons.
+            Grid mainGrid = GetGrid("mainGrid", MapConfig.TileWidth * width, MapConfig.TileHeight * height, string.Empty, string.Empty);
+            double leftMargin = (MainMenuConfig.WindowWidth - width * MapConfig.TileWidth) / 2;
+            double topMargin = (MainMenuConfig.WindowHeight - height * MapConfig.TileHeight) / 2;
+            mainGrid.Margin = new Thickness(leftMargin, topMargin, 0, 0);
+            grids.ForEach(x => mainGrid.Children.Add(x));
+
             // Back button's properties.
-            Grid backButton = GetGrid("btBack", SelectMapConfig.BtWidth + 50, SelectMapConfig.BtHeight, "Vissza", SelectMapConfig.BtImage);
-            backButton.Margin = new Thickness(25, MainMenuConfig.WindowHeight - 200, 0, 0);
-
-
+            Grid backButton = GetGrid("btBack", MapConfig.BtWidth, MapConfig.BtHeight, "Vissza a főmenübe", MapConfig.TileImage);
+            backButton.Margin = new Thickness(25, MainMenuConfig.WindowHeight - 100, 0, 0);
 
             mainCanvas.Children.Add(mainGrid);
             mainCanvas.Children.Add(backButton);
@@ -52,9 +73,24 @@ namespace HarciKalapacs.Renderer
             {
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
-                bitmap.StreamSource = Assembly.GetExecutingAssembly().GetManifestResourceStream(image);
-                bitmap.EndInit();
-                ImageBrush imageBrush = new ImageBrush(bitmap);
+                try
+                {
+                    bitmap.StreamSource = Assembly.GetExecutingAssembly().GetManifestResourceStream(image);
+                    bitmap.EndInit();
+                }
+                catch (Exception)
+                {
+                }
+
+                ImageBrush imageBrush = new ImageBrush();
+                if (bitmap.StreamSource == null)
+                {
+                    imageBrush.ImageSource = new BitmapImage(new Uri(image));
+                }
+                else
+                {
+                    imageBrush = new ImageBrush(bitmap);
+                }
 
                 return imageBrush;
             }
@@ -79,7 +115,7 @@ namespace HarciKalapacs.Renderer
                 Width = width,
                 Height = height,
                 Background = GetImage(image),
-                HorizontalAlignment = HorizontalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Left,
                 VerticalAlignment = VerticalAlignment.Top
             };
 
@@ -105,12 +141,18 @@ namespace HarciKalapacs.Renderer
 
         private static void Grid_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            (sender as Grid).Background = GetImage(MainMenuConfig.BtImage);
+            if (!(sender as Grid).Name.Contains("unit"))
+            {
+                (sender as Grid).Background = GetImage(MainMenuConfig.BtImage);
+            }
         }
 
         private static void Grid_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            (sender as Grid).Background = GetImage(MainMenuConfig.BtSelectImage);
+            if (!(sender as Grid).Name.Contains("unit"))
+            {
+                (sender as Grid).Background = GetImage(MainMenuConfig.BtSelectImage);
+            }
         }
     }
 }

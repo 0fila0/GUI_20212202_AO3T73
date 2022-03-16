@@ -24,7 +24,9 @@ namespace HarciKalapacs.Renderer
 
             // MainGrid contains only map buttons.
             Grid mainGrid = GetGrid("mainGrid", MainMenuConfig.WindowWidth - 50, MainMenuConfig.WindowHeight, string.Empty, string.Empty);
-            mainGrid.Margin = new Thickness(0, MainMenuConfig.WindowHeight / (grids.Count + 2), 0, 0);
+            double leftMargin = (MainMenuConfig.WindowWidth - grids.Count * SelectMapConfig.BtWidth) / 2;
+            double topMargin = (MainMenuConfig.WindowHeight - grids.Count * SelectMapConfig.BtHeight) / 2;
+            mainGrid.Margin = new Thickness(leftMargin, topMargin, 0, 0);
             grids.ForEach(x => mainGrid.Children.Add(x));
 
             // Buttons' positions.
@@ -79,7 +81,7 @@ namespace HarciKalapacs.Renderer
                 Width = width,
                 Height = height,
                 Background = GetImage(image),
-                HorizontalAlignment = HorizontalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Left,
                 VerticalAlignment = VerticalAlignment.Top
             };
 

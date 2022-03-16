@@ -10,6 +10,22 @@ namespace HarciKalapacs.Repository.GameElements
     {
         int absorption;
 
+        public Cover()
+        {
+            if (this.MaxHp == 0)
+            {
+                int rnd = new Random().Next(1, 3);
+                if (rnd == 1)
+                {
+                    this.MaxHp = 36;
+                }
+                else
+                {
+                    this.MaxHp = 90;
+                }
+            }
+        }
+
         public int Absorption { get => absorption; set => absorption = value; }
     }
 }
