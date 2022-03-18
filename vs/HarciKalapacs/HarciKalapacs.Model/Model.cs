@@ -23,6 +23,7 @@ namespace HarciKalapacs.Model
 
         public bool LoadMap(int level)
         {
+            (this.AllUnits as List<Units>).Clear();
             bool success = this.repository.LoadMap(level);
             this.AllUnits = this.repository.AllUnits;
             this.MapSize = this.repository.MapSize;

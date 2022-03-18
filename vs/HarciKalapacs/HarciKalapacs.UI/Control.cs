@@ -16,6 +16,7 @@
     using System.Collections.Generic;
     using HarciKalapacs.Repository.GameElements;
     using System.Windows.Input;
+    using HarciKalapacs.Renderer.Config;
 
     class Control : ContentControl
     {
@@ -47,10 +48,10 @@
         private void WindowSizeChanged(object sender, RoutedEventArgs e)
         {
             this.MainWindow = this.Parent as Window;
-            Renderer.Config.MainMenuConfig.WindowWidth = this.ActualWidth;
-            Renderer.Config.MainMenuConfig.WindowHeight = this.ActualHeight;
-            Renderer.Config.MainMenuConfig.TopBtXPos = this.ActualWidth / 2;
-            Renderer.Config.MainMenuConfig.TopBtYPos = this.ActualHeight;
+            MainMenuConfig.WindowWidth = this.ActualWidth;
+            MainMenuConfig.WindowHeight = this.ActualHeight;
+            MainMenuConfig.TopBtXPos = this.ActualWidth / 2;
+            MainMenuConfig.TopBtYPos = this.ActualHeight;
             if (this.ActualContent != Contents.InGame)
             {
                 this.ValidateFrame(sender);
@@ -156,8 +157,14 @@
             {
                 Canvas m = this.Content as Canvas;
                 Grid g = m.Children[0] as Grid;
-                Point before = Mouse.GetPosition(this);
-                g.Margin = new Thickness(800 - before.X * (2250 / this.MainWindow.Width), 600 - before.Y * (3500 / this.MainWindow.Height), 0, 0);
+                Point mouseCursor = Mouse.GetPosition(this);
+                double mapWidth = (this.model.MapSize as List<int>)[0];
+                double mapHeight = (this.model.MapSize as List<int>)[1];
+                double xMovementSpeed = mouseCursor.X * (mapWidth * MapConfig.TileWidth / MainMenuConfig.WindowWidth);
+                double yMovementSpeed = mouseCursor.Y * (mapHeight * MapConfig.TileHeight / MainMenuConfig.WindowHeight);
+                double leftLimit = mapWidth * MapConfig.TileWidth / 3;
+                double upLimit = mapHeight * MapConfig.TileHeight / 5;
+                g.Margin = new Thickness(leftLimit - xMovementSpeed, upLimit - yMovementSpeed, 0, 0);
             }
         }
 

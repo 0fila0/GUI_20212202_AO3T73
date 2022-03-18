@@ -13,6 +13,8 @@ namespace HarciKalapacs.Renderer
 {
     public static class MapRenderer
     {
+        private static Grid PrevousSelectedTile = null;
+
         public static Canvas Map(int width, int height, List<Units> units)
         {
             Canvas mainCanvas = new Canvas();
@@ -32,7 +34,7 @@ namespace HarciKalapacs.Renderer
                 for (y = 0; y < width; y++)
                 {
                     // Tile name:  tile_xPos_yPos
-                    Grid oneTile = GetGrid("tile_" + x + "_" + y, MapConfig.TileWidth, MapConfig.TileHeight, "", MapConfig.TileImage);
+                    Grid oneTile = GetGrid("tile_" + x + "_" + y, MapConfig.TileWidth, MapConfig.TileHeight, "", MapConfig.TileInSight);
                     oneTile.Margin = new Thickness(horizontalSpace, verticalSpace, 0, 0);
                     grids.Add(oneTile);
                     horizontalSpace += MapConfig.TileWidth;
@@ -43,7 +45,11 @@ namespace HarciKalapacs.Renderer
 
             foreach (Units unit in units)
             {
-                Thickness unitMargin = grids.Where(x => x.Name == "tile_" + unit.XPos + "_" + unit.YPos).Select(x => x.Margin).FirstOrDefault();
+                Grid tileOfUnit = grids.Where(x => x.Name == "tile_" + unit.XPos + "_" + unit.YPos).Select(x => x).FirstOrDefault();
+                tileOfUnit.DataContext = unit;
+                Thickness unitMargin = tileOfUnit.Margin;
+                tileOfUnit.Background = GetImage(GetTileImageName(tileOfUnit));
+
                 Grid soldier = GetGrid("unit_" + unit.XPos + "_" + unit.YPos, MapConfig.TileWidth, MapConfig.TileHeight - 20, "", unit.IdleImage1);
                 unitMargin.Top += 10;
                 soldier.Margin = unitMargin;
@@ -61,6 +67,8 @@ namespace HarciKalapacs.Renderer
             // Back button's properties.
             Grid backButton = GetGrid("btBack", MapConfig.BtWidth, MapConfig.BtHeight, "Vissza a főmenübe", MapConfig.TileImage);
             backButton.Margin = new Thickness(25, MainMenuConfig.WindowHeight - 100, 0, 0);
+            backButton.MouseEnter += Grid_MouseEnter;
+            backButton.MouseLeave += Grid_MouseLeave;
 
             mainCanvas.Children.Add(mainGrid);
             mainCanvas.Children.Add(backButton);
@@ -121,8 +129,7 @@ namespace HarciKalapacs.Renderer
 
             if (controllerName != "mainGrid")
             {
-                grid.MouseEnter += Grid_MouseEnter;
-                grid.MouseLeave += Grid_MouseLeave;
+                grid.MouseLeftButtonDown += Grid_MouseLeftButtonDown;
                 Label label = new Label
                 {
                     Content = text,
@@ -139,20 +146,74 @@ namespace HarciKalapacs.Renderer
             return grid;
         }
 
+        private static void Grid_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Grid grid = sender as Grid;
+
+            // Previous selected tile is now unselected.
+            if (PrevousSelectedTile != null)
+            {
+                PrevousSelectedTile.Background = GetImage(MapConfig.TilePlayer);
+            }
+
+            if (grid.DataContext != null)
+            {
+                Units unit = grid.DataContext as Units;
+                if (unit.Team == Team.player)
+                {
+                    // This tile is the new selected tile.
+                    PrevousSelectedTile = sender as Grid;
+                    (sender as Grid).Background = GetImage(MapConfig.TileSelected);
+                }
+            }
+        }
+
         private static void Grid_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            if (!(sender as Grid).Name.Contains("unit"))
-            {
-                (sender as Grid).Background = GetImage(MainMenuConfig.BtImage);
-            }
+            (sender as Grid).Background = GetImage(MainMenuConfig.BtImage);
         }
 
         private static void Grid_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            if (!(sender as Grid).Name.Contains("unit"))
+            (sender as Grid).Background = GetImage(MainMenuConfig.BtSelectImage);
+        }
+
+        private static string GetTileImageName(Grid grid)
+        {
+            if (grid.DataContext != null)
             {
-                (sender as Grid).Background = GetImage(MainMenuConfig.BtSelectImage);
+                Units unit = grid.DataContext as Units;
+
+                // Set mapTile image depends on unit's team.
+                switch (unit.Team)
+                {
+                    case Team.player:
+                        return MapConfig.TilePlayer;
+                    case Team.enemy:
+                        return MapConfig.TileEnemy;
+                    case Team.natural:
+                        return MapConfig.TileNature;
+                    default:
+                        return MapConfig.TileInSight;
+                }
             }
+            // If tile is in sight or not
+            else
+            {
+                if (IsInSight(grid))
+                {
+                    return MapConfig.TileInSight;
+                }
+                else
+                {
+                    return MapConfig.TileOutOfSight;
+                }
+            }
+        }
+
+        private static bool IsInSight(Grid grid)
+        {
+            return true;
         }
     }
 }
