@@ -8,6 +8,7 @@ namespace HarciKalapacs.Model
     public class Model : IModel
     {
         readonly IRepository repository;
+        int playerTurn;
         int mapWidth;
         int mapHeight;
         IEnumerable<Units> allUnits;
@@ -21,6 +22,7 @@ namespace HarciKalapacs.Model
         public IEnumerable<Units> AllUnits { get => allUnits; set => allUnits = value; }
         public int MapWidth { get => mapWidth; set => mapWidth = value; }
         public int MapHeight { get => mapHeight; set => mapHeight = value; }
+        public int PlayerTurn { get => playerTurn; set => playerTurn = value; }
 
         public bool LoadMap(int level)
         {
@@ -30,6 +32,7 @@ namespace HarciKalapacs.Model
             this.ModifyAirUnitsVision();
             this.mapWidth = (this.repository.MapSize as List<int>)[0];
             this.mapHeight = (this.repository.MapSize as List<int>)[1];
+            this.PlayerTurn = 1;
             return success;
         }
 

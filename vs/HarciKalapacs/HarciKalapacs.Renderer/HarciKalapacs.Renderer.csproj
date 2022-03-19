@@ -8,10 +8,12 @@
   <ItemGroup>
     <None Remove="Assets\button.png" />
     <None Remove="Assets\enemyTankIdle1.png" />
+    <None Remove="Assets\headerBackground.png" />
     <None Remove="Assets\mainMenuBackground.png" />
     <None Remove="Assets\mapMenu.jpg" />
     <None Remove="Assets\selectedButton.png" />
     <None Remove="Assets\tankIdle1.png" />
+    <None Remove="Assets\tileCanMoveHere.png" />
     <None Remove="Assets\tileEnemy.png" />
     <None Remove="Assets\tileInSight.png" />
     <None Remove="Assets\tileNature.png" />
@@ -23,10 +25,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Assets\button.png" />
     <EmbeddedResource Include="Assets\enemyTankIdle1.png" />
+    <EmbeddedResource Include="Assets\headerBackground.png" />
     <EmbeddedResource Include="Assets\mainMenuBackground.png" />
     <EmbeddedResource Include="Assets\mapMenu.jpg" />
     <EmbeddedResource Include="Assets\selectedButton.png" />
     <EmbeddedResource Include="Assets\tankIdle1.png" />
+    <EmbeddedResource Include="Assets\tileCanMoveHere.png" />
     <EmbeddedResource Include="Assets\tileEnemy.png" />
     <EmbeddedResource Include="Assets\tileInSight.png" />
     <EmbeddedResource Include="Assets\tileNature.png" />

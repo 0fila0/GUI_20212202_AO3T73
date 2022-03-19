@@ -17,11 +17,16 @@ namespace HarciKalapacs.Renderer.Config
         public const string TileOutOfSight = "HarciKalapacs.Renderer.Assets.tileOutOfSight.png";
         public const string TileSelected = "HarciKalapacs.Renderer.Assets.tileSelected.png";
         public const string TileNature = "HarciKalapacs.Renderer.Assets.tileNature.png";
+        public const string TileCanMoveHere = "HarciKalapacs.Renderer.Assets.tileCanMoveHere.png";
 
-        public const double BtWidth = 150;
-        public const double BtHeight = 50;
+        public const double BtBackWidth = 150;
+        public const double BtBackHeight = 50;
         public static FontFamily BtFontFamily = new FontFamily("Arial");
         public static Brush FontColor = Brushes.White;
         public const int BtFontSize = 15;
+
+        public const string GridHeaderBackground = "HarciKalapacs.Renderer.Assets.headerBackground.png";
+        public static double GridHeaderWidth = MainMenuConfig.WindowWidth;
+        public static double GridHeaderHeight = 50;
     }
 }

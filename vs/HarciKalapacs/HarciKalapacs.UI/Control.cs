@@ -17,6 +17,7 @@
     using HarciKalapacs.Repository.GameElements;
     using System.Windows.Input;
     using HarciKalapacs.Renderer.Config;
+    using System.Threading.Tasks;
 
     class Control : ContentControl
     {
@@ -25,8 +26,7 @@
             MainMenu = 1, SelectMap = 2, InGame = 3
         }
 
-        static Grid ActualSelectedUnit = null;
-        static Grid Destination = null;
+        private static bool Navigation = false;
 
         readonly IRepository repository;
         readonly IModel model;
@@ -127,6 +127,7 @@
         {
             Canvas mainCanvas = (Canvas)this.Content;
             mainCanvas.MouseMove += MainCanvas_MouseMove;
+            mainCanvas.MouseRightButtonDown += MainCanvas_MouseRightButtonDown;
             Grid mainGrid = mainCanvas.Children[0] as Grid;
 
             // Grids in mainGrid.
@@ -148,11 +149,16 @@
             // Grids out of mainGrid.
             foreach (object grid in mainCanvas.Children)
             {
-                if (grid is Grid)
+                if ((grid is Grid))
                 {
                     (grid as Grid).MouseLeftButtonDown += Grid_MouseLeftButtonDown;
                 }
             }
+        }
+
+        private void MainCanvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Navigation = !Navigation;
         }
 
         /// <summary>
@@ -162,16 +168,19 @@
         /// <param name="e"></param>
         private void MainCanvas_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            if (this.ActualContent == Contents.InGame)
+            if (Navigation)
             {
-                Canvas m = this.Content as Canvas;
-                Grid g = m.Children[0] as Grid;
-                Point mouseCursor = Mouse.GetPosition(this);
-                double xMovementSpeed = mouseCursor.X * (this.model.MapWidth * MapConfig.TileWidth / MainMenuConfig.WindowWidth);
-                double yMovementSpeed = mouseCursor.Y * (this.model.MapHeight * MapConfig.TileHeight / MainMenuConfig.WindowHeight);
-                double leftLimit = this.model.MapWidth * MapConfig.TileWidth / 3;
-                double upLimit = this.model.MapHeight * MapConfig.TileHeight / 5;
-                g.Margin = new Thickness(leftLimit - xMovementSpeed, upLimit - yMovementSpeed, 0, 0);
+                if (this.ActualContent == Contents.InGame)
+                {
+                    Canvas m = this.Content as Canvas;
+                    Grid g = m.Children[0] as Grid;
+                    Point mouseCursor = Mouse.GetPosition(this);
+                    double xMovementSpeed = mouseCursor.X * (this.model.MapWidth * MapConfig.TileWidth / MainMenuConfig.WindowWidth);
+                    double yMovementSpeed = mouseCursor.Y * (this.model.MapHeight * MapConfig.TileHeight / MainMenuConfig.WindowHeight);
+                    double leftLimit = this.model.MapWidth * MapConfig.TileWidth / 2;
+                    double upLimit = this.model.MapHeight * MapConfig.TileHeight / 4;
+                    g.Margin = new Thickness(leftLimit - xMovementSpeed, upLimit - yMovementSpeed, 0, 0);
+                }
             }
         }
 
@@ -193,6 +202,9 @@
                     break;
                 case "bt2":
                     this.ValidateFrame(sender);
+                    break;
+                case "navigation":
+                    ;
                     break;
             }
         }

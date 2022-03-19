@@ -18,6 +18,11 @@ namespace HarciKalapacs.Model
         public int MapHeight { get; set; }
 
         /// <summary>
+        /// Player's turn.
+        /// </summary>
+        public int PlayerTurn { get; set; }
+
+        /// <summary>
         /// Fills AllUnits list with units.
         /// </summary>
         /// <param name="level">Level of the map.</param>

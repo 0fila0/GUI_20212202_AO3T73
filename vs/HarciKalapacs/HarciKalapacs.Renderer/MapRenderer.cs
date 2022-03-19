@@ -19,9 +19,13 @@ namespace HarciKalapacs.Renderer
         private static Grid ActualSelectedUnit;
         private static List<Grid> UnitGrids = new List<Grid>();
         private static List<Grid> InvisibleTiles = new List<Grid>();
+        private static double MapTileOpacity = 0.4;
 
         public static Canvas Map(int width, int height, List<Units> units)
         {
+            UnitGrids.Clear();
+            InvisibleTiles.Clear();
+
             Canvas mainCanvas = new Canvas();
             mainCanvas.Background = Brushes.Black;
 
@@ -50,6 +54,7 @@ namespace HarciKalapacs.Renderer
                     // Tile name:  tile_xPos_yPos
                     Grid mapTile = GetGrid("invisibleTile_" + x + "_" + y, MapConfig.TileWidth, MapConfig.TileHeight, "", MapConfig.TileOutOfSight);
                     mapTile.Margin = new Thickness(horizontalSpace, verticalSpace, 0, 0);
+                    mapTile.IsHitTestVisible = false;
                     grids.Add(mapTile);
                     InvisibleTiles.Add(mapTile);
                     horizontalSpace += MapConfig.TileWidth;
@@ -74,87 +79,37 @@ namespace HarciKalapacs.Renderer
             grids.ForEach(x => mainGrid.Children.Add(x));
 
             // Back button's properties.
-            Grid backButton = GetGrid("btBack", MapConfig.BtWidth, MapConfig.BtHeight, "Vissza a főmenübe", MapConfig.TileImage);
-            backButton.Margin = new Thickness(25, MainMenuConfig.WindowHeight - 100, 0, 0);
+            Grid backButton = GetGrid("btBack", MapConfig.BtBackWidth, MapConfig.BtBackHeight, "Főmenü", MapConfig.TileImage);
+            backButton.Margin = new Thickness(MainMenuConfig.WindowWidth - 150, 0, 0, 0);
             backButton.MouseEnter += Grid_MouseEnter;
             backButton.MouseLeave += Grid_MouseLeave;
 
+            // Header's properties.
+            Grid header = GetGrid("header", MapConfig.GridHeaderWidth, MapConfig.GridHeaderHeight, string.Empty, string.Empty);
+            header.Margin = new Thickness(0);
+            header.Background = Brushes.Gray;
+            Label actualPlayerTurn = new Label();
+            actualPlayerTurn.Content = "Hátramaradt lépések száma: ";
+            actualPlayerTurn.FontFamily = MapConfig.BtFontFamily;
+            actualPlayerTurn.FontSize = MapConfig.BtFontSize;
+            actualPlayerTurn.Margin = new Thickness(25, 0, 0, 0);
+            actualPlayerTurn.HorizontalAlignment = HorizontalAlignment.Left;
+            actualPlayerTurn.VerticalAlignment = VerticalAlignment.Center;
+            Label turn = new Label();
+            turn.Content = "Kör: ";
+            turn.FontFamily = MapConfig.BtFontFamily;
+            turn.FontSize = MapConfig.BtFontSize;
+            turn.Margin = new Thickness(0, 0, 100, 0);
+            turn.HorizontalAlignment = HorizontalAlignment.Center;
+            turn.VerticalAlignment = VerticalAlignment.Center;
+            header.Children.Add(actualPlayerTurn);
+            header.Children.Add(turn);
+
             VisibleMapTiles();
             mainCanvas.Children.Add(mainGrid);
+            mainCanvas.Children.Add(header);
             mainCanvas.Children.Add(backButton);
             return mainCanvas;
-        }
-
-        private static ImageBrush GetImage(string image)
-        {
-            if (image != string.Empty)
-            {
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                try
-                {
-                    bitmap.StreamSource = Assembly.GetExecutingAssembly().GetManifestResourceStream(image);
-                    bitmap.EndInit();
-                }
-                catch (Exception)
-                {
-                }
-
-                ImageBrush imageBrush = new ImageBrush();
-                if (bitmap.StreamSource == null)
-                {
-                    imageBrush.ImageSource = new BitmapImage(new Uri(image));
-                }
-                else
-                {
-                    imageBrush = new ImageBrush(bitmap);
-                }
-
-                return imageBrush;
-            }
-
-            return null;
-        }
-
-        /// <summary>
-        /// Create a new grid. It functions as a button.
-        /// </summary>
-        /// <param name="controllerName">Name of grid regarding future references.</param>
-        /// <param name="width">Width of grid.</param>
-        /// <param name="height">Height of grid.</param>
-        /// <param name="text">Text in grid.</param>
-        /// <param name="image">Background image of grid.</param>
-        /// <returns></returns>
-        private static Grid GetGrid(string controllerName, double width, double height, string text, string image)
-        {
-            Grid grid = new Grid
-            {
-                Name = controllerName,
-                Width = width,
-                Height = height,
-                Background = GetImage(image),
-                HorizontalAlignment = HorizontalAlignment.Left,
-                VerticalAlignment = VerticalAlignment.Top
-            };
-
-            if (!(grid.Name.Contains("Back")))
-            {
-                grid.MouseLeftButtonDown += Grid_MouseLeftButtonDown;
-            }
-
-            Label label = new Label
-            {
-                Content = text,
-                FontFamily = MainMenuConfig.BtFontFamily,
-                FontSize = MainMenuConfig.BtFontSize,
-                Foreground = MainMenuConfig.FontColor,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-            };
-
-            grid.Children.Add(label);
-
-            return grid;
         }
 
         private static void Grid_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -167,15 +122,19 @@ namespace HarciKalapacs.Renderer
                     Units unit = gridSender.DataContext as Units;
                     if (unit.Team == Team.player)
                     {
-                        if (ActualSelectedUnit.DataContext != gridSender.DataContext)
+                        if (ActualSelectedUnit.DataContext == null)
                         {
                             ActualSelectedUnit.DataContext = gridSender.DataContext;
                             ActualSelectedUnit.Margin = gridSender.Margin;
                             ActualSelectedUnit.Visibility = Visibility.Visible;
                             gridSender.Background = GetImage((gridSender.DataContext as Units).IdleImage1);
+                            CanActivityTiles(unit as Controllable);
                         }
-                        else
+                        else if (ActualSelectedUnit.DataContext != null && ActualSelectedUnit.DataContext == gridSender.DataContext)
                         {
+                            HorizontalVision(ActualSelectedUnit.DataContext as Controllable);
+                            VerticalVision(ActualSelectedUnit.DataContext as Controllable);
+                            DiagonalVision(ActualSelectedUnit.DataContext as Controllable);
                             ActualSelectedUnit.DataContext = null;
                             ActualSelectedUnit.Visibility = Visibility.Hidden;
                         }
@@ -186,24 +145,251 @@ namespace HarciKalapacs.Renderer
 
         private static void Grid_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            (sender as Grid).Background = GetImage(MainMenuConfig.BtImage);
+            Grid thisGrid = sender as Grid;
+            if (thisGrid.Name.Contains("Back"))
+            {
+                thisGrid.Background = GetImage(MainMenuConfig.BtImage);
+            }
         }
 
         private static void Grid_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            (sender as Grid).Background = GetImage(MainMenuConfig.BtSelectImage);
+            Grid thisGrid = sender as Grid;
+            if (thisGrid.Name.Contains("Back"))
+            {
+                thisGrid.Background = GetImage(MainMenuConfig.BtSelectImage);
+            }
         }
 
-        private static void MoveUnit(Grid grid)
+        private static void CanActivityTiles(Controllable unit)
         {
-            Units u = grid.DataContext as Units;
-            double x = u.XPos * MapConfig.TileHeight;
-            double y = u.YPos * MapConfig.TileWidth;
-            u.XPos += 1;
-            double xdes = u.XPos * MapConfig.TileHeight;
-            double ydes = u.YPos * MapConfig.TileWidth;
-            Thickness destination = new Thickness(xdes, ydes, 0, 0);
-            grid.Margin = destination;
+            HorizontalActivities(unit);
+            VerticalActivities(unit);
+            DiagonalActivities(unit);
+        }
+
+        private static void HorizontalActivities(Controllable selectedUnit)
+        {
+            for (int leftRight = -1; leftRight <= 1; leftRight += 2)
+            {
+                bool foundObstacle = false;
+                int vision = 0;
+
+                // Right then left vision.
+                while (Math.Abs(vision) <= selectedUnit.Vision)
+                {
+                    Grid inSight = InvisibleTiles.FirstOrDefault(x => x.Name.Contains((selectedUnit.XPos + vision) + "_" + selectedUnit.YPos));
+                    if (inSight != null)
+                    {
+                        inSight.Visibility = Visibility.Visible;
+                        inSight.Opacity = MapTileOpacity;
+                        if (foundObstacle)
+                        {
+                            inSight.Background = GetImage(MapConfig.TileSelectImage);
+                        }
+                        else
+                        {
+                            Grid inSightUnit = UnitGrids.FirstOrDefault(x => x.Margin == inSight.Margin);
+                            if (inSightUnit != null)
+                            {
+                                if ((inSightUnit.DataContext as Units) != selectedUnit && !(selectedUnit is AirUnit) || selectedUnit is AirUnit && !(selectedUnit as AirUnit).IsInTheAir)
+                                {
+                                    foundObstacle = true;
+                                }
+
+                                if ((inSightUnit.DataContext as Units).Team == Team.natural)
+                                {
+                                    inSight.Background = GetImage(MapConfig.TileNature);
+                                }
+                                else if ((inSightUnit.DataContext as Units).Team == Team.enemy)
+                                {
+                                    inSight.Background = GetImage(MapConfig.TileEnemy);
+                                }
+                                else if ((inSightUnit.DataContext as Units).Team == Team.player)
+                                {
+                                    inSight.Background = GetImage(MapConfig.TilePlayer);
+                                }
+                            }
+                            else
+                            {
+                                if (foundObstacle)
+                                {
+                                    inSight.Background = GetImage(MapConfig.TileSelectImage);
+                                }
+                                else
+                                {
+                                    inSight.Background = GetImage(MapConfig.TileCanMoveHere);
+                                }
+                            }
+                        }
+                    }
+
+                    vision += leftRight;
+                }
+            }
+
+            InvisibleTiles.FirstOrDefault(x => x.Name.Contains(selectedUnit.XPos + "_" + selectedUnit.YPos)).Visibility = Visibility.Hidden;
+        }
+
+        private static void VerticalActivities(Controllable selectedUnit)
+        {
+            for (int downUp = -1; downUp <= 1; downUp += 2)
+            {
+                bool foundObstacle = false;
+                int vision = 0;
+
+                // Right then left vision.
+                while (!foundObstacle && Math.Abs(vision) <= selectedUnit.Vision)
+                {
+                    Grid inSight = InvisibleTiles.FirstOrDefault(x => x.Name.Contains(selectedUnit.XPos + "_" + (selectedUnit.YPos + vision)));
+                    if (inSight != null)
+                    {
+                        inSight.Visibility = Visibility.Visible;
+                        inSight.Opacity = MapTileOpacity;
+                        Grid inSightUnit = UnitGrids.FirstOrDefault(x => x.Margin == inSight.Margin);
+                        if (inSightUnit != null)
+                        {
+                            if (inSightUnit.DataContext is Obstacle && (!(selectedUnit is AirUnit) || (selectedUnit is AirUnit) && !(selectedUnit as AirUnit).IsInTheAir))
+                            {
+                                inSight.Background = GetImage(MapConfig.TileNature);
+                                foundObstacle = true;
+                            }
+                            else if ((inSightUnit.DataContext as Units).Team == Team.natural)
+                            {
+                                inSight.Background = GetImage(MapConfig.TileNature);
+                            }
+                            else if ((inSightUnit.DataContext as Units).Team == Team.enemy)
+                            {
+                                inSight.Background = GetImage(MapConfig.TileEnemy);
+                            }
+                            else if ((inSightUnit.DataContext as Units).Team == Team.player)
+                            {
+                                inSight.Background = GetImage(MapConfig.TilePlayer);
+                            }
+                        }
+                        else
+                        {
+                            inSight.Background = GetImage(MapConfig.TileCanMoveHere);
+                        }
+                    }
+
+                    vision += downUp;
+                }
+            }
+
+            InvisibleTiles.FirstOrDefault(x => x.Name.Contains(selectedUnit.XPos + "_" + selectedUnit.YPos)).Visibility = Visibility.Hidden;
+        }
+
+        private static void DiagonalActivities(Controllable selectedUnit)
+        {
+            for (int x = -1; x <= 1; x += 2)
+            {
+                for (int y = -1; y <= 1; y += 2)
+                {
+                    Grid inSight = InvisibleTiles.FirstOrDefault(grid => grid.Name.Contains((selectedUnit.XPos + x) + "_" + (selectedUnit.YPos + y)));
+
+                    if (inSight != null)
+                    {
+                        inSight.Visibility = Visibility.Visible;
+                        inSight.Opacity = MapTileOpacity;
+                        Grid inSightUnit = UnitGrids.FirstOrDefault(x => x.Margin == inSight.Margin);
+                        if (!(inSightUnit != null && inSightUnit.DataContext is Obstacle && (!(selectedUnit is AirUnit) || (selectedUnit is AirUnit) && !(selectedUnit as AirUnit).IsInTheAir)))
+                        {
+                            if (inSightUnit != null)
+                            {
+                                if (inSightUnit.DataContext is Obstacle && (!(selectedUnit is AirUnit) || (selectedUnit is AirUnit) && !(selectedUnit as AirUnit).IsInTheAir))
+                                {
+                                    inSight.Background = GetImage(MapConfig.TileNature);
+                                }
+                                else if ((inSightUnit.DataContext as Units).Team == Team.natural)
+                                {
+                                    inSight.Background = GetImage(MapConfig.TileNature);
+                                }
+                                else if ((inSightUnit.DataContext as Units).Team == Team.enemy)
+                                {
+                                    inSight.Background = GetImage(MapConfig.TileEnemy);
+                                }
+                                else if ((inSightUnit.DataContext as Units).Team == Team.player)
+                                {
+                                    inSight.Background = GetImage(MapConfig.TilePlayer);
+                                }
+                            }
+                            else
+                            {
+                                inSight.Background = GetImage(MapConfig.TileCanMoveHere);
+                            }
+
+                            Grid diagonal_1 = InvisibleTiles.FirstOrDefault(grid => grid.Name.Contains((selectedUnit.XPos + x + x) + "_" + (selectedUnit.YPos + y)));
+                            if (diagonal_1 != null)
+                            {
+                                diagonal_1.Visibility = Visibility.Visible;
+                                diagonal_1.Opacity = MapTileOpacity;
+                                inSightUnit = UnitGrids.FirstOrDefault(x => x.Margin == diagonal_1.Margin);
+                                if (!(inSightUnit != null && inSightUnit.DataContext is Obstacle && (!(selectedUnit is AirUnit) || (selectedUnit is AirUnit) && !(selectedUnit as AirUnit).IsInTheAir)))
+                                {
+                                    if (inSightUnit != null)
+                                    {
+                                        if (inSightUnit.DataContext is Obstacle && (!(selectedUnit is AirUnit) || (selectedUnit is AirUnit) && !(selectedUnit as AirUnit).IsInTheAir))
+                                        {
+                                            diagonal_1.Background = GetImage(MapConfig.TileNature);
+                                        }
+                                        else if ((inSightUnit.DataContext as Units).Team == Team.natural)
+                                        {
+                                            diagonal_1.Background = GetImage(MapConfig.TileNature);
+                                        }
+                                        else if ((inSightUnit.DataContext as Units).Team == Team.enemy)
+                                        {
+                                            diagonal_1.Background = GetImage(MapConfig.TileEnemy);
+                                        }
+                                        else if ((inSightUnit.DataContext as Units).Team == Team.player)
+                                        {
+                                            diagonal_1.Background = GetImage(MapConfig.TilePlayer);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        diagonal_1.Background = GetImage(MapConfig.TileCanMoveHere);
+                                    }
+                                }
+                            }
+
+                            Grid diagonal_2 = InvisibleTiles.FirstOrDefault(grid => grid.Name.Contains((selectedUnit.XPos + x) + "_" + (selectedUnit.YPos + y + y)));
+                            if (diagonal_2 != null)
+                            {
+                                diagonal_2.Visibility = Visibility.Visible;
+                                diagonal_2.Opacity = MapTileOpacity;
+                                inSightUnit = UnitGrids.FirstOrDefault(x => x.Margin == diagonal_2.Margin);
+                                if (!(inSightUnit != null && inSightUnit.DataContext is Obstacle && (!(selectedUnit is AirUnit) || (selectedUnit is AirUnit) && !(selectedUnit as AirUnit).IsInTheAir)))
+                                {
+                                    if (inSightUnit != null)
+                                    {
+                                        if (inSightUnit.DataContext is Obstacle && (!(selectedUnit is AirUnit) || (selectedUnit is AirUnit) && !(selectedUnit as AirUnit).IsInTheAir))
+                                        {
+                                            diagonal_2.Background = GetImage(MapConfig.TileNature);
+                                        }
+                                        else if ((inSightUnit.DataContext as Units).Team == Team.natural)
+                                        {
+                                            diagonal_2.Background = GetImage(MapConfig.TileNature);
+                                        }
+                                        else if ((inSightUnit.DataContext as Units).Team == Team.enemy)
+                                        {
+                                            diagonal_2.Background = GetImage(MapConfig.TileEnemy);
+                                        }
+                                        else if ((inSightUnit.DataContext as Units).Team == Team.player)
+                                        {
+                                            diagonal_2.Background = GetImage(MapConfig.TilePlayer);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        diagonal_2.Background = GetImage(MapConfig.TileCanMoveHere);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private static void VisibleMapTiles()
@@ -220,6 +406,7 @@ namespace HarciKalapacs.Renderer
                 }
             }
         }
+
 
         private static void HorizontalVision(Controllable controllableUnit)
         {
@@ -316,42 +503,88 @@ namespace HarciKalapacs.Renderer
             }
         }
 
-        private static string GetTileImageName(Grid grid)
+        private static void MoveUnit(Grid grid)
         {
-            if (grid.DataContext != null)
-            {
-                Units unit = grid.DataContext as Units;
+            Units u = grid.DataContext as Units;
+            double x = u.XPos * MapConfig.TileHeight;
+            double y = u.YPos * MapConfig.TileWidth;
+            u.XPos += 1;
+            double xdes = u.XPos * MapConfig.TileHeight;
+            double ydes = u.YPos * MapConfig.TileWidth;
+            Thickness destination = new Thickness(xdes, ydes, 0, 0);
+            grid.Margin = destination;
+        }
 
-                // Set mapTile image depends on unit's team.
-                switch (unit.Team)
-                {
-                    case Team.player:
-                        return MapConfig.TilePlayer;
-                    case Team.enemy:
-                        return MapConfig.TileEnemy;
-                    case Team.natural:
-                        return MapConfig.TileNature;
-                    default:
-                        return MapConfig.TileInSight;
-                }
-            }
-            // If tile is in sight or not
-            else
+        private static ImageBrush GetImage(string image)
+        {
+            if (image != string.Empty)
             {
-                if (IsInSight(grid))
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                try
                 {
-                    return MapConfig.TileInSight;
+                    bitmap.StreamSource = Assembly.GetExecutingAssembly().GetManifestResourceStream(image);
+                    bitmap.EndInit();
+                }
+                catch (Exception)
+                {
+                }
+
+                ImageBrush imageBrush = new ImageBrush();
+                if (bitmap.StreamSource == null)
+                {
+                    imageBrush.ImageSource = new BitmapImage(new Uri(image));
                 }
                 else
                 {
-                    return MapConfig.TileOutOfSight;
+                    imageBrush = new ImageBrush(bitmap);
                 }
+
+                return imageBrush;
             }
+
+            return null;
         }
 
-        private static bool IsInSight(Grid grid)
+        /// <summary>
+        /// Create a new grid. It functions as a button.
+        /// </summary>
+        /// <param name="controllerName">Name of grid regarding future references.</param>
+        /// <param name="width">Width of grid.</param>
+        /// <param name="height">Height of grid.</param>
+        /// <param name="text">Text in grid.</param>
+        /// <param name="image">Background image of grid.</param>
+        /// <returns></returns>
+        private static Grid GetGrid(string controllerName, double width, double height, string text, string image)
         {
-            return true;
+            Grid grid = new Grid
+            {
+                Name = controllerName,
+                Width = width,
+                Height = height,
+                Background = GetImage(image),
+                HorizontalAlignment = HorizontalAlignment.Left,
+                VerticalAlignment = VerticalAlignment.Top
+            };
+
+            if (!(grid.Name.Contains("Back")))
+            {
+                grid.MouseLeftButtonDown += Grid_MouseLeftButtonDown;
+            }
+
+            Label label = new Label
+            {
+                Content = text,
+                FontFamily = MainMenuConfig.BtFontFamily,
+                FontSize = MainMenuConfig.BtFontSize,
+                Foreground = MainMenuConfig.FontColor,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+
+            grid.Children.Add(label);
+
+            return grid;
         }
     }
 }
