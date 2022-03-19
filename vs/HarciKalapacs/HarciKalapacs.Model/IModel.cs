@@ -14,10 +14,8 @@ namespace HarciKalapacs.Model
         /// </summary>
         IEnumerable<Units> AllUnits { get; set; }
 
-        /// <summary>
-        /// Map's width and height.
-        /// </summary>
-        public IEnumerable<int> MapSize { get; set; }
+        public int MapWidth { get; set; }
+        public int MapHeight { get; set; }
 
         /// <summary>
         /// Fills AllUnits list with units.

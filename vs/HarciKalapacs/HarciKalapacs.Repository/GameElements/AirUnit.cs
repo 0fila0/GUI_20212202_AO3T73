@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    abstract class AirUnit : Attacker
+    public abstract class AirUnit : Attacker
     {
         bool isInTheAir;
 
@@ -15,6 +15,14 @@ namespace HarciKalapacs.Repository.GameElements
         void SwitchVerticalPosition()
         {
             this.isInTheAir = !this.isInTheAir;
+            if (this.IsInTheAir)
+            {
+                this.Vision = UnitsConfig.Controllable.HelicopterConfig.Vision;
+            }
+            else
+            {
+                this.Vision = UnitsConfig.Controllable.HelicopterConfig.GroundVision;
+            }
         }
     }
 }

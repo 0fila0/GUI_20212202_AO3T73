@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    abstract class Healer : Controllable
+    public abstract class Healer : Controllable
     {
         int heal;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    class Obstacle : Units
+    public class Obstacle : Units
     {
         public Obstacle()
         {

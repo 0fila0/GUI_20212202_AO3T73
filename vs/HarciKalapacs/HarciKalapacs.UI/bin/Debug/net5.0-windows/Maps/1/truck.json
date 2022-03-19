@@ -1,27 +1,27 @@
-  [
+[
   {
-    "xPos": 2,
-    "yPos": 0,
-    "team": 1
-  },
-  {
-    "xPos": 12,
-    "yPos": 0,
-    "team": 1
-  },
-  {
-    "xPos": 6,
     "yPos": 2,
+    "xPos": 0,
     "team": 1
   },
   {
-    "xPos": 1,
-    "yPos": 11,
+    "yPos": 12,
+    "xPos": 0,
+    "team": 1
+  },
+  {
+    "yPos": 6,
+    "xPos": 2,
+    "team": 1
+  },
+  {
+    "yPos": 1,
+    "xPos": 11,
     "team": 2
   },
   {
-    "xPos": 6,
-    "yPos": 14,
+    "yPos": 6,
+    "xPos": 14,
     "team": 2
   }
 ]

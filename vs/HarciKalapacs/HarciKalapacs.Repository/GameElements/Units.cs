@@ -20,8 +20,8 @@ namespace HarciKalapacs.Repository.GameElements
 
         public int MaxHp { get => maxHp; set => maxHp = value; }
         public int Hp { get => hp; set => hp = value; }
-        public int XPos { get => xPos; set => xPos = value; }
-        public int YPos { get => yPos; set => yPos = value; }
+        public int YPos { get => xPos; set => xPos = value; }
+        public int XPos { get => yPos; set => yPos = value; }
         public string DyingImage { get => dyingImage; set => dyingImage = value; }
         public Team Team { get => team; set => team = value; }
         public string IdleImage1

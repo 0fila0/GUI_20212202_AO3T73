@@ -25,6 +25,9 @@
             MainMenu = 1, SelectMap = 2, InGame = 3
         }
 
+        static Grid ActualSelectedUnit = null;
+        static Grid Destination = null;
+
         readonly IRepository repository;
         readonly IModel model;
         readonly IMusic musicPlayer;
@@ -108,8 +111,8 @@
                     this.Content = SelectMapRenderer.SelectMap();
                     break;
                 case Contents.InGame:
-                    int width = (this.model.MapSize as List<int>)[0];
-                    int height = (this.model.MapSize as List<int>)[1];
+                    int width = this.model.MapWidth;
+                    int height = this.model.MapHeight;
                     this.Content = MapRenderer.Map(width, height, this.model.AllUnits as List<Units>);
                     break;
                 default:
@@ -131,16 +134,22 @@
             {
                 if (grid is Grid)
                 {
-                    (grid as Grid).MouseLeftButtonDown += Grid_MouseLeftButtonDown;
+                    if ((grid as Grid).Name.Contains("unit"))
+                    {
+                        (grid as Grid).MouseLeftButtonDown += Unit_MouseLeftButtonDown;
+                    }
+                    else
+                    {
+                        (grid as Grid).MouseLeftButtonDown += Grid_MouseLeftButtonDown;
+                    }
                 }
             }
 
             // Grids out of mainGrid.
-            foreach (Grid grid in mainCanvas.Children)
+            foreach (object grid in mainCanvas.Children)
             {
                 if (grid is Grid)
                 {
-                    string gridname = (grid as Grid).Name;
                     (grid as Grid).MouseLeftButtonDown += Grid_MouseLeftButtonDown;
                 }
             }
@@ -158,12 +167,10 @@
                 Canvas m = this.Content as Canvas;
                 Grid g = m.Children[0] as Grid;
                 Point mouseCursor = Mouse.GetPosition(this);
-                double mapWidth = (this.model.MapSize as List<int>)[0];
-                double mapHeight = (this.model.MapSize as List<int>)[1];
-                double xMovementSpeed = mouseCursor.X * (mapWidth * MapConfig.TileWidth / MainMenuConfig.WindowWidth);
-                double yMovementSpeed = mouseCursor.Y * (mapHeight * MapConfig.TileHeight / MainMenuConfig.WindowHeight);
-                double leftLimit = mapWidth * MapConfig.TileWidth / 3;
-                double upLimit = mapHeight * MapConfig.TileHeight / 5;
+                double xMovementSpeed = mouseCursor.X * (this.model.MapWidth * MapConfig.TileWidth / MainMenuConfig.WindowWidth);
+                double yMovementSpeed = mouseCursor.Y * (this.model.MapHeight * MapConfig.TileHeight / MainMenuConfig.WindowHeight);
+                double leftLimit = this.model.MapWidth * MapConfig.TileWidth / 3;
+                double upLimit = this.model.MapHeight * MapConfig.TileHeight / 5;
                 g.Margin = new Thickness(leftLimit - xMovementSpeed, upLimit - yMovementSpeed, 0, 0);
             }
         }
@@ -188,6 +195,11 @@
                     this.ValidateFrame(sender);
                     break;
             }
+        }
+
+        private void Unit_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
         }
     }
 }
