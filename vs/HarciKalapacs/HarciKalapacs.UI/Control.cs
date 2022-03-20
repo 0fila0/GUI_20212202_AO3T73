@@ -26,7 +26,7 @@
             MainMenu = 1, SelectMap = 2, InGame = 3
         }
 
-        private static bool Navigation = false;
+        private static bool Navigation = true;
 
         readonly IRepository repository;
         readonly IModel model;
@@ -151,8 +151,43 @@
             {
                 if ((grid is Grid))
                 {
-                    (grid as Grid).MouseLeftButtonDown += Grid_MouseLeftButtonDown;
+                    if (!(grid as Grid).Name.Contains("Panel"))
+                    {
+                        (grid as Grid).MouseLeftButtonDown += Grid_MouseLeftButtonDown;
+                    }
                 }
+            }
+
+            if (MapRenderer.UnitPanelRightColumn != null)
+            {
+                foreach (Grid btUpgrade in MapRenderer.UnitPanelRightColumn.Children)
+                {
+                    btUpgrade.MouseLeftButtonDown += BtUnitPanel_MouseLeftButtonDown;
+                }
+            }
+
+            if (MapRenderer.UnitPanelLeftColumn != null)
+            {
+                foreach (object btUpgrade in MapRenderer.UnitPanelLeftColumn.Children)
+                {
+                    if (btUpgrade is Grid)
+                    {
+                        (btUpgrade as Grid).MouseLeftButtonDown += BtUnitPanel_MouseLeftButtonDown;
+                    }
+                }
+            }
+        }
+
+        private void BtUnitPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            switch ((sender as Grid).Name)
+            {
+                case "Damage":
+                    break;
+                case "Hp":
+                    break;
+                case "Heal":
+                    break;
             }
         }
 
@@ -202,9 +237,6 @@
                     break;
                 case "bt2":
                     this.ValidateFrame(sender);
-                    break;
-                case "navigation":
-                    ;
                     break;
             }
         }

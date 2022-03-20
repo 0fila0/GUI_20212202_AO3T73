@@ -19,14 +19,26 @@ namespace HarciKalapacs.Renderer.Config
         public const string TileNature = "HarciKalapacs.Renderer.Assets.tileNature.png";
         public const string TileCanMoveHere = "HarciKalapacs.Renderer.Assets.tileCanMoveHere.png";
 
-        public const double BtBackWidth = 150;
-        public const double BtBackHeight = 50;
-        public static FontFamily BtFontFamily = new FontFamily("Arial");
+        public const double BtGeneralWidth = 150;
+        public const double BtGeneralHeight = 50;
+        public static FontFamily FontFamily = new FontFamily("Arial");
         public static Brush FontColor = Brushes.White;
         public const int BtFontSize = 15;
 
         public const string GridHeaderBackground = "HarciKalapacs.Renderer.Assets.headerBackground.png";
         public static double GridHeaderWidth = MainMenuConfig.WindowWidth;
-        public static double GridHeaderHeight = 50;
+        public const double GridHeaderHeight = 50;
+
+        public const string GridUnitPanelBackground = "HarciKalapacs.Renderer.Assets.unitPanel.png";
+        public const double GridUnitPanelWidth = 375;
+        public const double GridUnitPanelHeight = 275;
+        public const int GridUnitPanelFontSize = 30;
+        public const string BtUpgradeBackground = "HarciKalapacs.Renderer.Assets.upgradeButton.png";
+        public const string BtUpgradeSelectBackground = "HarciKalapacs.Renderer.Assets.upgradeSelectButton.png";
+        public const double GridUnitPanelButtonWidth = GridUnitPanelFontSize + 5;
+        public const double GridUnitPanelButtonHeight = GridUnitPanelFontSize + 5;
+
+        public const string BtTakeOffBackground = "HarciKalapacs.Renderer.Assets.takeOff.png";
+        public const string BtLandingBackground = "HarciKalapacs.Renderer.Assets.landing.png";
     }
 }

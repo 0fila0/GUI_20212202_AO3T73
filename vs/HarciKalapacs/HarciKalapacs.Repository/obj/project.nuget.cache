@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "v8Hf28/l5YQoZ2vIgibUcPoziVRE24l1PKerLAgbRV8IAACa+RJKTTZFtbLbtPEFYqGUAAFoT0OCte4jhEfZFg==",
+  "dgSpecHash": "LxFBd6Drd7yloreqecPWJCdvyq0/W+2yuUIeZ4V+WJKHiirzZNehnSOk5jTJ9L5He9ovZHBSAR1DPE/XXwqphQ==",
   "success": true,
   "projectFilePath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Norbert\\.nuget\\packages\\microsoft.toolkit.mvvm\\7.1.2\\microsoft.toolkit.mvvm.7.1.2.nupkg.sha512",
     "C:\\Users\\Norbert\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []

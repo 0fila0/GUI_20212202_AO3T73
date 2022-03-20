@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
@@ -16,9 +17,15 @@ namespace HarciKalapacs.Renderer
 {
     public static class MapRenderer
     {
+        public static StackPanel UnitPanelRightColumn;
+        public static StackPanel UnitPanelLeftColumn;
         private static Grid ActualSelectedUnit;
         private static List<Grid> UnitGrids = new List<Grid>();
         private static List<Grid> InvisibleTiles = new List<Grid>();
+        private static Grid UnitPanel;
+        private static StackPanel UnitPanelCenterColumn;
+        private static Label UnitName;
+        // private static Label UnitLevel;
         private static double MapTileOpacity = 0.4;
 
         public static Canvas Map(int width, int height, List<Units> units)
@@ -78,8 +85,108 @@ namespace HarciKalapacs.Renderer
 
             grids.ForEach(x => mainGrid.Children.Add(x));
 
+
+            // ************** Unit panel
+            UnitPanel = GetGrid("unitPanel", MapConfig.GridUnitPanelWidth, MapConfig.GridUnitPanelHeight, string.Empty, MapConfig.GridUnitPanelBackground);
+            UnitPanel.Margin = new Thickness(MainMenuConfig.WindowWidth - MapConfig.GridUnitPanelWidth, MainMenuConfig.WindowHeight - MapConfig.GridUnitPanelHeight, 0, 0);
+            UnitPanel.Visibility = Visibility.Hidden;
+
+            DockPanel columns = new DockPanel();
+            columns.HorizontalAlignment = HorizontalAlignment.Center;
+
+            StackPanel infos = new StackPanel();
+
+            // Unit name
+            UnitName = new Label();
+            UnitName.FontSize = MapConfig.GridUnitPanelFontSize;
+            UnitName.FontFamily = MapConfig.FontFamily;
+            UnitName.HorizontalAlignment = HorizontalAlignment.Center;
+
+            // Values.
+            StackPanel leftColumn = new StackPanel();
+            leftColumn.Width = MapConfig.GridUnitPanelWidth / 3;
+            leftColumn.Margin = new Thickness(40, 20, 0, 0);
+            leftColumn.VerticalAlignment = VerticalAlignment.Top;
+            leftColumn.HorizontalAlignment = HorizontalAlignment.Left;
+            UnitPanelLeftColumn = leftColumn;
+
+            // Symbols.
+            StackPanel centerColumn = new StackPanel();
+            centerColumn.Width = MapConfig.GridUnitPanelWidth / 3 - 50;
+            centerColumn.Margin = new Thickness(20, 20, 0, 0);
+            centerColumn.VerticalAlignment = VerticalAlignment.Top;
+            centerColumn.HorizontalAlignment = HorizontalAlignment.Left;
+            UnitPanelCenterColumn = centerColumn;
+
+            // Upgrade buttons.
+            StackPanel rightColumn = new StackPanel();
+            rightColumn.Width = MapConfig.GridUnitPanelWidth / 3;
+            rightColumn.Margin = new Thickness(20, 20, 0, 0);
+            rightColumn.VerticalAlignment = VerticalAlignment.Top;
+            rightColumn.HorizontalAlignment = HorizontalAlignment.Left;
+            UnitPanelRightColumn = rightColumn;
+
+            Label hpValue = new Label();
+            hpValue.Name = "hpLabel";
+            hpValue.FontSize = MapConfig.GridUnitPanelFontSize;
+            hpValue.FontFamily = MapConfig.FontFamily;
+            Label hpSymbol = new Label();
+            hpSymbol.Content = "❤";
+            hpSymbol.FontSize = MapConfig.GridUnitPanelFontSize;
+            hpSymbol.FontFamily = MapConfig.FontFamily;
+            Grid upgradeHp = GetGrid("upgradeHp", MapConfig.GridUnitPanelButtonWidth, MapConfig.GridUnitPanelButtonHeight, string.Empty, MapConfig.BtUpgradeBackground);
+            upgradeHp.Margin = new Thickness(5);
+
+            Label heal = new Label();
+            heal.Name = "healLabel";
+            heal.FontSize = MapConfig.GridUnitPanelFontSize;
+            heal.FontFamily = MapConfig.FontFamily;
+            Grid upgradeHeal = GetGrid("upgradeHeal", MapConfig.GridUnitPanelButtonWidth, MapConfig.GridUnitPanelButtonHeight, string.Empty, MapConfig.BtUpgradeBackground);
+            upgradeHeal.Margin = new Thickness(5);
+
+            Label damage = new Label();
+            damage.Name = "damageLabel";
+            damage.FontSize = MapConfig.GridUnitPanelFontSize;
+            damage.FontFamily = MapConfig.FontFamily;
+            Grid upgradeDamage = GetGrid("upgradeDamage", MapConfig.GridUnitPanelButtonWidth, MapConfig.GridUnitPanelButtonHeight, string.Empty, MapConfig.BtUpgradeBackground);
+            upgradeDamage.Margin = new Thickness(5);
+            Label healDamageSymbol = new Label();
+            healDamageSymbol.FontSize = MapConfig.GridUnitPanelFontSize;
+            healDamageSymbol.FontFamily = MapConfig.FontFamily;
+
+            Grid airState = GetGrid("airStateButton", 50, 50, string.Empty, MapConfig.TileEnemy);
+            airState.Margin = new Thickness(0, 30, 0, 0);
+            airState.MouseLeftButtonDown += BtAirUnitSpecial_MouseLeftButtonDown;
+
+            leftColumn.Children.Add(hpValue);
+            leftColumn.Children.Add(heal);
+            leftColumn.Children.Add(damage);
+            leftColumn.Children.Add(airState);
+
+            centerColumn.Children.Add(hpSymbol);
+            centerColumn.Children.Add(healDamageSymbol);
+
+            rightColumn.Children.Add(upgradeHp);
+            rightColumn.Children.Add(upgradeHeal);
+            rightColumn.Children.Add(upgradeDamage);
+            foreach (Grid btUpgrade in rightColumn.Children)
+            {
+                btUpgrade.MouseEnter += Grid_MouseEnter;
+                btUpgrade.MouseLeave += Grid_MouseLeave;
+            }
+
+            columns.Children.Add(leftColumn);
+            columns.Children.Add(centerColumn);
+            columns.Children.Add(rightColumn);
+
+            infos.Children.Add(UnitName);
+            infos.Children.Add(columns);
+
+            UnitPanel.Children.Add(infos);
+            // ************** Unit panel
+
             // Back button's properties.
-            Grid backButton = GetGrid("btBack", MapConfig.BtBackWidth, MapConfig.BtBackHeight, "Főmenü", MapConfig.TileImage);
+            Grid backButton = GetGrid("btBack", MapConfig.BtGeneralWidth, MapConfig.BtGeneralHeight, "Főmenü", MapConfig.TileImage);
             backButton.Margin = new Thickness(MainMenuConfig.WindowWidth - 150, 0, 0, 0);
             backButton.MouseEnter += Grid_MouseEnter;
             backButton.MouseLeave += Grid_MouseLeave;
@@ -90,14 +197,14 @@ namespace HarciKalapacs.Renderer
             header.Background = Brushes.Gray;
             Label actualPlayerTurn = new Label();
             actualPlayerTurn.Content = "Hátramaradt lépések száma: ";
-            actualPlayerTurn.FontFamily = MapConfig.BtFontFamily;
+            actualPlayerTurn.FontFamily = MapConfig.FontFamily;
             actualPlayerTurn.FontSize = MapConfig.BtFontSize;
             actualPlayerTurn.Margin = new Thickness(25, 0, 0, 0);
             actualPlayerTurn.HorizontalAlignment = HorizontalAlignment.Left;
             actualPlayerTurn.VerticalAlignment = VerticalAlignment.Center;
             Label turn = new Label();
             turn.Content = "Kör: ";
-            turn.FontFamily = MapConfig.BtFontFamily;
+            turn.FontFamily = MapConfig.FontFamily;
             turn.FontSize = MapConfig.BtFontSize;
             turn.Margin = new Thickness(0, 0, 100, 0);
             turn.HorizontalAlignment = HorizontalAlignment.Center;
@@ -108,8 +215,25 @@ namespace HarciKalapacs.Renderer
             VisibleMapTiles();
             mainCanvas.Children.Add(mainGrid);
             mainCanvas.Children.Add(header);
+            mainCanvas.Children.Add(UnitPanel);
             mainCanvas.Children.Add(backButton);
             return mainCanvas;
+        }
+
+        private static void BtAirUnitSpecial_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Grid temp = new Grid();
+            temp.Background = GetImage(MapConfig.BtLandingBackground);
+            if ((bool)(sender as Grid).DataContext)
+            {
+                (sender as Grid).Background = GetImage(MapConfig.BtTakeOffBackground);
+                (sender as Grid).DataContext = false;
+            }
+            else
+            {
+                (sender as Grid).Background = GetImage(MapConfig.BtLandingBackground);
+                (sender as Grid).DataContext = true;
+            }
         }
 
         private static void Grid_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -127,6 +251,7 @@ namespace HarciKalapacs.Renderer
                             ActualSelectedUnit.DataContext = gridSender.DataContext;
                             ActualSelectedUnit.Margin = gridSender.Margin;
                             ActualSelectedUnit.Visibility = Visibility.Visible;
+                            FillOrRefreshUnitPanel();
                             gridSender.Background = GetImage((gridSender.DataContext as Units).IdleImage1);
                             CanActivityTiles(unit as Controllable);
                         }
@@ -137,9 +262,69 @@ namespace HarciKalapacs.Renderer
                             DiagonalVision(ActualSelectedUnit.DataContext as Controllable);
                             ActualSelectedUnit.DataContext = null;
                             ActualSelectedUnit.Visibility = Visibility.Hidden;
+                            UnitPanel.Visibility = Visibility.Hidden;
                         }
                     }
                 }
+            }
+        }
+
+        private static void FillOrRefreshUnitPanel()
+        {
+            UnitPanel.Visibility = Visibility.Visible;
+            switch ((ActualSelectedUnit.DataContext as Units).GetType().Name)
+            {
+                case "Helicopter":
+                    UnitName.Content = "Helikopter";
+                    break;
+                case "Tank":
+                    UnitName.Content = "Harckocsi";
+                    break;
+                case "Infantryman":
+                    UnitName.Content = "Gyalogos";
+                    break;
+                case "Truck":
+                    UnitName.Content = "Teherautó";
+                    break;
+                default:
+                    UnitName.Content = "Ismeretlen";
+                    break;
+            }
+
+            (UnitPanelLeftColumn.Children[0] as Label).Content = (ActualSelectedUnit.DataContext as Units).Hp + "/" + (ActualSelectedUnit.DataContext as Units).MaxHp;
+
+            if (ActualSelectedUnit.DataContext is Attacker)
+            {
+                (UnitPanelCenterColumn.Children[1] as Label).Content = "🗡";
+                (UnitPanelLeftColumn.Children[1] as Label).Content = (ActualSelectedUnit.DataContext as Attacker).Damage;
+                (UnitPanelRightColumn.Children[2] as Grid).Visibility = Visibility.Visible;
+                (UnitPanelRightColumn.Children[1] as Grid).Visibility = Visibility.Collapsed;
+            }
+            else if (ActualSelectedUnit.DataContext is Healer)
+            {
+                (UnitPanelCenterColumn.Children[1] as Label).Content = "🛠";
+                (UnitPanelLeftColumn.Children[1] as Label).Content = (ActualSelectedUnit.DataContext as Healer).Heal;
+                (UnitPanelRightColumn.Children[1] as Grid).Visibility = Visibility.Visible;
+                (UnitPanelRightColumn.Children[2] as Grid).Visibility = Visibility.Collapsed;
+            }
+
+            if (ActualSelectedUnit.DataContext is AirUnit)
+            {
+                (UnitPanelLeftColumn.Children[3] as Grid).Visibility = Visibility.Visible;
+                if ((ActualSelectedUnit.DataContext as AirUnit).IsInTheAir)
+                {
+                    (UnitPanelLeftColumn.Children[3] as Grid).Background = GetImage(MapConfig.BtLandingBackground);
+                    (UnitPanelLeftColumn.Children[3] as Grid).DataContext = true;
+                }
+                else
+                {
+                    (UnitPanelLeftColumn.Children[3] as Grid).Background = GetImage(MapConfig.BtTakeOffBackground);
+                    (UnitPanelLeftColumn.Children[3] as Grid).DataContext = false;
+                }
+            }
+            else
+            {
+                (UnitPanelLeftColumn.Children[3] as Grid).Visibility = Visibility.Hidden;
             }
         }
 
@@ -150,6 +335,10 @@ namespace HarciKalapacs.Renderer
             {
                 thisGrid.Background = GetImage(MainMenuConfig.BtImage);
             }
+            else if (thisGrid.Name.Contains("upgrade"))
+            {
+                thisGrid.Background = GetImage(MapConfig.BtUpgradeBackground);
+            }
         }
 
         private static void Grid_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -158,6 +347,10 @@ namespace HarciKalapacs.Renderer
             if (thisGrid.Name.Contains("Back"))
             {
                 thisGrid.Background = GetImage(MainMenuConfig.BtSelectImage);
+            }
+            else if (thisGrid.Name.Contains("upgrade"))
+            {
+                thisGrid.Background = GetImage(MapConfig.BtUpgradeSelectBackground);
             }
         }
 
@@ -567,7 +760,7 @@ namespace HarciKalapacs.Renderer
                 VerticalAlignment = VerticalAlignment.Top
             };
 
-            if (!(grid.Name.Contains("Back")))
+            if (!(grid.Name.Contains("Back")) && !(grid.Name.Contains("upgrade")) && !(grid.Name.Contains("airState")))
             {
                 grid.MouseLeftButtonDown += Grid_MouseLeftButtonDown;
             }

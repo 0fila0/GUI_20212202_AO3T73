@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\HarciKalapacs.Repository\HarciKalapacs.Repository.csproj" />
   </ItemGroup>
 

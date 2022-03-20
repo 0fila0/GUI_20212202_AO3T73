@@ -9,9 +9,11 @@
     <None Remove="Assets\button.png" />
     <None Remove="Assets\enemyTankIdle1.png" />
     <None Remove="Assets\headerBackground.png" />
+    <None Remove="Assets\landing.png" />
     <None Remove="Assets\mainMenuBackground.png" />
     <None Remove="Assets\mapMenu.jpg" />
     <None Remove="Assets\selectedButton.png" />
+    <None Remove="Assets\takeOff.png" />
     <None Remove="Assets\tankIdle1.png" />
     <None Remove="Assets\tileCanMoveHere.png" />
     <None Remove="Assets\tileEnemy.png" />
@@ -20,15 +22,20 @@
     <None Remove="Assets\tileOutOfSight.png" />
     <None Remove="Assets\tilePlayer.png" />
     <None Remove="Assets\tileSelected.png" />
+    <None Remove="Assets\unitPanel.png" />
+    <None Remove="Assets\upgradeButton.png" />
+    <None Remove="Assets\upgradeSelectButton.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Assets\button.png" />
     <EmbeddedResource Include="Assets\enemyTankIdle1.png" />
     <EmbeddedResource Include="Assets\headerBackground.png" />
+    <EmbeddedResource Include="Assets\landing.png" />
     <EmbeddedResource Include="Assets\mainMenuBackground.png" />
     <EmbeddedResource Include="Assets\mapMenu.jpg" />
     <EmbeddedResource Include="Assets\selectedButton.png" />
+    <EmbeddedResource Include="Assets\takeOff.png" />
     <EmbeddedResource Include="Assets\tankIdle1.png" />
     <EmbeddedResource Include="Assets\tileCanMoveHere.png" />
     <EmbeddedResource Include="Assets\tileEnemy.png" />
@@ -37,6 +44,9 @@
     <EmbeddedResource Include="Assets\tileOutOfSight.png" />
     <EmbeddedResource Include="Assets\tilePlayer.png" />
     <EmbeddedResource Include="Assets\tileSelected.png" />
+    <EmbeddedResource Include="Assets\unitPanel.png" />
+    <EmbeddedResource Include="Assets\upgradeButton.png" />
+    <EmbeddedResource Include="Assets\upgradeSelectButton.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -47,6 +47,14 @@
           }
         }
       },
+      "Microsoft.Toolkit.Mvvm/7.1.2": {
+        "runtime": {
+          "lib/net5.0/Microsoft.Toolkit.Mvvm.dll": {
+            "assemblyVersion": "7.1.0.0",
+            "fileVersion": "7.1.2.1"
+          }
+        }
+      },
       "Newtonsoft.Json/13.0.1": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
@@ -65,7 +73,8 @@
       },
       "HarciKalapacs.Model/1.0.0": {
         "dependencies": {
-          "HarciKalapacs.Repository": "1.0.0"
+          "HarciKalapacs.Repository": "1.0.0",
+          "Microsoft.Toolkit.Mvvm": "7.1.2"
         },
         "runtime": {
           "HarciKalapacs.Model.dll": {}
@@ -81,6 +90,7 @@
       },
       "HarciKalapacs.Repository/1.0.0": {
         "dependencies": {
+          "Microsoft.Toolkit.Mvvm": "7.1.2",
           "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
@@ -120,6 +130,13 @@
       "sha512": "sha512-xlzi2IYREJH3/m6+lUrQlujzX8wDitm4QGnUu6kUXTQAWPuZY8i+ticFJbzfqaetLA6KR/rO6Ew/HuYD+bxifg==",
       "path": "microsoft.extensions.dependencyinjection.abstractions/6.0.0",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+    },
+    "Microsoft.Toolkit.Mvvm/7.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tUQn6ar9oP7kmYaZ6pWabxpQaqw95Bsf+GG7prEL0y5MV5F60z76lI/Ppps9zcTqwd7e5CrdZBcdfor9WuvohA==",
+      "path": "microsoft.toolkit.mvvm/7.1.2",
+      "hashPath": "microsoft.toolkit.mvvm.7.1.2.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.1": {
       "type": "package",

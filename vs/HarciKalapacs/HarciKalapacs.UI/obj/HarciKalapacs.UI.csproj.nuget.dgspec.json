@@ -50,6 +50,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Toolkit.Mvvm": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -180,6 +186,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.Toolkit.Mvvm": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
