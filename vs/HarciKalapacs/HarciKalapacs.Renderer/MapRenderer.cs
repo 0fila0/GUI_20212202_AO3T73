@@ -61,7 +61,7 @@ namespace HarciKalapacs.Renderer
                     // Tile name:  tile_xPos_yPos
                     Grid mapTile = GetGrid("invisibleTile_" + x + "_" + y, MapConfig.TileWidth, MapConfig.TileHeight, "", MapConfig.TileOutOfSight);
                     mapTile.Margin = new Thickness(horizontalSpace, verticalSpace, 0, 0);
-                    mapTile.IsHitTestVisible = false;
+                    // mapTile.IsHitTestVisible = false;
                     grids.Add(mapTile);
                     InvisibleTiles.Add(mapTile);
                     horizontalSpace += MapConfig.TileWidth;

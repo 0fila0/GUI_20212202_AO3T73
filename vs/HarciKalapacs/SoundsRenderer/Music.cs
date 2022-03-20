@@ -8,35 +8,74 @@ namespace SoundsRenderer
 {
     public class Music : IMusic
     {
-        MediaPlayer mediaPlayer;
-
-        public MediaPlayer MediaPlayer { get => mediaPlayer; set => mediaPlayer = value; }
+        static MediaPlayer musicPlayer = new MediaPlayer();
+        static MediaPlayer soundEffectPlayer = new MediaPlayer();
 
         public Music()
         {
-            this.mediaPlayer = new MediaPlayer();
-            this.mediaPlayer.Position = TimeSpan.Zero;
+            musicPlayer.MediaEnded += MusicPlayer_MediaEnded;
         }
 
         public void PlayMusic(MusicType musicType)
         {
-            //
-            //// Determine path
-            //var assembly = Assembly.GetExecutingAssembly();
-            //string resourcePath = @"SoundsRenderer\Musical\mainMenu.mp3";
-            //// Format: "{Namespace}.{Folder}.{filename}.{Extension}"
-            //    resourcePath = assembly.GetManifestResourceNames()
-            //        .Single(str => str.EndsWith(@"mainMenu.mp3"));
+            Uri musicPath = null;
+            switch (musicType)
+            {
+                case MusicType.mainMenu:
+                    musicPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\Song\mainMenu.mp3");
+                    break;
+                case MusicType.desert:
+                    musicPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\Atmosphere\desert.mp3");
+                    break;
+            }
 
-            //Uri u = new Uri(resourcePath.ToString(), UriKind.Relative);
-            //mediaPlayer.Open(u);
+            musicPlayer.Open(musicPath);
+            musicPlayer.Position = TimeSpan.Zero;
+            musicPlayer.Play();
+        }
 
-            //switch (musicType)
-            //{
-            //    case MusicType.mainMenu:
-            //        this.mediaPlayer.Play();
-            //        break;
-            //}
+        private void MusicPlayer_MediaEnded(object sender, EventArgs e)
+        {
+            musicPlayer.Position = TimeSpan.Zero;
+            musicPlayer.Play();
+        }
+
+        public void PlaySoundEffect(SoundEffectType effectType)
+        {
+            Uri soundEffectPath = null;
+            switch (effectType)
+            {
+                case SoundEffectType.selectHelicopter:
+                    soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
+                    break;
+                case SoundEffectType.selectTank:
+                    //soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
+                    break;
+                case SoundEffectType.selectInfantryman:
+                    //soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
+                    break;
+                case SoundEffectType.selectTruck:
+                    //soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
+                    break;
+                case SoundEffectType.helicopterFire:
+                    //soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
+                    break;
+                case SoundEffectType.tankFire:
+                    soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\tankFire.mp3");
+                    break;
+                case SoundEffectType.infantrymanFire:
+                    //soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
+                    break;
+                case SoundEffectType.truckFire:
+                    //soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
+                    break;
+                case SoundEffectType.destroyedUnit:
+                    //soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
+                    break;
+            }
+
+            soundEffectPlayer.Open(soundEffectPath);
+            soundEffectPlayer.Play();
         }
     }
 }

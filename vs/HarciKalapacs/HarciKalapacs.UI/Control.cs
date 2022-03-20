@@ -26,7 +26,10 @@
             MainMenu = 1, SelectMap = 2, InGame = 3
         }
 
-        private static bool Navigation = true;
+        private static bool NavigationViaMouse = true;
+
+        private static Units actualSelectedUnit = null;
+        private static Grid target = null;
 
         readonly IRepository repository;
         readonly IModel model;
@@ -106,6 +109,7 @@
             {
                 case Contents.MainMenu:
                     this.Content = MenuRenderer.MainMenu();
+                    this.musicPlayer.PlayMusic(MusicType.mainMenu);
                     break;
                 case Contents.SelectMap:
                     this.Content = SelectMapRenderer.SelectMap();
@@ -114,6 +118,7 @@
                     int width = this.model.MapWidth;
                     int height = this.model.MapHeight;
                     this.Content = MapRenderer.Map(width, height, this.model.AllUnits as List<Units>);
+                    this.musicPlayer.PlayMusic(MusicType.desert);
                     break;
                 default:
                     this.Content = MenuRenderer.MainMenu();
@@ -135,7 +140,7 @@
             {
                 if (grid is Grid)
                 {
-                    if ((grid as Grid).Name.Contains("unit"))
+                    if ((grid as Grid).Name.Contains("unit") || (grid as Grid).Name.Contains("invisible"))
                     {
                         (grid as Grid).MouseLeftButtonDown += Unit_MouseLeftButtonDown;
                     }
@@ -193,7 +198,7 @@
 
         private void MainCanvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Navigation = !Navigation;
+            NavigationViaMouse = !NavigationViaMouse;
         }
 
         /// <summary>
@@ -203,7 +208,7 @@
         /// <param name="e"></param>
         private void MainCanvas_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            if (Navigation)
+            if (NavigationViaMouse)
             {
                 if (this.ActualContent == Contents.InGame)
                 {
@@ -243,7 +248,52 @@
 
         private void Unit_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            Units unit = (sender as Grid).DataContext as Units;
 
+            // Unselect unit.
+            if (actualSelectedUnit == unit)
+            {
+                actualSelectedUnit = null;
+            }
+
+            // Select player unit.
+            else if (actualSelectedUnit == null && unit.Team == Team.player)
+            {
+                actualSelectedUnit = unit;
+                if (unit is AirUnit)
+                {
+                    this.musicPlayer.PlaySoundEffect(SoundEffectType.selectHelicopter);
+                }
+                else if (unit is Healer)
+                {
+
+                }
+                else if (unit is Attacker)
+                {
+                    if (unit.GetType().Name == "Infantryman")
+                    {
+
+                    }
+                    else if (unit.GetType().Name == "Tank")
+                    {
+
+                    }
+                }
+            }
+
+            else if (actualSelectedUnit != null)
+            {
+            }
+
+            // Heal any unit.
+            else if (actualSelectedUnit != null && actualSelectedUnit is Healer && target != null)
+            {
+            }
+
+            // Attack unit.
+            else if (actualSelectedUnit != null && unit.Team != Team.player)
+            {
+            }
         }
     }
 }

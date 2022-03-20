@@ -8,10 +8,13 @@ namespace HarciKalapacs.Model
     public class Model : IModel
     {
         readonly IRepository repository;
-        int playerTurn;
         int mapWidth;
         int mapHeight;
         IEnumerable<Units> allUnits;
+        int playerTurn;
+        int playerGold;
+        // int enemyGold;
+        int round;
 
         public Model(IRepository repository)
         {
@@ -36,6 +39,9 @@ namespace HarciKalapacs.Model
             return success;
         }
 
+        /// <summary>
+        /// It is called only once, only when start a new game or load the saved game.
+        /// </summary>
         private void ModifyAirUnitsVision()
         {
             foreach (Units units in this.allUnits)
