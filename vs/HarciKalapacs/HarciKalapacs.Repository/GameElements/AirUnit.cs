@@ -12,7 +12,7 @@ namespace HarciKalapacs.Repository.GameElements
 
         public bool IsInTheAir { get => isInTheAir; set => isInTheAir = value; }
 
-        void SwitchVerticalPosition()
+        public void SwitchVerticalPosition()
         {
             this.isInTheAir = !this.isInTheAir;
             if (this.IsInTheAir)

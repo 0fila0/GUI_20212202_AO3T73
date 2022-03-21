@@ -18,30 +18,27 @@ namespace HarciKalapacs.Renderer
             List<Grid> grids = new List<Grid>();
 
             // Map buttons.
-            //grids.Add(GetGrid("bt1", SelectMapConfig.BtWidth, SelectMapConfig.BtHeight, "Easy", SelectMapConfig.BtImage));
-            grids.Add(GetGrid("bt2", SelectMapConfig.BtWidth, SelectMapConfig.BtHeight, "Medium", SelectMapConfig.BtImage));
-            //grids.Add(GetGrid("bt3", SelectMapConfig.BtWidth, SelectMapConfig.BtHeight, "Hard", SelectMapConfig.BtImage));
+            grids.Add(GetGrid("map1", SelectMapConfig.BtWidth, SelectMapConfig.BtHeight, "Easy", SelectMapConfig.BtImage));
+            grids.Add(GetGrid("map2", SelectMapConfig.BtWidth, SelectMapConfig.BtHeight, "Medium", SelectMapConfig.BtImage));
+            grids.Add(GetGrid("map3", SelectMapConfig.BtWidth, SelectMapConfig.BtHeight, "Hard", SelectMapConfig.BtImage));
+            grids.ForEach(x => x.VerticalAlignment = VerticalAlignment.Center);
+            grids.ForEach(x => x.HorizontalAlignment = HorizontalAlignment.Left);
 
             // MainGrid contains only map buttons.
             Grid mainGrid = GetGrid("mainGrid", MainMenuConfig.WindowWidth - 50, MainMenuConfig.WindowHeight, string.Empty, string.Empty);
-            double leftMargin = (MainMenuConfig.WindowWidth - grids.Count * SelectMapConfig.BtWidth) / 2;
-            double topMargin = (MainMenuConfig.WindowHeight - grids.Count * SelectMapConfig.BtHeight) / 2;
-            mainGrid.Margin = new Thickness(leftMargin, topMargin, 0, 0);
             grids.ForEach(x => mainGrid.Children.Add(x));
 
             // Buttons' positions.
-            double space = 0;   // -MainMenuConfig.WindowWidth / grids.Count;
+            double space = MainMenuConfig.WindowWidth / (grids.Count + 1.4);
             foreach (Grid grid in grids)
             {
                 grid.Margin = new Thickness(space, 0, 0, 0);
-                space += MainMenuConfig.WindowWidth / grids.Count;
+                space += MainMenuConfig.WindowWidth / (grids.Count + 1.4);
             }
 
             // Back button's properties.
             Grid backButton = GetGrid("btBack", SelectMapConfig.BtWidth, SelectMapConfig.BtHeight, "Vissza", SelectMapConfig.BtImage);
             backButton.Margin = new Thickness(50, MainMenuConfig.WindowHeight - 100, 0, 0);
-
-
 
             mainCanvas.Children.Add(mainGrid);
             mainCanvas.Children.Add(backButton);

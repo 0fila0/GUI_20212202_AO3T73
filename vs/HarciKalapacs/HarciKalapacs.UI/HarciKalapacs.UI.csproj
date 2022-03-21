@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HarciKalapacs.Logic\HarciKalapacs.Logic.csproj" />
     <ProjectReference Include="..\HarciKalapacs.Model\HarciKalapacs.Model.csproj" />
     <ProjectReference Include="..\HarciKalapacs.Renderer\HarciKalapacs.Renderer.csproj" />
     <ProjectReference Include="..\HarciKalapacs.Repository\HarciKalapacs.Repository.csproj" />

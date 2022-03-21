@@ -9,6 +9,7 @@
       "HarciKalapacs.UI/1.0.0": {
         "dependencies": {
           "CommonServiceLocator": "2.0.6",
+          "HarciKalapacs.Logic": "1.0.0",
           "HarciKalapacs.Model": "1.0.0",
           "HarciKalapacs.Renderer": "1.0.0",
           "HarciKalapacs.Repository": "1.0.0",
@@ -69,6 +70,14 @@
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.0.21.52210"
           }
+        }
+      },
+      "HarciKalapacs.Logic/1.0.0": {
+        "dependencies": {
+          "HarciKalapacs.Model": "1.0.0"
+        },
+        "runtime": {
+          "HarciKalapacs.Logic.dll": {}
         }
       },
       "HarciKalapacs.Model/1.0.0": {
@@ -151,6 +160,11 @@
       "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
       "path": "system.runtime.compilerservices.unsafe/6.0.0",
       "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    },
+    "HarciKalapacs.Logic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "HarciKalapacs.Model/1.0.0": {
       "type": "project",

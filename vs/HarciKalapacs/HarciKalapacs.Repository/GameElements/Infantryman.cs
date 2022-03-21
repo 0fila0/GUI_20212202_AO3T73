@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    class Infantryman : Attacker
+    public class Infantryman : Attacker
     {
         public Infantryman()
         {

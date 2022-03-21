@@ -1,7 +1,6 @@
 ﻿namespace HarciKalapacs.UI
 {
     using HarciKalapacs.Model;
-    using HarciKalapacs.Repository;
     using HarciKalapacs.Renderer;
     using Microsoft.Extensions.DependencyInjection;
     using System.IO;
@@ -9,15 +8,12 @@
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media.Imaging;
-    using System.Windows.Media;
-    using System;
-    using System.Windows.Threading;
     using SoundsRenderer;
     using System.Collections.Generic;
     using HarciKalapacs.Repository.GameElements;
     using System.Windows.Input;
     using HarciKalapacs.Renderer.Config;
-    using System.Threading.Tasks;
+    using HarciKalapacs.Logic;
 
     class Control : ContentControl
     {
@@ -27,55 +23,45 @@
         }
 
         private static bool NavigationViaMouse = true;
-
         private static Units actualSelectedUnit = null;
-        private static Grid target = null;
 
-        readonly IRepository repository;
         readonly IModel model;
         readonly IMusic musicPlayer;
+        readonly IInGameLogic inGameLogic;
+        readonly IGeneralLogic generalLogic;
 
         public Control()
         {
-            this.repository = App.Current.Services.GetService<IRepository>();
             this.model = App.Current.Services.GetService<IModel>();
             this.musicPlayer = App.Current.Services.GetService<IMusic>();
-
-            this.musicPlayer.PlayMusic(MusicType.mainMenu);
+            this.inGameLogic = App.Current.Services.GetService<IInGameLogic>();
+            this.generalLogic = App.Current.Services.GetService<IGeneralLogic>();
 
             this.Loaded += this.WindowLoaded;
             this.SizeChanged += this.WindowSizeChanged;
+
+            this.musicPlayer.PlayMusic(MusicType.mainMenu);
         }
 
         private Window MainWindow { get; set; }
 
         private Contents ActualContent { get; set; }
 
-        private void WindowSizeChanged(object sender, RoutedEventArgs e)
+        private void GameControl()
         {
-            this.MainWindow = this.Parent as Window;
-            MainMenuConfig.WindowWidth = this.ActualWidth;
-            MainMenuConfig.WindowHeight = this.ActualHeight;
-            MainMenuConfig.TopBtXPos = this.ActualWidth / 2;
-            MainMenuConfig.TopBtYPos = this.ActualHeight;
-            if (this.ActualContent != Contents.InGame)
+            MapRenderer.leftSteps.Content = this.model.LeftSteps + "/" + this.model.MaxSteps + " lépés maradt hátra";
+            MapRenderer.playerGolds.Content = this.model.PlayerGold + " arany";
+            MapRenderer.roundCounter.Content = this.model.Round + ". kör";
+
+            if (this.model.LeftSteps <= 0)
             {
-                this.ValidateFrame(sender);
+                for (int i = 0; i < this.model.MaxSteps; i++)
+                {
+                    this.inGameLogic.AIDecisions();
+                    MapRenderer.VisibleMapTiles();
+                }
             }
         }
-
-        private void WindowLoaded(object sender, RoutedEventArgs e)
-        {
-            BitmapImage iconImage = new BitmapImage();
-            iconImage.BeginInit();
-            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("HarciKalapacs.UI.Assets.Images.hammer.ico");
-            iconImage.StreamSource = stream;
-            iconImage.EndInit();
-            (this.Parent as Window).Icon = iconImage;
-
-            Window window = Window.GetWindow(this);
-        }
-
 
         /// <summary>
         /// Screen refresh.
@@ -92,13 +78,23 @@
                     case "btNewGame":
                         this.ActualContent = Contents.SelectMap;
                         break;
-                    case "btContinueGame":
+                    case "btContinue":
+                        this.generalLogic.LoadGame();
+                        this.ActualContent = Contents.InGame;
                         break;
                     case "btBack":
                         this.ActualContent = Contents.MainMenu;
                         break;
-                    case "bt2":
-                        this.model.LoadMap(1);
+                    case "map1":
+                        this.generalLogic.StartNewGame(1);
+                        this.ActualContent = Contents.InGame;
+                        break;
+                    case "map2":
+                        this.generalLogic.StartNewGame(2);
+                        this.ActualContent = Contents.InGame;
+                        break;
+                    case "map3":
+                        this.generalLogic.StartNewGame(3);
                         this.ActualContent = Contents.InGame;
                         break;
                 }
@@ -108,6 +104,7 @@
             switch (this.ActualContent)
             {
                 case Contents.MainMenu:
+                    this.model.MapNumber = 0;
                     this.Content = MenuRenderer.MainMenu();
                     this.musicPlayer.PlayMusic(MusicType.mainMenu);
                     break;
@@ -118,14 +115,32 @@
                     int width = this.model.MapWidth;
                     int height = this.model.MapHeight;
                     this.Content = MapRenderer.Map(width, height, this.model.AllUnits as List<Units>);
-                    this.musicPlayer.PlayMusic(MusicType.desert);
                     break;
                 default:
                     this.Content = MenuRenderer.MainMenu();
+                    this.musicPlayer.PlayMusic(MusicType.mainMenu);
+                    break;
+            }
+
+            switch (this.model.MapNumber)
+            {
+                case 1:
+                    this.musicPlayer.PlayMusic(MusicType.desert);
+                    break;
+                case 2:
+                    this.musicPlayer.PlayMusic(MusicType.desert);
+                    break;
+                case 3:
+                    this.musicPlayer.PlayMusic(MusicType.desert);
                     break;
             }
 
             EventsSubscribe();
+
+            if (this.ActualContent == Contents.InGame)
+            {
+                GameControl();
+            }
         }
 
         private void EventsSubscribe()
@@ -185,14 +200,30 @@
 
         private void BtUnitPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            bool successful = false;
             switch ((sender as Grid).Name)
             {
-                case "Damage":
+                case "upgradeDamage":
+                    successful = this.inGameLogic.UpgradeDamage(actualSelectedUnit as Attacker);
                     break;
-                case "Hp":
+                case "upgradeHp":
+                    successful = this.inGameLogic.UpgradeMaxHp(actualSelectedUnit);
                     break;
-                case "Heal":
+                case "upgradeHeal":
+                    successful = this.inGameLogic.UpgradeHealer(actualSelectedUnit as Healer);
                     break;
+                case "airStateButton":
+                    successful = true;
+                    this.inGameLogic.SwitchVerticalPosition(actualSelectedUnit as AirUnit);
+                    MapRenderer.VisibleMapTiles();
+                    MapRenderer.CanActivityTiles(actualSelectedUnit as Controllable);
+                    break;
+            }
+
+            if (successful)
+            {
+                this.inGameLogic.StepOccured();
+                GameControl();
             }
         }
 
@@ -240,7 +271,13 @@
                     (this.Content as Canvas).Children.Clear();
                     this.ValidateFrame(sender);
                     break;
-                case "bt2":
+                case "map1":
+                    this.ValidateFrame(sender);
+                    break;
+                case "map2":
+                    this.ValidateFrame(sender);
+                    break;
+                case "map3":
                     this.ValidateFrame(sender);
                     break;
             }
@@ -249,6 +286,12 @@
         private void Unit_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Units unit = (sender as Grid).DataContext as Units;
+            if (unit == null)
+            {
+                int x = (int)((sender as Grid).Margin.Left / MapConfig.TileWidth);
+                int y = (int)((sender as Grid).Margin.Top / MapConfig.TileHeight);
+                unit = (this.model.AllUnits as List<Units>).Find(u => u.XPos == x && u.YPos == y);
+            }
 
             // Unselect unit.
             if (actualSelectedUnit == unit)
@@ -266,34 +309,93 @@
                 }
                 else if (unit is Healer)
                 {
-
+                    this.musicPlayer.PlaySoundEffect(SoundEffectType.selectTruck);
                 }
                 else if (unit is Attacker)
                 {
                     if (unit.GetType().Name == "Infantryman")
                     {
-
+                        this.musicPlayer.PlaySoundEffect(SoundEffectType.selectInfantryman);
                     }
                     else if (unit.GetType().Name == "Tank")
                     {
-
+                        this.musicPlayer.PlaySoundEffect(SoundEffectType.selectTank);
                     }
                 }
             }
 
-            else if (actualSelectedUnit != null)
+            // Move
+            else if (actualSelectedUnit != null && unit == null)
             {
+                Grid destination = sender as Grid;
+                int x = (int)(destination.Margin.Left / MapConfig.TileWidth);
+                int y = (int)(destination.Margin.Top / MapConfig.TileHeight);
+                if (this.inGameLogic.Move(actualSelectedUnit, x, y))
+                {
+                    this.inGameLogic.StepOccured();
+                    GameControl();
+                }
             }
 
             // Heal any unit.
-            else if (actualSelectedUnit != null && actualSelectedUnit is Healer && target != null)
+            else if (actualSelectedUnit != null && actualSelectedUnit is Healer && unit != null)
             {
+                if (this.inGameLogic.Heal(actualSelectedUnit as Healer, unit))
+                {
+                    this.inGameLogic.StepOccured();
+                    this.musicPlayer.PlaySoundEffect(SoundEffectType.truckFire);
+                    GameControl();
+                }
             }
 
             // Attack unit.
             else if (actualSelectedUnit != null && unit.Team != Team.player)
             {
+                if (this.inGameLogic.Attack(actualSelectedUnit as Attacker, unit))
+                {
+                    this.inGameLogic.StepOccured();
+
+                    if (actualSelectedUnit is AirUnit)
+                    {
+                        this.musicPlayer.PlaySoundEffect(SoundEffectType.helicopterFire);
+                    }
+                    else if (actualSelectedUnit is Tank)
+                    {
+                        this.musicPlayer.PlaySoundEffect(SoundEffectType.tankFire);
+                    }
+                    else
+                    {
+                        this.musicPlayer.PlaySoundEffect(SoundEffectType.infantrymanFire);
+                    }
+
+                    GameControl();
+                }
             }
+        }
+
+        private void WindowSizeChanged(object sender, RoutedEventArgs e)
+        {
+            this.MainWindow = this.Parent as Window;
+            MainMenuConfig.WindowWidth = this.ActualWidth;
+            MainMenuConfig.WindowHeight = this.ActualHeight;
+            MainMenuConfig.TopBtXPos = this.ActualWidth / 2;
+            MainMenuConfig.TopBtYPos = this.ActualHeight;
+            if (this.ActualContent != Contents.InGame)
+            {
+                this.ValidateFrame(sender);
+            }
+        }
+
+        private void WindowLoaded(object sender, RoutedEventArgs e)
+        {
+            BitmapImage iconImage = new BitmapImage();
+            iconImage.BeginInit();
+            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("HarciKalapacs.UI.Assets.Images.hammer.ico");
+            iconImage.StreamSource = stream;
+            iconImage.EndInit();
+            (this.Parent as Window).Icon = iconImage;
+
+            Window window = Window.GetWindow(this);
         }
     }
 }

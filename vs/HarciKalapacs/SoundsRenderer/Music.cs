@@ -18,6 +18,7 @@ namespace SoundsRenderer
 
         public void PlayMusic(MusicType musicType)
         {
+            Uri actualPlay = musicPlayer.Source;
             Uri musicPath = null;
             switch (musicType)
             {
@@ -29,9 +30,12 @@ namespace SoundsRenderer
                     break;
             }
 
-            musicPlayer.Open(musicPath);
-            musicPlayer.Position = TimeSpan.Zero;
-            musicPlayer.Play();
+            if (actualPlay != musicPath)
+            {
+                musicPlayer.Open(musicPath);
+                musicPlayer.Position = TimeSpan.Zero;
+                musicPlayer.Play();
+            }
         }
 
         private void MusicPlayer_MediaEnded(object sender, EventArgs e)
@@ -49,28 +53,28 @@ namespace SoundsRenderer
                     soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
                     break;
                 case SoundEffectType.selectTank:
-                    //soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
+                    soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\tankSelect.mp3");
                     break;
                 case SoundEffectType.selectInfantryman:
-                    //soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
+                    soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\infantrymanSelect.mp3");
                     break;
                 case SoundEffectType.selectTruck:
-                    //soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
+                    soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\truckSelect.mp3");
                     break;
                 case SoundEffectType.helicopterFire:
-                    //soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
+                    soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterFire.mp3");
                     break;
                 case SoundEffectType.tankFire:
                     soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\tankFire.mp3");
                     break;
                 case SoundEffectType.infantrymanFire:
-                    //soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
+                    soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\infantrymanFire.mp3");
                     break;
                 case SoundEffectType.truckFire:
-                    //soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
+                    soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\truckFire.mp3");
                     break;
                 case SoundEffectType.destroyedUnit:
-                    //soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\helicopterSelect.mp3");
+                    soundEffectPath = new Uri(Directory.GetCurrentDirectory() + @"\Sounds\SoundEffect\destroyedUnit.mp3");
                     break;
             }
 

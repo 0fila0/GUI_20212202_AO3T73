@@ -69,6 +69,19 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
+      "HarciKalapacs.Logic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "HarciKalapacs.Model": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/HarciKalapacs.Logic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HarciKalapacs.Logic.dll": {}
+        }
+      },
       "HarciKalapacs.Model/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -280,6 +293,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "HarciKalapacs.Logic/1.0.0": {
+      "type": "project",
+      "path": "../HarciKalapacs.Logic/HarciKalapacs.Logic.csproj",
+      "msbuildProject": "../HarciKalapacs.Logic/HarciKalapacs.Logic.csproj"
+    },
     "HarciKalapacs.Model/1.0.0": {
       "type": "project",
       "path": "../HarciKalapacs.Model/HarciKalapacs.Model.csproj",
@@ -304,6 +322,7 @@
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
       "CommonServiceLocator >= 2.0.6",
+      "HarciKalapacs.Logic >= 1.0.0",
       "HarciKalapacs.Model >= 1.0.0",
       "HarciKalapacs.Renderer >= 1.0.0",
       "HarciKalapacs.Repository >= 1.0.0",
@@ -348,6 +367,9 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
+            "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Logic\\HarciKalapacs.Logic.csproj": {
+              "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Logic\\HarciKalapacs.Logic.csproj"
+            },
             "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj": {
               "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj"
             },

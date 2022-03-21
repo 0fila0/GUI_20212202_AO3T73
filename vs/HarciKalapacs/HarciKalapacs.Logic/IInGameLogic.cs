@@ -10,43 +10,66 @@ namespace HarciKalapacs.Logic
     public interface IInGameLogic
     {
         /// <summary>
+        /// Maximizes playerSteps variable.
+        /// </summary>
+        public void StartTurn();
+
+        /// <summary>
+        /// Modifies leftStep variable in model.
+        /// </summary>
+        public void StepOccured();
+
+        /// <summary>
         /// Unit moves.
         /// </summary>
+        /// <param name="unit">This unit moves.</param>
         /// <param name="x">Horizontal position. Increases to the right.</param>
         /// <param name="y">Vertical position. Increases downwards.</param>
-        public void Move(int x, int y);
+        /// <returns>True, if the move was successful.</returns>
+        public bool Move(Units unit, int x, int y);
 
         /// <summary>
         /// Attacks target unit.
         /// </summary>
-        /// <param name="target">Unit attacks this unit.</param>
-        public void Attack(Units target);
+        /// <param name="attacker">This unit attacks.</param>
+        /// <param name="target">The target.</param>
+        /// <returns>True, if the attack was successful</returns>
+        public bool Attack(Attacker attacker, Units target);
 
         /// <summary>
         /// Heals target unit.
         /// </summary>
-        /// <param name="target">Unit heals this unit.</param>
-        public void Heal(Units target);
+        /// <param name="healer">This unit heals another one.</param>
+        /// <param name="target">This unit needs healing.</param>
+        /// <returns>True, if the healing was successful.</returns>
+        public bool Heal(Healer healer, Units target);
 
         /// <summary>
         /// Air unit takes off or lands.
         /// </summary>
-        public void SwitchVerticalPosition();
+        /// <param name="airUnit">This unit switch its vertical position.</param>
+        public void SwitchVerticalPosition(AirUnit airUnit);
 
         /// <summary>
         /// Upgrade unit's max hp.
         /// </summary>
-        public void UpgradeMaxHp();
+        /// <param name="unit">This unit.</param>
+        /// <returns>True, if upgrade was successful.</returns>
+        public bool UpgradeMaxHp(Units unit);
 
         /// <summary>
         /// Upgrade unit's damage.
         /// </summary>
-        public void UpgradeDamage();
+        /// <param name="unit">This unit.</param>
+        /// <returns>True, if upgrade was successful.</returns>
+        public bool UpgradeDamage(Attacker unit);
 
         /// <summary>
         /// Upgrade heal.
         /// </summary>
-        public void UpgradeHealer();
+        /// <param name="unit">This unit.</param>
+        /// <returns>True, if upgrade was successful.</returns>
+        public bool UpgradeHealer(Healer unit);
 
         /// <summary>
         /// 1) A simple step such as move, attack or heal.
@@ -54,7 +77,5 @@ namespace HarciKalapacs.Logic
         /// 3) The units furthest from the base retreat.
         /// </summary>
         public void AIDecisions();
-
-
     }
 }

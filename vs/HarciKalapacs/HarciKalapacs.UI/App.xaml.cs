@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
-using CommonServiceLocator;
+using HarciKalapacs.Logic;
 using HarciKalapacs.Model;
 using HarciKalapacs.Repository;
 using Microsoft.Extensions.DependencyInjection;
@@ -45,6 +40,8 @@ namespace HarciKalapacs.UI
             services.AddSingleton<IRepository, Repository.Repository>();
             services.AddSingleton<IModel, Model.Model>();
             services.AddSingleton<IMusic, SoundsRenderer.Music>();
+            services.AddSingleton<IGeneralLogic, Logic.GeneralLogic>();
+            services.AddSingleton<IInGameLogic, Logic.InGameLogic>();
 
             return services.BuildServiceProvider();
         }

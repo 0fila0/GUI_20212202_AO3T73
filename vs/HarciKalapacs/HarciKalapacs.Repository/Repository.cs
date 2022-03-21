@@ -10,6 +10,7 @@
     {
         List<Units> allUnits;
         List<int> mapSize;
+        List<int> otherDetails;
 
         public Repository()
         {
@@ -19,6 +20,8 @@
         public IEnumerable<Units> AllUnits => allUnits;
 
         public IEnumerable<int> MapSize => mapSize;
+
+        public IEnumerable<int> OtherDetails => otherDetails;
 
         public bool LoadMap(int level)
         {
@@ -85,10 +88,16 @@
                 }
 
                 this.allUnits.ForEach(x => x.IdleImage1 = "");
+
                 path = relativePath + @"\mapSize.json";
                 json = ReadJsonFile(path);
                 List<int> map = JsonConvert.DeserializeObject<List<int>>(json);
                 this.mapSize = map;
+
+                path = relativePath + @"\otherDetails.json";
+                json = ReadJsonFile(path);
+                List<int> details = JsonConvert.DeserializeObject<List<int>>(json);
+                this.otherDetails = details;
             }
             catch (Exception)
             {

@@ -17,10 +17,18 @@ namespace HarciKalapacs.Model
         public int MapWidth { get; set; }
         public int MapHeight { get; set; }
 
+        public int MapNumber { get; set; }
+
         /// <summary>
         /// Player's turn.
         /// </summary>
         public int PlayerTurn { get; set; }
+
+        public int MaxSteps { get; set; }
+        public int LeftSteps { get; set; }
+
+        public int PlayerGold { get; set; }
+        public int Round { get; set; }
 
         /// <summary>
         /// Fills AllUnits list with units.

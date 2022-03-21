@@ -14,6 +14,11 @@ namespace HarciKalapacs.Repository
         public IEnumerable<Units> AllUnits { get; }
 
         /// <summary>
+        /// Contains: [0] round, [1] which player steps, [2] max steps, [3] left steps, [4] player golds, [5] enemy golds
+        /// </summary>
+        public IEnumerable<int> OtherDetails { get; }
+
+        /// <summary>
         /// Reads one of map.json file. Fills AllUnits list with units.
         /// </summary>
         /// <param name="level">Level of the map.</param>
