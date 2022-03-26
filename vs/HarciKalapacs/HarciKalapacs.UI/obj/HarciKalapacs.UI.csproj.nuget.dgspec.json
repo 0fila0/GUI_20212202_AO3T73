@@ -1,28 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.UI\\HarciKalapacs.UI.csproj": {}
+    "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.UI\\HarciKalapacs.UI.csproj": {}
   },
   "projects": {
-    "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Logic\\HarciKalapacs.Logic.csproj": {
+    "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Logic\\HarciKalapacs.Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Logic\\HarciKalapacs.Logic.csproj",
+        "projectUniqueName": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Logic\\HarciKalapacs.Logic.csproj",
         "projectName": "HarciKalapacs.Logic",
-        "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Logic\\HarciKalapacs.Logic.csproj",
-        "packagesPath": "C:\\Users\\Norbert\\.nuget\\packages\\",
-        "outputPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Logic\\obj\\",
+        "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Logic\\HarciKalapacs.Logic.csproj",
+        "packagesPath": "C:\\Users\\gomba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Logic\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Norbert\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\gomba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -35,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj": {
-                "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj"
+              "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj": {
+                "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj"
               }
             }
           }
@@ -65,29 +58,22 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj": {
+    "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj",
+        "projectUniqueName": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj",
         "projectName": "HarciKalapacs.Model",
-        "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj",
-        "packagesPath": "C:\\Users\\Norbert\\.nuget\\packages\\",
-        "outputPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\obj\\",
+        "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj",
+        "packagesPath": "C:\\Users\\gomba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Norbert\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\gomba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -100,8 +86,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj": {
-                "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj"
+              "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj": {
+                "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj"
               }
             }
           }
@@ -136,29 +122,22 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Renderer\\HarciKalapacs.Renderer.csproj": {
+    "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Renderer\\HarciKalapacs.Renderer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Renderer\\HarciKalapacs.Renderer.csproj",
+        "projectUniqueName": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Renderer\\HarciKalapacs.Renderer.csproj",
         "projectName": "HarciKalapacs.Renderer",
-        "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Renderer\\HarciKalapacs.Renderer.csproj",
-        "packagesPath": "C:\\Users\\Norbert\\.nuget\\packages\\",
-        "outputPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Renderer\\obj\\",
+        "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Renderer\\HarciKalapacs.Renderer.csproj",
+        "packagesPath": "C:\\Users\\gomba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Renderer\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Norbert\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\gomba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0-windows7.0"
@@ -171,8 +150,8 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj": {
-                "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj"
+              "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj": {
+                "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj"
               }
             }
           }
@@ -204,29 +183,22 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj": {
+    "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj",
+        "projectUniqueName": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj",
         "projectName": "HarciKalapacs.Repository",
-        "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj",
-        "packagesPath": "C:\\Users\\Norbert\\.nuget\\packages\\",
-        "outputPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\obj\\",
+        "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj",
+        "packagesPath": "C:\\Users\\gomba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Norbert\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\gomba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -275,29 +247,22 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.UI\\HarciKalapacs.UI.csproj": {
+    "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.UI\\HarciKalapacs.UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.UI\\HarciKalapacs.UI.csproj",
+        "projectUniqueName": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.UI\\HarciKalapacs.UI.csproj",
         "projectName": "HarciKalapacs.UI",
-        "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.UI\\HarciKalapacs.UI.csproj",
-        "packagesPath": "C:\\Users\\Norbert\\.nuget\\packages\\",
-        "outputPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.UI\\obj\\",
+        "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.UI\\HarciKalapacs.UI.csproj",
+        "packagesPath": "C:\\Users\\gomba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.UI\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Norbert\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\gomba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0-windows7.0"
@@ -310,20 +275,20 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Logic\\HarciKalapacs.Logic.csproj": {
-                "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Logic\\HarciKalapacs.Logic.csproj"
+              "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Logic\\HarciKalapacs.Logic.csproj": {
+                "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Logic\\HarciKalapacs.Logic.csproj"
               },
-              "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj": {
-                "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj"
+              "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj": {
+                "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Model\\HarciKalapacs.Model.csproj"
               },
-              "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Renderer\\HarciKalapacs.Renderer.csproj": {
-                "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Renderer\\HarciKalapacs.Renderer.csproj"
+              "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Renderer\\HarciKalapacs.Renderer.csproj": {
+                "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Renderer\\HarciKalapacs.Renderer.csproj"
               },
-              "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj": {
-                "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj"
+              "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj": {
+                "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\HarciKalapacs.Repository\\HarciKalapacs.Repository.csproj"
               },
-              "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\SoundsRenderer\\SoundsRenderer.csproj": {
-                "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\SoundsRenderer\\SoundsRenderer.csproj"
+              "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\SoundsRenderer\\SoundsRenderer.csproj": {
+                "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\SoundsRenderer\\SoundsRenderer.csproj"
               }
             }
           }
@@ -365,29 +330,22 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\SoundsRenderer\\SoundsRenderer.csproj": {
+    "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\SoundsRenderer\\SoundsRenderer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\SoundsRenderer\\SoundsRenderer.csproj",
+        "projectUniqueName": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\SoundsRenderer\\SoundsRenderer.csproj",
         "projectName": "SoundsRenderer",
-        "projectPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\SoundsRenderer\\SoundsRenderer.csproj",
-        "packagesPath": "C:\\Users\\Norbert\\.nuget\\packages\\",
-        "outputPath": "D:\\Asztal\\Prog4_Game\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\SoundsRenderer\\obj\\",
+        "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\SoundsRenderer\\SoundsRenderer.csproj",
+        "packagesPath": "C:\\Users\\gomba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gomba\\Documents\\Projekt\\GUI_20212202_AO3T73\\vs\\HarciKalapacs\\SoundsRenderer\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Norbert\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\gomba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0-windows7.0"
@@ -429,7 +387,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
