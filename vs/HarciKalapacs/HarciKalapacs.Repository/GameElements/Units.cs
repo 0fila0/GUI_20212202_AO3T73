@@ -1,85 +1,89 @@
 ﻿using System;
-using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    public enum Team
+    public class Units : IUnits
     {
-        player = 1, enemy = 2, natural = 3
-    }
-
-    public interface Units:IMapItem
-    {
-        /* int maxHp;
-         int hp;
-         int xPos;
-         int yPos;*/
         Team team { get; set; }
-        int movement { get; set; }
+
+
+
+        //abilitys
         bool canSeeTrhoughAll { get; set; }
         bool canAttack { get; set; }
         bool canHeal { get; set; }
+        bool canGetIntoBuilding { get; set; }
+
+
+        
+       
+        
+        //stats
+        int hp { get; set; }
+        int maxHp { get; set; }
+        int yPos { get; set; }
+        int xPos { get; set; }
+        int vision { get; set; }
+        int maxMove { get; set; }
         int attackValue { get; set; }
         int healValue { get; set; }
         int armorValue { get; set; }
-        bool canGetIntoBuilding { get; set; }
+        int movement { get; set; }
 
-        public void GetIntoBuilding();
-        public void GetOutOfBuilding();
+
+
+        //graphics
+        string idleImage2 { get; set; }
+        string idleImage3 { get; set; }
+        string attackImage { get; set; }
+        string idleImage { get; set; }
+        string dyingImage { get; set; }
+
+
 
         public Team Team { get => team; set => team = value; }
         public int Movement { get => movement; set => movement = value; }
-        public bool CanSeeTroughAll { get => canSeeTrhoughAll; set => canSeeTrhoughAll = value; }
+        public bool CanSeeTrhoughAll { get => canSeeTrhoughAll; set => canSeeTrhoughAll = value; }
         public bool CanAttack { get => canAttack; set => canAttack = value; }
         public bool CanHeal { get => canHeal; set => canHeal = value; }
         public int AttackValue { get => attackValue; set => attackValue = value; }
         public int HealValue { get => healValue; set => healValue = value; }
         public int ArmorValue { get => armorValue; set => armorValue = value; }
         public bool CanGetIntoBuilding { get => canGetIntoBuilding; set => canGetIntoBuilding = value; }
-        /* string idleImage1;
-         string dyingImage;*/
 
-        /*public int MaxHp { get => maxHp; set => maxHp = value; }
         public int Hp { get => hp; set => hp = value; }
-        public int YPos { get => xPos; set => xPos = value; }
-        public int XPos { get => yPos; set => yPos = value; }
-        public string DyingImage { get => dyingImage; set => dyingImage = value; }*/
+        public int MaxHp { get => maxHp; set => maxHp = value; }
+        public int YPos { get => yPos; set => maxHp = yPos; }
+        public int XPos { get => xPos; set => xPos = value; }
 
-        /* public string IdleImage1
-         {
-             get => idleImage1;
-             set
-             {
-                 string type = this.GetType().Name;
-                 if (this.team == Team.player)
-                 {
-                     this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Player\player" + type + "Idle1.png";
-                 }
-                 else if (this.team == Team.enemy)
-                 {
-                     this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Enemy\enemy" + type + "Idle1.png";
-                 }
-                 else
-                 {   
-                     // Let's be an obstacle.
-                     if (this.maxHp == UnitsConfig.Natural.Cover.FenceConfig.MaxHp)
-                     {
-                         this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Cover\fence" + type + "Idle1.png";
-                     }
-                     else if (this.maxHp == UnitsConfig.Natural.Cover.TreeConfig.MaxHp)
-                     {
-                         this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Cover\tree" + type + "Idle1.png";
-                     }
-                     else if (this.maxHp == UnitsConfig.Natural.Obstacle.HouseConfig.MaxHp)
-                     {
-                         this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Obstacle\house" + type + "Idle1.png";
-                     }
-                     else
-                     {
-                         this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Obstacle\mountain" + type + "Idle1.png";
-                     }
-                 }
-             }
-         }*/
+        public string IdleImage { get => idleImage; set => idleImage = value; }
+        public string DyingImage { get => dyingImage; set => dyingImage = value; }
+
+        public int Vision { get => vision; set => vision = value; }
+        public int MaxMove { get => maxMove; set => maxMove = value; }
+        public string IdleImage2 { get => idleImage2; set => idleImage2 = value; }
+        public string IdleImage3 { get => idleImage3; set => idleImage3 = value; }
+        public string AttackImage { get => attackImage; set => attackImage = value; }
+
+
+        public void GetIntoBuilding()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetOutOfBuilding()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Move(int x, int y)
+        {
+            this.YPos = x;
+            this.XPos = y;
+        }
     }
 }

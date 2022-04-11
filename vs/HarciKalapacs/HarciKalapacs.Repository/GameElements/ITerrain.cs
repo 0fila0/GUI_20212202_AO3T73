@@ -8,13 +8,16 @@ namespace HarciKalapacs.Repository.GameElements
 {
     interface ITerrain : IMapItem
     {
-        bool isOverWalkable{ get; set; }
-        bool isSeeThrough { get; set; }
-        bool isOccupiable { get; set; }
+        bool IsOverWalkable{ get; set; }
+        bool IsSeeThrough { get; set; }
+        bool IsOccupiable { get; set; }
+        bool IsDestructable { get; set; }
 
+        /*
+        public bool IsDestructable { get => isDestructable; set => isDestructable = value; }
         public bool IsOverWalkable { get => isOverWalkable; set => isOverWalkable = value; }
         public bool IsSeeThrough { get => isSeeThrough; set => isSeeThrough = value; }
-        public bool IisSeeThrough { get => isSeeThrough; set => isSeeThrough = value; }
+        public bool IsOccupiable { get => isOccupiable; set => isOccupiable = value; }*/
 
     }
 }

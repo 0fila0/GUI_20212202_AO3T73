@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    class Cover : Units
+    class Cover : Terrain
     {
         int absorption;
 
@@ -22,10 +22,11 @@ namespace HarciKalapacs.Repository.GameElements
                 else
                 {
                     this.MaxHp = 90;
+                    
                 }
             }
         }
 
-        public int Absorption { get => absorption; set => absorption = value; }
+       
     }
 }

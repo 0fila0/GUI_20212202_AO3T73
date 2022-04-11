@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    class Helicopter : AirUnit
+    class Helicopter : Units
     {
         public Helicopter()
         {
             this.MaxHp = UnitsConfig.Controllable.HelicopterConfig.MaxHp;
             this.MaxMove = UnitsConfig.Controllable.HelicopterConfig.MaxMove;
-            this.Damage = UnitsConfig.Controllable.HelicopterConfig.Damage;
+            this.AttackValue = UnitsConfig.Controllable.HelicopterConfig.Damage;
             this.DyingImage = UnitsConfig.Controllable.HelicopterConfig.DyingImage;
 
             if (this.Hp == 0)

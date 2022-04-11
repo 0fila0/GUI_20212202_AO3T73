@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    class Fort : Units
+    class Fort : Terrain
     {
         public Fort()
         {
@@ -17,5 +17,7 @@ namespace HarciKalapacs.Repository.GameElements
                 this.Hp = this.MaxHp;
             }
         }
+
+       
     }
 }
