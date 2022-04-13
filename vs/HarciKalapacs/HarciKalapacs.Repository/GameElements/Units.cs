@@ -17,11 +17,11 @@ namespace HarciKalapacs.Repository.GameElements
         bool canAttack { get; set; }
         bool canHeal { get; set; }
         bool canGetIntoBuilding { get; set; }
-
-
-        
        
-        
+
+
+
+
         //stats
         int hp { get; set; }
         int maxHp { get; set; }
@@ -33,12 +33,12 @@ namespace HarciKalapacs.Repository.GameElements
         int healValue { get; set; }
         int armorValue { get; set; }
         int movement { get; set; }
-
+        bool isInTheAir { get; set; }
 
 
         //graphics
+        // string idleImage1 { get; set; }
         string idleImage2 { get; set; }
-        string idleImage3 { get; set; }
         string attackImage { get; set; }
         string idleImage { get; set; }
         string dyingImage { get; set; }
@@ -54,6 +54,7 @@ namespace HarciKalapacs.Repository.GameElements
         public int HealValue { get => healValue; set => healValue = value; }
         public int ArmorValue { get => armorValue; set => armorValue = value; }
         public bool CanGetIntoBuilding { get => canGetIntoBuilding; set => canGetIntoBuilding = value; }
+        public bool IsInTheAir { get => isInTheAir; set => isInTheAir = value; }
 
         public int Hp { get => hp; set => hp = value; }
         public int MaxHp { get => maxHp; set => maxHp = value; }
@@ -65,8 +66,8 @@ namespace HarciKalapacs.Repository.GameElements
 
         public int Vision { get => vision; set => vision = value; }
         public int MaxMove { get => maxMove; set => maxMove = value; }
+       // public string IdleImage { get => idleImage; set => idleImage2 = value; }
         public string IdleImage2 { get => idleImage2; set => idleImage2 = value; }
-        public string IdleImage3 { get => idleImage3; set => idleImage3 = value; }
         public string AttackImage { get => attackImage; set => attackImage = value; }
 
 
@@ -84,6 +85,16 @@ namespace HarciKalapacs.Repository.GameElements
         {
             this.YPos = x;
             this.XPos = y;
+        }
+
+        public void Attack(Units target)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SwitchVerticalPosition()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -19,20 +19,23 @@ namespace HarciKalapacs.Repository.GameElements
         bool CanSeeTrhoughAll { get; set; }
         bool CanAttack { get; set; }
         bool CanHeal { get; set; }
+        bool IsInTheAir { get; set; }
         int AttackValue { get; set; }
         int HealValue { get; set; }
         int ArmorValue { get; set; }
         bool CanGetIntoBuilding { get; set; }
         int Vision { get; set; }
         int MaxMove { get; set; }
+        string IdleImage { get; set; }
         string IdleImage2 { get; set; }
-        string IdleImage3 { get; set; }
         string AttackImage { get; set; }
 
 
         public void Move(int x, int y);
         public void GetIntoBuilding();
         public void GetOutOfBuilding();
+        public void Attack(Units target);
+        public void SwitchVerticalPosition();
 
       /*  public Team Team { get => team; set => team = value; }
         public int Movement { get => movement; set => movement = value; }
