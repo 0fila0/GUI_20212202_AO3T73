@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    class Truck : Units, IUnits  
+    class Truck : Units  
     {
         public Truck()
         {
