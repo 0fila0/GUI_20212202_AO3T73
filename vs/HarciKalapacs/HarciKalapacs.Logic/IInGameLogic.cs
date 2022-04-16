@@ -62,7 +62,7 @@ namespace HarciKalapacs.Logic
         /// </summary>
         /// <param name="unit">This unit.</param>
         /// <returns>True, if upgrade was successful.</returns>
-        public bool UpgradeDamage(Attacker unit);
+        public bool UpgradeDamage(IUnits unit);
 
         /// <summary>
         /// Upgrade heal.

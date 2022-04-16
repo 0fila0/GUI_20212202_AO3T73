@@ -204,7 +204,7 @@
             switch ((sender as Grid).Name)
             {
                 case "upgradeDamage":
-                    successful = this.inGameLogic.UpgradeDamage(actualSelectedUnit as Attacker);
+                    successful = this.inGameLogic.UpgradeDamage(actualSelectedUnit);
                     break;
                 case "upgradeHp":
                     successful = this.inGameLogic.UpgradeMaxHp(actualSelectedUnit);

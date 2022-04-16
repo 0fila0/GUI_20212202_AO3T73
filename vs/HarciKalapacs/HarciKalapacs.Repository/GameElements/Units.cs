@@ -6,69 +6,64 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    public class Units : IUnits
+    abstract public class Units : IMapItem
     {
-        Team team { get; set; }
 
+        public Team Team { get; set; }
 
+        #region Abilities
+        public bool CanSeeTrhoughAll { get; set; }
+        public bool CanAttack { get; set; }
+        public bool CanHeal { get; set; }
+        public bool CanGetIntoBuilding { get; set; }
+        #endregion
+        
+        #region Stats
+        public int Hp { get; set; }
+        public int MaxHp { get; set; }
+        public int YPos { get; set; }
+        public int XPos { get; set; }
+        public int Vision { get; set; }
+        public int MaxMove { get; set; }
+        public int AttackValue { get; set; }
+        public int HealValue { get; set; }
+        public int ArmorValue { get; set; }
+        public int Movement { get; set; }
+        public bool IsInTheAir { get; set; }
+        #endregion
 
-        //abilitys
-        bool canSeeTrhoughAll { get; set; }
-        bool canAttack { get; set; }
-        bool canHeal { get; set; }
-        bool canGetIntoBuilding { get; set; }
-       
-
-
-
-
-        //stats
-        int hp { get; set; }
-        int maxHp { get; set; }
-        int yPos { get; set; }
-        int xPos { get; set; }
-        int vision { get; set; }
-        int maxMove { get; set; }
-        int attackValue { get; set; }
-        int healValue { get; set; }
-        int armorValue { get; set; }
-        int movement { get; set; }
-        bool isInTheAir { get; set; }
-
-
-        //graphics
+        #region Graphics
         // string idleImage1 { get; set; }
-        string idleImage2 { get; set; }
-        string attackImage { get; set; }
-        string idleImage { get; set; }
-        string dyingImage { get; set; }
+        public string IdleImage2 { get; set; }
+        public string AttackImage { get; set; }
+        public string IdleImage { get; set; }
+        public string DyingImage { get; set; }
+        #endregion
 
+       // public Team Team { get => team; set => team = value; }
+       // public int Movement { get => movement; set => movement = value; }
+       // public bool CanSeeTrhoughAll { get => canSeeTrhoughAll; set => canSeeTrhoughAll = value; }
+       // public bool CanAttack { get => canAttack; set => canAttack = value; }
+       // public bool CanHeal { get => canHeal; set => canHeal = value; }
+       // public int AttackValue { get => attackValue; set => attackValue = value; }
+       // public int HealValue { get => healValue; set => healValue = value; }
+       // public int ArmorValue { get => armorValue; set => armorValue = value; }
+       // public bool CanGetIntoBuilding { get => canGetIntoBuilding; set => canGetIntoBuilding = value; }
+       // public bool IsInTheAir { get => isInTheAir; set => isInTheAir = value; }
 
+       // public int Hp { get => hp; set => hp = value; }
+       // public int MaxHp { get => maxHp; set => maxHp = value; }
+       // public int YPos { get => yPos; set => maxHp = yPos; }
+       // public int XPos { get => xPos; set => xPos = value; }
 
-        public Team Team { get => team; set => team = value; }
-        public int Movement { get => movement; set => movement = value; }
-        public bool CanSeeTrhoughAll { get => canSeeTrhoughAll; set => canSeeTrhoughAll = value; }
-        public bool CanAttack { get => canAttack; set => canAttack = value; }
-        public bool CanHeal { get => canHeal; set => canHeal = value; }
-        public int AttackValue { get => attackValue; set => attackValue = value; }
-        public int HealValue { get => healValue; set => healValue = value; }
-        public int ArmorValue { get => armorValue; set => armorValue = value; }
-        public bool CanGetIntoBuilding { get => canGetIntoBuilding; set => canGetIntoBuilding = value; }
-        public bool IsInTheAir { get => isInTheAir; set => isInTheAir = value; }
+       // public string IdleImage { get => idleImage; set => idleImage = value; }
+       // public string DyingImage { get => dyingImage; set => dyingImage = value; }
 
-        public int Hp { get => hp; set => hp = value; }
-        public int MaxHp { get => maxHp; set => maxHp = value; }
-        public int YPos { get => yPos; set => maxHp = yPos; }
-        public int XPos { get => xPos; set => xPos = value; }
-
-        public string IdleImage { get => idleImage; set => idleImage = value; }
-        public string DyingImage { get => dyingImage; set => dyingImage = value; }
-
-        public int Vision { get => vision; set => vision = value; }
-        public int MaxMove { get => maxMove; set => maxMove = value; }
-       // public string IdleImage { get => idleImage; set => idleImage2 = value; }
-        public string IdleImage2 { get => idleImage2; set => idleImage2 = value; }
-        public string AttackImage { get => attackImage; set => attackImage = value; }
+       // public int Vision { get => vision; set => vision = value; }
+       // public int MaxMove { get => maxMove; set => maxMove = value; }
+       //// public string IdleImage { get => idleImage; set => idleImage2 = value; }
+       // public string IdleImage2 { get => idleImage2; set => idleImage2 = value; }
+       // public string AttackImage { get => attackImage; set => attackImage = value; }
 
 
         public void GetIntoBuilding()
@@ -96,5 +91,7 @@ namespace HarciKalapacs.Repository.GameElements
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

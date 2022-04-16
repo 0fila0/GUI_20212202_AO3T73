@@ -6,29 +6,17 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    public class Terrain :ITerrain
+    abstract public class Terrain :IMapItem
     {
-        bool isOverWalkable { get; set; }
-        bool isSeeThrough { get; set; }
-        bool isOccupiable { get; set; }
-        bool isDestructable { get; set; }
-        int hp { get; set; }
-        int maxHp { get; set; }
-        int yPos { get; set; }
-        int xPos { get; set; }
-        string idleImage { get; set; }
-        string dyingImage { get; set; }
-
-        public bool IsDestructable { get => isDestructable; set => isDestructable = value; }
-        public bool IsOverWalkable { get => isOverWalkable; set => isOverWalkable = value; }
-        public bool IsSeeThrough { get => isSeeThrough; set => isSeeThrough = value; }
-        public bool IsOccupiable { get => isOccupiable; set => isOccupiable = value; }
-        public int MaxHp { get => maxHp; set => maxHp = value; }
-        public int YPos { get => yPos; set => maxHp = yPos; }
-        public int XPos { get => xPos; set => xPos = value; }
-        public int Hp { get => hp; set => hp = value; }
-
-        public string IdleImage { get => idleImage; set => idleImage = value; }
-        public string DyingImage { get => dyingImage; set => dyingImage = value; }
+        public bool IsOverWalkable { get; set; }
+        public bool IsSeeThrough { get; set; }
+        public bool IsOccupiable { get; set; }
+        public bool IsDestructable { get; set; }
+        public int Hp { get; set; }
+        public int MaxHp { get; set; }
+        public int YPos { get; set; }
+        public int XPos { get; set; }
+        public string IdleImage { get; set; }
+        public string DyingImage { get; set; }
     }
 }
