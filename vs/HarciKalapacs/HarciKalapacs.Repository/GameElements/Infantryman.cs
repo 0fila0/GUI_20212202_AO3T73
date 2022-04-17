@@ -10,6 +10,7 @@ namespace HarciKalapacs.Repository.GameElements
     {
         public Infantryman()
         {
+            this.UnitType = UnitType.InfantryMan;
             this.MaxHp = UnitsConfig.Controllable.InfantryConfig.MaxHp;
             this.MaxMove = UnitsConfig.Controllable.InfantryConfig.MaxMove;
             this.Vision = UnitsConfig.Controllable.InfantryConfig.Vision;

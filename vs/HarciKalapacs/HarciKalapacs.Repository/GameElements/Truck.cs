@@ -10,6 +10,7 @@ namespace HarciKalapacs.Repository.GameElements
     {
         public Truck()
         {
+            this.UnitType = UnitType.Truck;
             this.MaxHp = UnitsConfig.Controllable.TruckConfig.MaxHp;
             this.MaxMove = UnitsConfig.Controllable.TruckConfig.MaxMove;
             this.Vision = UnitsConfig.Controllable.TruckConfig.Vision;

@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="GameElements\AirUnit.cs" />
+    <Compile Remove="GameElements\Attacker.cs" />
+    <Compile Remove="GameElements\Controllable.cs" />
     <Compile Remove="GameElements\ITerrain.cs" />
     <Compile Remove="GameElements\IUnits.cs" />
   </ItemGroup>

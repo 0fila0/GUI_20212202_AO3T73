@@ -12,6 +12,7 @@ namespace HarciKalapacs.Repository.GameElements
 
         public Cover()
         {
+            terrainType = TerrainType.Cover;
             if (this.MaxHp == 0)
             {
                 int rnd = new Random().Next(1, 3);

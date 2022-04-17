@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
+
     public interface IMapItem
     {
         int Hp { get; set; }
@@ -15,6 +16,7 @@ namespace HarciKalapacs.Repository.GameElements
         string IdleImage { get; set; }
         string DyingImage { get; set; }
 
+        string GenerateHashForSave();
 
         /*public int Hp { get=>hp; set => hp = value; }
         public int MaxHp { get => maxHp; set => maxHp = value; }

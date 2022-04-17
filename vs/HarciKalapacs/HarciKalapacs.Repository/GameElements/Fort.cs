@@ -11,6 +11,7 @@ namespace HarciKalapacs.Repository.GameElements
         public Fort()
         {
             this.MaxHp = UnitsConfig.Base.FortConfig.MaxHp;
+            terrainType = TerrainType.Fort;
 
             if (this.Hp == 0)
             {

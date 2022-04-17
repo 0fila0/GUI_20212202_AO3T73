@@ -10,6 +10,7 @@ namespace HarciKalapacs.Repository.GameElements
     {
         public Obstacle()
         {
+            terrainType = TerrainType.Obstacle;
             if (this.MaxHp == 0)
             {
                 int rnd = new Random().Next(1, 3);

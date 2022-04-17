@@ -10,6 +10,7 @@ namespace HarciKalapacs.Repository.GameElements
     {
         public Tank()
         {
+            this.UnitType = UnitType.Tank;
             this.MaxHp = UnitsConfig.Controllable.TankConfig.MaxHp;
             this.MaxMove = UnitsConfig.Controllable.TankConfig.MaxMove;
             this.Vision = UnitsConfig.Controllable.TankConfig.Vision;

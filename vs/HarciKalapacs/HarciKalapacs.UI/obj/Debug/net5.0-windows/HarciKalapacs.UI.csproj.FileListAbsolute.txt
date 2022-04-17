@@ -38,3 +38,12 @@ D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\D
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\Microsoft.Toolkit.Mvvm.dll
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Logic.dll
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Logic.pdb
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.csprojAssemblyReference.cache
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\MainWindow.g.cs
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\App.g.cs
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI_MarkupCompile.cache
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI_MarkupCompile.lref
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.dll
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\ref\HarciKalapacs.UI.dll
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.pdb

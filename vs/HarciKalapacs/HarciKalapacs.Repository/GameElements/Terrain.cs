@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
+
+    public enum TerrainType
+    {
+        Cover = 1,
+        Fort = 2,
+        Obstacle = 3
+    }
     abstract public class Terrain :IMapItem
     {
+        public TerrainType terrainType { get; set; }
         public bool IsOverWalkable { get; set; }
         public bool IsSeeThrough { get; set; }
         public bool IsOccupiable { get; set; }
@@ -18,5 +26,10 @@ namespace HarciKalapacs.Repository.GameElements
         public int XPos { get; set; }
         public string IdleImage { get; set; }
         public string DyingImage { get; set; }
+
+        public string GenerateHashForSave()
+        {
+            return this.terrainType.ToString();
+        }
     }
 }
