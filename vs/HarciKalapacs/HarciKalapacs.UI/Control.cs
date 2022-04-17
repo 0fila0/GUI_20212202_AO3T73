@@ -14,6 +14,7 @@
     using System.Windows.Input;
     using HarciKalapacs.Renderer.Config;
     using HarciKalapacs.Logic;
+    using System.Linq;
 
     class Control : ContentControl
     {
@@ -114,7 +115,7 @@
                 case Contents.InGame:
                     int width = this.model.MapWidth;
                     int height = this.model.MapHeight;
-                    this.Content = MapRenderer.Map(width, height, this.model.AllUnits as List<Units>);
+                    this.Content = MapRenderer.Map(width, height, this.model.AllUnits.ToList());
                     break;
                 default:
                     this.Content = MenuRenderer.MainMenu();
@@ -210,13 +211,13 @@
                     successful = this.inGameLogic.UpgradeMaxHp(actualSelectedUnit);
                     break;
                 case "upgradeHeal":
-                    successful = this.inGameLogic.UpgradeHealer(actualSelectedUnit as Healer);
+                    successful = this.inGameLogic.UpgradeHealer(actualSelectedUnit);
                     break;
                 case "airStateButton":
                     successful = true;
-                    this.inGameLogic.SwitchVerticalPosition(actualSelectedUnit as AirUnit);
+                    this.inGameLogic.SwitchVerticalPosition(actualSelectedUnit);
                     MapRenderer.VisibleMapTiles();
-                    MapRenderer.CanActivityTiles(actualSelectedUnit as Controllable);
+                    MapRenderer.CanActivityTiles(actualSelectedUnit);
                     break;
             }
 
@@ -303,21 +304,21 @@
             else if (actualSelectedUnit == null && unit.Team == Team.player)
             {
                 actualSelectedUnit = unit;
-                if (unit is AirUnit)
+                if (unit.CanFly)
                 {
                     this.musicPlayer.PlaySoundEffect(SoundEffectType.selectHelicopter);
                 }
-                else if (unit is Healer)
+                else if (unit.CanHeal)
                 {
                     this.musicPlayer.PlaySoundEffect(SoundEffectType.selectTruck);
                 }
-                else if (unit is Attacker)
+                else if (unit.CanAttack)
                 {
-                    if (unit.GetType().Name == "Infantryman")
+                    if (unit.UnitType == UnitType.InfantryMan)
                     {
                         this.musicPlayer.PlaySoundEffect(SoundEffectType.selectInfantryman);
                     }
-                    else if (unit.GetType().Name == "Tank")
+                    else if (unit.UnitType == UnitType.Tank)
                     {
                         this.musicPlayer.PlaySoundEffect(SoundEffectType.selectTank);
                     }
@@ -351,15 +352,15 @@
             // Attack unit.
             else if (actualSelectedUnit != null && unit.Team != Team.player)
             {
-                if (this.inGameLogic.Attack(actualSelectedUnit as Attacker, unit))
+                if (this.inGameLogic.Attack(actualSelectedUnit, unit))
                 {
                     this.inGameLogic.StepOccured();
 
-                    if (actualSelectedUnit is AirUnit)
+                    if (actualSelectedUnit.CanFly)
                     {
                         this.musicPlayer.PlaySoundEffect(SoundEffectType.helicopterFire);
                     }
-                    else if (actualSelectedUnit is Tank)
+                    else if (actualSelectedUnit.UnitType == UnitType.Tank)
                     {
                         this.musicPlayer.PlaySoundEffect(SoundEffectType.tankFire);
                     }

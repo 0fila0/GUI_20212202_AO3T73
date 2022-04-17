@@ -32,7 +32,7 @@ namespace HarciKalapacs.Renderer
         // private static Label UnitLevel;
         private static double MapTileOpacity = 0.4;
 
-        public static Canvas Map(int width, int height, List<Units> units)
+        public static Canvas Map(int width, int height, List<IMapItem> mapItems)
         {
             UnitGrids.Clear();
             InvisibleTiles.Clear();
@@ -42,11 +42,11 @@ namespace HarciKalapacs.Renderer
 
             List<Grid> grids = new List<Grid>();
 
-            foreach (Units unit in units)
+            foreach (IMapItem item in mapItems)
             {
-                Grid tileOfUnit = GetGrid("unit_" + unit.YPos + "_" + unit.XPos, MapConfig.TileWidth, MapConfig.TileHeight, string.Empty, unit.IdleImage);
-                tileOfUnit.Margin = new Thickness(unit.XPos * MapConfig.TileHeight, unit.YPos * MapConfig.TileWidth, 0, 0);
-                tileOfUnit.DataContext = unit;
+                Grid tileOfUnit = GetGrid("unit_" + item.YPos + "_" + item.XPos, MapConfig.TileWidth, MapConfig.TileHeight, string.Empty, item.IdleImage);
+                tileOfUnit.Margin = new Thickness(item.XPos * MapConfig.TileHeight, item.YPos * MapConfig.TileWidth, 0, 0);
+                tileOfUnit.DataContext = item;
                 grids.Add(tileOfUnit);
                 UnitGrids.Add(tileOfUnit);
             }

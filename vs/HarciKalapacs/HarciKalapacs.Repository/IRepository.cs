@@ -11,7 +11,7 @@ namespace HarciKalapacs.Repository
     {
         public IEnumerable<int> MapSize { get; }
 
-        public IEnumerable<Units> AllUnits { get; }
+        public IEnumerable<IMapItem> AllUnits { get; }
 
         /// <summary>
         /// Contains: [0] round, [1] which player steps, [2] max steps, [3] left steps, [4] player golds, [5] enemy golds

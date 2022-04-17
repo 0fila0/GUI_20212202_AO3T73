@@ -1,6 +1,7 @@
 ﻿using HarciKalapacs.Repository;
 using HarciKalapacs.Repository.GameElements;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HarciKalapacs.Model
 {
@@ -10,7 +11,7 @@ namespace HarciKalapacs.Model
         int mapWidth;
         int mapHeight;
         int mapNumber;
-        IEnumerable<Units> allUnits;
+        IEnumerable<IMapItem> allUnits;
         int playerTurn;
         int maxSteps;
         int leftSteps;
@@ -21,10 +22,10 @@ namespace HarciKalapacs.Model
         public Model(IRepository repository)
         {
             this.repository = repository;
-            this.AllUnits = new List<Units>();
+            this.AllUnits = new List<IMapItem>();
         }
 
-        public IEnumerable<Units> AllUnits { get => allUnits; set => allUnits = value; }
+        public IEnumerable<IMapItem> AllUnits { get => allUnits; set => allUnits = value; }
         public int MapWidth { get => mapWidth; set => mapWidth = value; }
         public int MapHeight { get => mapHeight; set => mapHeight = value; }
         public int MapNumber { get => mapNumber; set => mapNumber = value; }
@@ -36,7 +37,7 @@ namespace HarciKalapacs.Model
 
         public bool LoadMap(int level)
         {
-            (this.AllUnits as List<Units>).Clear();
+            (this.AllUnits as List<IMapItem>).Clear();
             bool success = this.repository.LoadMap(level);
             this.mapNumber = level;
             this.AllUnits = this.repository.AllUnits;
@@ -57,17 +58,18 @@ namespace HarciKalapacs.Model
         /// </summary>
         private void ModifyAirUnitsVision()
         {
-            foreach (Units units in this.allUnits)
+            
+            foreach (Units units in AllUnits.Where(x => x is Units))
             {
-                if (units is AirUnit)
+                if (units.CanFly)
                 {
-                    if ((units as AirUnit).IsInTheAir)
+                    if (units.IsInTheAir)
                     {
-                        (units as AirUnit).Vision = Repository.UnitsConfig.Controllable.HelicopterConfig.Vision;
+                        units.Vision = Repository.UnitsConfig.Controllable.HelicopterConfig.Vision;
                     }
                     else
                     {
-                        (units as AirUnit).Vision = Repository.UnitsConfig.Controllable.HelicopterConfig.GroundVision;
+                        units.Vision = Repository.UnitsConfig.Controllable.HelicopterConfig.GroundVision;
                     }
                 }
             }

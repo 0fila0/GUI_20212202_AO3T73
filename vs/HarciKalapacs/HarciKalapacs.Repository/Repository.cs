@@ -8,16 +8,17 @@
 
     public class Repository : IRepository
     {
-        List<Units> allUnits;
+        List<IMapItem> allUnits;
         List<int> mapSize;
         List<int> otherDetails;
 
         public Repository()
         {
-            this.allUnits = new List<Units>();
+            //lehet szar
+            this.allUnits = new List<IMapItem>();
         }
 
-        public IEnumerable<Units> AllUnits => allUnits;
+        public IEnumerable<IMapItem> AllUnits => allUnits;
 
         public IEnumerable<int> MapSize => mapSize;
 
@@ -87,7 +88,8 @@
                     forts.ForEach(x => this.allUnits.Add(x));
                 }
 
-                this.allUnits.ForEach(x => x.IdleImage1 = "");
+                //idle Image 1 to idleimage
+                this.allUnits.ForEach(x => x.IdleImage = "");
 
                 path = relativePath + @"\mapSize.json";
                 json = ReadJsonFile(path);

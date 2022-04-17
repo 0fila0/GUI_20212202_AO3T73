@@ -22,7 +22,7 @@ namespace HarciKalapacs.Logic
             throw new NotImplementedException();
         }
 
-        public bool Attack(Attacker attacker, Units target)
+        public bool Attack(Units attacker, Units target)
         {
             throw new NotImplementedException();
         }
@@ -47,17 +47,17 @@ namespace HarciKalapacs.Logic
             this.model.LeftSteps--;
         }
 
-        public void SwitchVerticalPosition(AirUnit airUnit)
+        public void SwitchVerticalPosition(Units airUnit)
         {
             airUnit.SwitchVerticalPosition();
         }
 
-        public bool UpgradeDamage(Attacker unit)
+        public bool UpgradeDamage(Units unit)
         {
             throw new NotImplementedException();
         }
 
-        public bool UpgradeHealer(Healer unit)
+        public bool UpgradeHealer(Units unit)
         {
             throw new NotImplementedException();
         }
