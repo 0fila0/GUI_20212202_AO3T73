@@ -45,7 +45,7 @@ namespace HarciKalapacs.Renderer
             foreach (IMapItem item in mapItems)
             {
                 Grid tileOfUnit = GetGrid("unit_" + item.YPos + "_" + item.XPos, MapConfig.TileWidth, MapConfig.TileHeight, string.Empty, item.IdleImage);
-                tileOfUnit.Margin = new Thickness(item.XPos * MapConfig.TileHeight, item.YPos * MapConfig.TileWidth, 0, 0);
+                tileOfUnit.Margin = new Thickness(item.XPos * MapConfig.TileHeight, item.YPos * MapConfig.TileWidth, 0, 0);                
                 tileOfUnit.DataContext = item;
                 grids.Add(tileOfUnit);
                 UnitGrids.Add(tileOfUnit);
@@ -243,16 +243,20 @@ namespace HarciKalapacs.Renderer
 
             foreach (Grid unitGrid in UnitGrids)
             {
-                //  Ezt nem értem
-                Units unit = unitGrid.DataContext as Units;
-                //if (unit.Team == Team.player && unit is Controllable)
-                if (unit.Team == Team.player)
+                if (unitGrid.DataContext is not Terrain )
                 {
-                    //Controllable controllableUnit = unit as Controllable;
-                    HorizontalVision(unit);
-                    VerticalVision(unit);
-                    DiagonalVision(unit);
+                    Units unit = unitGrid.DataContext as Units;
+                    //if (unit.Team == Team.player && unit is Controllable)
+                    if (unit.Team == Team.player)
+                    {
+                        //Controllable controllableUnit = unit as Controllable;
+                        HorizontalVision(unit);
+                        VerticalVision(unit);
+                        DiagonalVision(unit);
+                    }
                 }
+                
+                
             }
         }
 
@@ -265,6 +269,8 @@ namespace HarciKalapacs.Renderer
 
             // DiagonalActivities(unit);
         }
+
+        #region Movement&Actack
 
         private static void HorizontalWhereCanMove(Units selectedUnit)
         {
@@ -484,6 +490,22 @@ namespace HarciKalapacs.Renderer
             }
         }
 
+        private static void MoveUnit(Grid grid)
+        {
+            Units u = grid.DataContext as Units;
+            double x = u.XPos * MapConfig.TileHeight;
+            double y = u.YPos * MapConfig.TileWidth;
+            u.XPos += 1;
+            double xdes = u.XPos * MapConfig.TileHeight;
+            double ydes = u.YPos * MapConfig.TileWidth;
+            Thickness destination = new Thickness(xdes, ydes, 0, 0);
+            grid.Margin = destination;        
+        }      
+
+        #endregion
+
+        #region Vision
+
         private static void HorizontalVision(Units Unit)
         {
             for (int leftRight = -1; leftRight <= 1; leftRight += 2)
@@ -578,18 +600,9 @@ namespace HarciKalapacs.Renderer
                 }
             }
         }
+        #endregion
 
-        private static void MoveUnit(Grid grid)
-        {
-            Units u = grid.DataContext as Units;
-            double x = u.XPos * MapConfig.TileHeight;
-            double y = u.YPos * MapConfig.TileWidth;
-            u.XPos += 1;
-            double xdes = u.XPos * MapConfig.TileHeight;
-            double ydes = u.YPos * MapConfig.TileWidth;
-            Thickness destination = new Thickness(xdes, ydes, 0, 0);
-            grid.Margin = destination;
-        }
+        
 
         private static ImageBrush GetImage(string image)
         {
