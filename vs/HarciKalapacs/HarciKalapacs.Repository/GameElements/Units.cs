@@ -24,6 +24,8 @@ namespace HarciKalapacs.Repository.GameElements
         public UnitType UnitType { get; set; }
         public Team Team { get; set; }
 
+        public string idleImage1;
+
         #region Abilities
         public bool CanSeeTrhoughAll { get; set; }
         public bool CanFly { get; set; }
@@ -50,38 +52,38 @@ namespace HarciKalapacs.Repository.GameElements
         // string idleImage1 { get; set; }
         public string IdleImage2 { get; set; }
         public string AttackImage { get; set; }
-        public string IdleImage
+        public string IdleImage1
         {
-            get => IdleImage;
+            get => idleImage1;
             set
             {
                 string type = this.GetType().Name;
                 if (this.Team == Team.player)
                 {
-                    this.IdleImage = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Player\player" + type + "Idle1.png";
+                    this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Player\player" + type + "Idle1.png";
                 }
                 else if (this.Team == Team.enemy)
                 {
-                    this.IdleImage = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Enemy\enemy" + type + "Idle1.png";
+                    this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Enemy\enemy" + type + "Idle1.png";
                 }
                 else
                 {
                     // Let's be an obstacle.
                     if (this.MaxHp == UnitsConfig.Natural.Cover.FenceConfig.MaxHp)
                     {
-                        this.IdleImage = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Cover\fence" + type + "Idle1.png";
+                        this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Cover\fence" + type + "Idle1.png";
                     }
                     else if (this.MaxHp == UnitsConfig.Natural.Cover.TreeConfig.MaxHp)
                     {
-                        this.IdleImage = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Cover\tree" + type + "Idle1.png";
+                        this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Cover\tree" + type + "Idle1.png";
                     }
                     else if (this.MaxHp == UnitsConfig.Natural.Obstacle.HouseConfig.MaxHp)
                     {
-                        this.IdleImage = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Obstacle\house" + type + "Idle1.png";
+                        this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Obstacle\house" + type + "Idle1.png";
                     }
                     else
                     {
-                        this.IdleImage = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Obstacle\mountain" + type + "Idle1.png";
+                        this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Obstacle\mountain" + type + "Idle1.png";
                     }
                 }
             }

@@ -89,7 +89,7 @@
                 }
 
                 //idle Image 1 to idleimage
-                this.allUnits.ForEach(x => x.IdleImage = "");
+                this.allUnits.ForEach(x => x.IdleImage1 = "");
 
                 path = relativePath + @"\mapSize.json";
                 json = ReadJsonFile(path);

@@ -13,7 +13,7 @@ namespace HarciKalapacs.Repository.GameElements
         int MaxHp { get; set; }
         int YPos { get; set; }
         int XPos { get; set; }       
-        string IdleImage { get; set; }
+        string IdleImage1 { get; set; }
         string DyingImage { get; set; }
 
         string GenerateHashForSave();

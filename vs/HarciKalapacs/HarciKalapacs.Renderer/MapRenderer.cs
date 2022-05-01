@@ -44,7 +44,7 @@ namespace HarciKalapacs.Renderer
 
             foreach (IMapItem item in mapItems)
             {
-                Grid tileOfUnit = GetGrid("unit_" + item.YPos + "_" + item.XPos, MapConfig.TileWidth, MapConfig.TileHeight, string.Empty, item.IdleImage);
+                Grid tileOfUnit = GetGrid("unit_" + item.YPos + "_" + item.XPos, MapConfig.TileWidth, MapConfig.TileHeight, string.Empty, item.IdleImage1);
                 tileOfUnit.Margin = new Thickness(item.XPos * MapConfig.TileHeight, item.YPos * MapConfig.TileWidth, 0, 0);                
                 tileOfUnit.DataContext = item;
                 grids.Add(tileOfUnit);
@@ -708,7 +708,7 @@ namespace HarciKalapacs.Renderer
                             ActualSelectedUnit.Margin = gridSender.Margin;
                             ActualSelectedUnit.Visibility = Visibility.Visible;
                             FillOrRefreshUnitPanel();
-                            gridSender.Background = GetImage((gridSender.DataContext as Units).IdleImage);
+                            gridSender.Background = GetImage((gridSender.DataContext as Units).IdleImage1);
                             CanActivityTiles(unit);
                         }
                         else if (ActualSelectedUnit.DataContext != null && ActualSelectedUnit.DataContext == gridSender.DataContext)
