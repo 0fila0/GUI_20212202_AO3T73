@@ -21,3 +21,4 @@ C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalap
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.dll
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\ref\HarciKalapacs.Repository.dll
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.pdb
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.csprojAssemblyReference.cache

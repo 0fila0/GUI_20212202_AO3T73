@@ -243,7 +243,7 @@ namespace HarciKalapacs.Renderer
 
             foreach (Grid unitGrid in UnitGrids)
             {
-                if (unitGrid.DataContext is not Terrain )
+                if (unitGrid.DataContext is Units )
                 {
                     Units unit = unitGrid.DataContext as Units;
                     //if (unit.Team == Team.player && unit is Controllable)

@@ -291,7 +291,7 @@
             {
                 int x = (int)((sender as Grid).Margin.Left / MapConfig.TileWidth);
                 int y = (int)((sender as Grid).Margin.Top / MapConfig.TileHeight);
-                unit = (this.model.AllUnits as List<Units>).Find(u => u.XPos == x && u.YPos == y);
+                unit = (this.model.AllUnits as List<Units>)?.Find(u => u.XPos == x && u.YPos == y);
             }
 
             // Unselect unit.
