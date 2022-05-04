@@ -58,8 +58,9 @@
             {
                 for (int i = 0; i < this.model.MaxSteps; i++)
                 {
-                    this.inGameLogic.AIDecisions();
                     MapRenderer.VisibleMapTiles();
+                    //this.inGameLogic.AIDecisions();
+                    
                 }
             }
         }
@@ -333,6 +334,7 @@
                 int y = (int)(destination.Margin.Top / MapConfig.TileHeight);
                 if (this.inGameLogic.Move(actualSelectedUnit, x, y))
                 {
+                    
                     this.inGameLogic.StepOccured();
                     GameControl();
                 }

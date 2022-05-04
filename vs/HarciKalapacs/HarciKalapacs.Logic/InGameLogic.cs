@@ -34,7 +34,14 @@ namespace HarciKalapacs.Logic
 
         public bool Move(Units unit, int x, int y)
         {
-            throw new NotImplementedException();
+            int distance = Math.Abs(unit.XPos - x) + Math.Abs(unit.YPos - y);
+            if (unit.MaxMove <= distance)
+            {
+                unit.Move(x, y);
+                return true;
+            }
+            return false;
+            
         }
 
         public void StartTurn()

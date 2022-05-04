@@ -145,7 +145,10 @@ namespace HarciKalapacs.Repository.GameElements
 
         public void SwitchVerticalPosition()
         {
-            throw new NotImplementedException();
+            if (this.CanFly)
+            {
+                this.IsInTheAir = true;
+            }
         }
 
 
