@@ -37,12 +37,12 @@
                 if (json != string.Empty)
                 {
                     List<Helicopter> helicopters = JsonConvert.DeserializeObject<List<Helicopter>>(json);
-                    //helicopters.ForEach(x => this.allUnits.Add(x));
-                    foreach(var item in helicopters)
-                    {
-                        item.UnitType = UnitType.Helicopter;
-                        this.allUnits.Add(item);
-                    }
+                    helicopters.ForEach(x => this.allUnits.Add(x));
+                    //foreach(var item in helicopters)
+                    //{
+                    //    item.UnitType = UnitType.Helicopter;
+                    //    this.allUnits.Add(item);
+                    //}
                 }
 
                 path = relativePath + @"\tank.json";
