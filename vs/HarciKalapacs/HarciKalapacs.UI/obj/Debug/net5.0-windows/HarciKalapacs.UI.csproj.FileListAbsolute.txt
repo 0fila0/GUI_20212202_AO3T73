@@ -38,15 +38,6 @@ D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\D
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\Microsoft.Toolkit.Mvvm.dll
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Logic.dll
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Logic.pdb
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.csprojAssemblyReference.cache
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\MainWindow.g.cs
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\App.g.cs
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI_MarkupCompile.cache
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI_MarkupCompile.lref
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.dll
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\ref\HarciKalapacs.UI.dll
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.pdb
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.UI.exe
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.UI.deps.json
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.UI.runtimeconfig.json
@@ -70,6 +61,12 @@ C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalap
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Renderer.pdb
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\HarciKalapacs.Repository.pdb
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\bin\Debug\net5.0-windows\SoundsRenderer.pdb
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.csprojAssemblyReference.cache
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\MainWindow.g.cs
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\App.g.cs
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI_MarkupCompile.cache
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI_MarkupCompile.lref
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\MainWindow.baml
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.g.resources
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.GeneratedMSBuildEditorConfig.editorconfig
@@ -77,4 +74,7 @@ C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalap
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.AssemblyInfo.cs
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.csproj.CoreCompileInputs.cache
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.csproj.CopyComplete
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.dll
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\ref\HarciKalapacs.UI.dll
+C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.pdb
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.UI\obj\Debug\net5.0-windows\HarciKalapacs.UI.genruntimeconfig.cache

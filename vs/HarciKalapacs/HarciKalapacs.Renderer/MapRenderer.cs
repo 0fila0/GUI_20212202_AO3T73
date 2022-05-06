@@ -490,16 +490,18 @@ namespace HarciKalapacs.Renderer
             }
         }
 
-        private static void MoveUnit(Grid grid)
+        //public static void MoveUnit(Grid grid)
+        public static void MoveUnit()
         {
-            Units u = grid.DataContext as Units;
+            //Units u = grid.DataContext as Units;
+            Units u = ActualSelectedUnit.DataContext as Units;
             double x = u.XPos * MapConfig.TileHeight;
             double y = u.YPos * MapConfig.TileWidth;
             u.XPos += 1;
             double xdes = u.XPos * MapConfig.TileHeight;
             double ydes = u.YPos * MapConfig.TileWidth;
             Thickness destination = new Thickness(xdes, ydes, 0, 0);
-            grid.Margin = destination;        
+            ActualSelectedUnit.Margin = destination;        
         }      
 
         #endregion

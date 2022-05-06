@@ -11,7 +11,7 @@ namespace HarciKalapacs.Model
         int mapWidth;
         int mapHeight;
         int mapNumber;
-        IEnumerable<IMapItem> allUnits;
+        ICollection<IMapItem> allUnits;
         int playerTurn;
         int maxSteps;
         int leftSteps;
@@ -25,7 +25,7 @@ namespace HarciKalapacs.Model
             this.AllUnits = new List<IMapItem>();
         }
 
-        public IEnumerable<IMapItem> AllUnits { get => allUnits; set => allUnits = value; }
+        public ICollection<IMapItem> AllUnits { get => allUnits; set => allUnits = value; }
         public int MapWidth { get => mapWidth; set => mapWidth = value; }
         public int MapHeight { get => mapHeight; set => mapHeight = value; }
         public int MapNumber { get => mapNumber; set => mapNumber = value; }

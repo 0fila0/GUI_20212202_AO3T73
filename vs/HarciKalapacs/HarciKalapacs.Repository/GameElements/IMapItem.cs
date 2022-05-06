@@ -18,6 +18,10 @@ namespace HarciKalapacs.Repository.GameElements
 
         string GenerateHashForSave();
 
+        bool Equals(object obj);
+
+        int GetHashCode();
+
         /*public int Hp { get=>hp; set => hp = value; }
         public int MaxHp { get => maxHp; set => maxHp = value; }
         public int YPos { get => yPos; set => maxHp = yPos; }

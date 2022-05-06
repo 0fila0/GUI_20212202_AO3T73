@@ -18,7 +18,7 @@
             this.allUnits = new List<IMapItem>();
         }
 
-        public IEnumerable<IMapItem> AllUnits => allUnits;
+        public ICollection<IMapItem> AllUnits => allUnits;
 
         public IEnumerable<int> MapSize => mapSize;
 
@@ -37,7 +37,12 @@
                 if (json != string.Empty)
                 {
                     List<Helicopter> helicopters = JsonConvert.DeserializeObject<List<Helicopter>>(json);
-                    helicopters.ForEach(x => this.allUnits.Add(x));
+                    //helicopters.ForEach(x => this.allUnits.Add(x));
+                    foreach(var item in helicopters)
+                    {
+                        item.UnitType = UnitType.Helicopter;
+                        this.allUnits.Add(item);
+                    }
                 }
 
                 path = relativePath + @"\tank.json";

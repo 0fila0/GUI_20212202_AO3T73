@@ -24,18 +24,36 @@ namespace HarciKalapacs.Logic
 
         public bool Attack(Units attacker, Units target)
         {
-            throw new NotImplementedException();
+            if (attacker.CanAttack)
+            {
+                target.Hp = target.Hp - (attacker.AttackValue - target.ArmorValue);
+                return true;
+            }
+            return false;
         }
 
-        public bool Heal(Healer healer, Units target)
+        public bool Heal(Units healer, Units target)
         {
-            throw new NotImplementedException();
+            if (healer.CanHeal)
+            {
+                if(target.MaxHp-target.Hp >= healer.HealValue)
+                {
+                    target.Hp += healer.HealValue;
+                }
+                else
+                {
+                    target.Hp = target.MaxHp;
+                    
+                }
+                return true;
+            }
+            return false;
         }
 
         public bool Move(Units unit, int x, int y)
         {
             int distance = Math.Abs(unit.XPos - x) + Math.Abs(unit.YPos - y);
-            if (unit.MaxMove <= distance)
+            if (unit.MaxMove >= distance)
             {
                 unit.Move(x, y);
                 return true;
@@ -46,7 +64,7 @@ namespace HarciKalapacs.Logic
 
         public void StartTurn()
         {
-            throw new NotImplementedException();
+            this.model.LeftSteps = this.model.PlayerTurn;
         }
 
         public void StepOccured()

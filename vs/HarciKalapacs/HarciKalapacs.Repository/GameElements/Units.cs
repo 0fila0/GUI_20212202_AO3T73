@@ -16,7 +16,8 @@ namespace HarciKalapacs.Repository.GameElements
     {
         Tank = 1,
         InfantryMan = 2,
-        Truck = 3
+        Truck = 3,
+        Helicopter = 4
     }
 
     abstract public class Units : IMapItem
@@ -140,7 +141,11 @@ namespace HarciKalapacs.Repository.GameElements
 
         public void Attack(Units target)
         {
-            throw new NotImplementedException();
+            //target.Hp = target.Hp - (this.AttackValue - target.ArmorValue);
+            //if(target.Hp <= 0)
+            //{
+            //    target.
+            //}
         }
 
         public void SwitchVerticalPosition()
@@ -149,6 +154,23 @@ namespace HarciKalapacs.Repository.GameElements
             {
                 this.IsInTheAir = true;
             }
+        }
+        public override bool Equals(object obj)
+        {
+            if(obj is Units)
+            {
+                Units comp = obj as Units;
+                if(comp.UnitType == this.UnitType && comp.XPos == this.XPos && comp.YPos == this.YPos && comp.Hp == this.Hp)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
 

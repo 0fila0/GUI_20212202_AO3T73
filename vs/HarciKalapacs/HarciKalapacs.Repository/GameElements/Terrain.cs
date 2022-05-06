@@ -58,5 +58,23 @@ namespace HarciKalapacs.Repository.GameElements
         {
             return this.terrainType.ToString();
         }
+
+        public override bool Equals(object obj)
+        {
+            if(obj is Terrain)
+            {
+                Terrain comp = obj as Terrain;
+                if(comp.terrainType == this.terrainType && comp.XPos == this.XPos && comp.YPos == this.YPos && this.Hp == comp.Hp)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

@@ -59,6 +59,7 @@
                 for (int i = 0; i < this.model.MaxSteps; i++)
                 {
                     MapRenderer.VisibleMapTiles();
+                    MapRenderer.MoveUnit();
                     //this.inGameLogic.AIDecisions();
                     
                 }
@@ -343,7 +344,7 @@
             // Heal any unit.
             else if (actualSelectedUnit != null && actualSelectedUnit is Healer && unit != null)
             {
-                if (this.inGameLogic.Heal(actualSelectedUnit as Healer, unit))
+                if (this.inGameLogic.Heal(actualSelectedUnit, unit))
                 {
                     this.inGameLogic.StepOccured();
                     this.musicPlayer.PlaySoundEffect(SoundEffectType.truckFire);
@@ -356,6 +357,10 @@
             {
                 if (this.inGameLogic.Attack(actualSelectedUnit, unit))
                 {
+                    if(unit.Hp<= 0)
+                    {
+                        this.model.AllUnits.Remove(unit);
+                    }
                     this.inGameLogic.StepOccured();
 
                     if (actualSelectedUnit.CanFly)

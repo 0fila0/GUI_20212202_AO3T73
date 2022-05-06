@@ -42,7 +42,7 @@ namespace HarciKalapacs.Logic
         /// <param name="healer">This unit heals another one.</param>
         /// <param name="target">This unit needs healing.</param>
         /// <returns>True, if the healing was successful.</returns>
-        public bool Heal(Healer healer, Units target);
+        public bool Heal(Units healer, Units target);
 
         /// <summary>
         /// Air unit takes off or lands.
