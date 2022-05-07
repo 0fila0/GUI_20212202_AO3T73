@@ -490,10 +490,8 @@ namespace HarciKalapacs.Renderer
             }
         }
 
-        //public static void MoveUnit(Grid grid)
-        public static void MoveUnit()
+        public static void MoveUnit(Grid dest)
         {
-            //Units u = grid.DataContext as Units;
             Units u = ActualSelectedUnit.DataContext as Units;
             double x = u.XPos * MapConfig.TileHeight;
             double y = u.YPos * MapConfig.TileWidth;
@@ -501,7 +499,8 @@ namespace HarciKalapacs.Renderer
             double xdes = u.XPos * MapConfig.TileHeight;
             double ydes = u.YPos * MapConfig.TileWidth;
             Thickness destination = new Thickness(xdes, ydes, 0, 0);
-            ActualSelectedUnit.Margin = destination;        
+            ActualSelectedUnit.Margin = destination;
+            //ActualSelectedUnit.
         }      
 
         #endregion
@@ -752,7 +751,6 @@ namespace HarciKalapacs.Renderer
             (UnitPanelLeftColumn.Children[0] as Label).Content = (ActualSelectedUnit.DataContext as Units).Hp + "/" + (ActualSelectedUnit.DataContext as Units).MaxHp;
 
             Units unit = ActualSelectedUnit.DataContext as Units;
-            // Lehet nem jó
             if (unit.CanAttack)
             {
                 (UnitPanelCenterColumn.Children[1] as Label).Content = "🗡";

@@ -54,12 +54,14 @@
             MapRenderer.playerGolds.Content = this.model.PlayerGold + " arany";
             MapRenderer.roundCounter.Content = this.model.Round + ". kör";
 
+           
+
             if (this.model.LeftSteps <= 0)
             {
                 for (int i = 0; i < this.model.MaxSteps; i++)
                 {
                     MapRenderer.VisibleMapTiles();
-                    MapRenderer.MoveUnit();
+                    //MapRenderer.MoveUnit();
                     //this.inGameLogic.AIDecisions();
                     
                 }
@@ -335,7 +337,7 @@
                 int y = (int)(destination.Margin.Top / MapConfig.TileHeight);
                 if (this.inGameLogic.Move(actualSelectedUnit, x, y))
                 {
-                    
+                    MapRenderer.MoveUnit(sender as Grid);
                     this.inGameLogic.StepOccured();
                     GameControl();
                 }
