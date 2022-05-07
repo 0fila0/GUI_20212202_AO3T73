@@ -102,6 +102,9 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+*.dll
+*.cache
+*.pdb
 
 # Chutzpah Test files
 _Chutzpah*
@@ -401,3 +404,10 @@ FodyWeavers.xsd
 *.sln.iml
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp
+vs/HarciKalapacs/HarciKalapacs.Repository/obj/Debug/net5.0/HarciKalapacs.Repository.csproj.FileListAbsolute.txt
+vs/HarciKalapacs/HarciKalapacs.UI/obj/Debug/net5.0-windows/HarciKalapacs.UI.csproj.FileListAbsolute.txt
+vs/HarciKalapacs/HarciKalapacs.Model/obj/Debug/net5.0/HarciKalapacs.Model.csproj.FileListAbsolute.txt
+vs/HarciKalapacs/HarciKalapacs.Renderer/obj/Debug/net5.0-windows/HarciKalapacs.Renderer.csproj.FileListAbsolute.txt
+vs/HarciKalapacs/HarciKalapacs.Repository/obj/Debug/net5.0/HarciKalapacs.Repository.csproj.FileListAbsolute.txt
+vs/HarciKalapacs/HarciKalapacs.UI/obj/Debug/net5.0-windows/HarciKalapacs.UI.csproj.FileListAbsolute.txt
+vs/HarciKalapacs/SoundsRenderer/obj/Debug/net5.0-windows/SoundsRenderer.csproj.FileListAbsolute.txt

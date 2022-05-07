@@ -10,15 +10,3 @@ D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Reposito
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.dll
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\ref\HarciKalapacs.Repository.dll
 D:\Asztal\Prog4_Game\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.pdb
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\bin\Debug\net5.0\HarciKalapacs.Repository.deps.json
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\bin\Debug\net5.0\HarciKalapacs.Repository.dll
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\bin\Debug\net5.0\ref\HarciKalapacs.Repository.dll
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\bin\Debug\net5.0\HarciKalapacs.Repository.pdb
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.csprojAssemblyReference.cache
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.AssemblyInfoInputs.cache
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.AssemblyInfo.cs
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.csproj.CoreCompileInputs.cache
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.dll
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\ref\HarciKalapacs.Repository.dll
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\HarciKalapacs.Repository\obj\Debug\net5.0\HarciKalapacs.Repository.pdb
