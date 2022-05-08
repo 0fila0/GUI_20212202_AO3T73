@@ -15,6 +15,8 @@ namespace HarciKalapacs.Repository.GameElements
             this.AttackValue = UnitsConfig.Controllable.HelicopterConfig.Damage;
             this.DyingImage = UnitsConfig.Controllable.HelicopterConfig.DyingImage;
             this.CanFly = true;
+            this.CanAttack = true;
+            this.CanHeal = false;
 
             if (this.Hp == 0)
             {

@@ -14,7 +14,6 @@ C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRend
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\bin\Debug\net5.0-windows\SoundsRenderer.dll
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\bin\Debug\net5.0-windows\ref\SoundsRenderer.dll
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\bin\Debug\net5.0-windows\SoundsRenderer.pdb
-C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\obj\Debug\net5.0-windows\SoundsRenderer.csprojAssemblyReference.cache
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\obj\Debug\net5.0-windows\SoundsRenderer.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\obj\Debug\net5.0-windows\SoundsRenderer.AssemblyInfoInputs.cache
 C:\Users\gomba\Documents\Projekt\GUI_20212202_AO3T73\vs\HarciKalapacs\SoundsRenderer\obj\Debug\net5.0-windows\SoundsRenderer.AssemblyInfo.cs

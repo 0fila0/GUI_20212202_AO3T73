@@ -348,7 +348,7 @@ namespace HarciKalapacs.Renderer
                         // inSight == null means it is the end of the map.
                         if (inRange != null)
                         {
-                            Grid inRangeUnitGrid = UnitGrids.FirstOrDefault(x => x.Margin == inRange.Margin);
+                            Grid inRangeUnitGrid = UnitGrids.FirstOrDefault(x => x.Margin == inRange.Margin && x.DataContext is Units);
 
                             // if there is a unit
                             if (inRangeUnitGrid != null)
@@ -491,15 +491,22 @@ namespace HarciKalapacs.Renderer
         }
 
         public static void MoveUnit(Grid dest)
-        //public static void MoveUnit(Unit)
-
         {
-            Units u = ActualSelectedUnit.DataContext as Units;
-            double xdes = u.XPos * MapConfig.TileHeight;
-            double ydes = u.YPos * MapConfig.TileWidth;
-            Thickness destination = new Thickness(xdes, ydes, 0, 0);
-            ActualSelectedUnit.Margin = destination;
-            //ActualSelectedUnit.
+            //Grid p = dest;
+
+            //ActualSelectedUnit.Margin = dest.Margin;
+            //dest.DataContext = u;
+            //dest.
+            //ActualSelectedUnit.DataContext = null;
+            dest.DataContext = ActualSelectedUnit.DataContext;
+            dest.Background = ActualSelectedUnit.Background;
+            dest.Margin = ActualSelectedUnit.Margin;
+            dest.Visibility = Visibility.Visible;
+            ActualSelectedUnit.DataContext = null;
+            ActualSelectedUnit.Background = null;
+            ActualSelectedUnit.Visibility = Visibility.Hidden;
+            
+
         }      
 
         #endregion

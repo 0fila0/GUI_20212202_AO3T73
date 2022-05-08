@@ -16,6 +16,9 @@ namespace HarciKalapacs.Repository.GameElements
             this.Vision = UnitsConfig.Controllable.TankConfig.Vision;
             this.AttackValue = UnitsConfig.Controllable.TankConfig.Damage;
             this.DyingImage = UnitsConfig.Controllable.TankConfig.DyingImage;
+            this.CanAttack = true;
+            this.CanFly = false;
+            this.CanHeal = false;
 
             if (this.Hp == 0)
             {

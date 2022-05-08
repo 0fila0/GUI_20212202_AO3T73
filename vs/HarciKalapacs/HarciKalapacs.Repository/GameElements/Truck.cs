@@ -16,6 +16,9 @@ namespace HarciKalapacs.Repository.GameElements
             this.Vision = UnitsConfig.Controllable.TruckConfig.Vision;
             this.HealValue = UnitsConfig.Controllable.TruckConfig.Heal;
             this.DyingImage = UnitsConfig.Controllable.TruckConfig.DyingImage;
+            this.CanAttack = false;
+            this.CanFly = false;
+            this.CanHeal = true;
 
             if (this.Hp == 0)
             {
