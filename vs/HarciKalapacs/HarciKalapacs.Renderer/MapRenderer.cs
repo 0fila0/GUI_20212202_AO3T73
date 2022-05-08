@@ -491,11 +491,10 @@ namespace HarciKalapacs.Renderer
         }
 
         public static void MoveUnit(Grid dest)
+        //public static void MoveUnit(Unit)
+
         {
             Units u = ActualSelectedUnit.DataContext as Units;
-            double x = u.XPos * MapConfig.TileHeight;
-            double y = u.YPos * MapConfig.TileWidth;
-            u.XPos += 1;
             double xdes = u.XPos * MapConfig.TileHeight;
             double ydes = u.YPos * MapConfig.TileWidth;
             Thickness destination = new Thickness(xdes, ydes, 0, 0);
