@@ -337,7 +337,7 @@
                 int y = (int)(destination.Margin.Top / MapConfig.TileHeight);
                 if (this.inGameLogic.Move(actualSelectedUnit, x, y))
                 {
-                    MapRenderer.MoveUnit(destination);
+                    MapRenderer.MoveUnit();
                     this.inGameLogic.StepOccured();
                     GameControl();
                 }
