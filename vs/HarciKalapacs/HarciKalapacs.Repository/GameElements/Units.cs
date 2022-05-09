@@ -135,8 +135,8 @@ namespace HarciKalapacs.Repository.GameElements
 
         public void Move(int x, int y)
         {
-            this.YPos = x;
-            this.XPos = y;
+            this.YPos = y;
+            this.XPos = x;
         }
 
         public void Attack(Units target)
