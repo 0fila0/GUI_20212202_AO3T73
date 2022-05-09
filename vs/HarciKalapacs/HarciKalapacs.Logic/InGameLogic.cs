@@ -87,9 +87,30 @@ namespace HarciKalapacs.Logic
             throw new NotImplementedException();
         }
 
+        //not tested
         public bool UpgradeMaxHp(Units unit)
-        {
-            throw new NotImplementedException();
+        {   
+            
+            if (unit.Hp>0)             
+            {  
+             unit.MaxHp = unit.MaxHp + 10;
+                int HPdifference = unit.MaxHp - unit.Hp;
+                if (HPdifference>10)
+                {
+                    unit.Hp = unit.Hp + 10;
+                    return true;
+                }
+                else
+                {
+                    unit.Hp = unit.MaxHp;
+                    return true;
+                }
+   
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
