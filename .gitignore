@@ -14,7 +14,10 @@
 *.user
 *.userosscache
 *.sln.docstates
+<<<<<<< HEAD
 *.cache
+=======
+>>>>>>> master
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -103,8 +106,11 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+<<<<<<< HEAD
 *.dll
 *.pdb
+=======
+>>>>>>> master
 
 # Chutzpah Test files
 _Chutzpah*
@@ -403,6 +409,7 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
+<<<<<<< HEAD
 # End of https://www.toptal.com/developers/gitignore/api/csharp
 vs/HarciKalapacs/HarciKalapacs.Repository/obj/Debug/net5.0/HarciKalapacs.Repository.csproj.FileListAbsolute.txt
 vs/HarciKalapacs/HarciKalapacs.UI/obj/Debug/net5.0-windows/HarciKalapacs.UI.csproj.FileListAbsolute.txt
@@ -411,3 +418,6 @@ vs/HarciKalapacs/HarciKalapacs.Renderer/obj/Debug/net5.0-windows/HarciKalapacs.R
 vs/HarciKalapacs/HarciKalapacs.Repository/obj/Debug/net5.0/HarciKalapacs.Repository.csproj.FileListAbsolute.txt
 vs/HarciKalapacs/HarciKalapacs.UI/obj/Debug/net5.0-windows/HarciKalapacs.UI.csproj.FileListAbsolute.txt
 vs/HarciKalapacs/SoundsRenderer/obj/Debug/net5.0-windows/SoundsRenderer.csproj.FileListAbsolute.txt
+=======
+# End of https://www.toptal.com/developers/gitignore/api/csharp
+>>>>>>> master

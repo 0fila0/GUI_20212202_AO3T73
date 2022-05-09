@@ -498,13 +498,14 @@ namespace HarciKalapacs.Renderer
             //dest.DataContext = u;
             //dest.
             //ActualSelectedUnit.DataContext = null;
-            dest.DataContext = ActualSelectedUnit.DataContext;
-            dest.Background = ActualSelectedUnit.Background;
-            dest.Margin = ActualSelectedUnit.Margin;
-            dest.Visibility = Visibility.Visible;
-            ActualSelectedUnit.DataContext = null;
-            ActualSelectedUnit.Background = null;
-            ActualSelectedUnit.Visibility = Visibility.Hidden;
+            //dest.DataContext = ActualSelectedUnit.DataContext;
+            //dest.Background = ActualSelectedUnit.Background;
+            //dest.Margin = ActualSelectedUnit.Margin;
+            //dest.Visibility = Visibility.Visible;
+            //ActualSelectedUnit.DataContext = null;
+            //ActualSelectedUnit.Background = null;
+            //ActualSelectedUnit.Visibility = Visibility.Hidden;
+            FillOrRefreshUnitPanel();
             
 
         }      
