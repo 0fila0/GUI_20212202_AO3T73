@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    public abstract class Controllable : Units
+   public abstract class Controllable  //==> Merged with IUnit
     {
         int vision;
         int maxMove;
@@ -20,10 +20,10 @@ namespace HarciKalapacs.Repository.GameElements
         public string IdleImage3 { get => idleImage3; set => idleImage3 = value; }
         public string AttackImage { get => attackImage; set => attackImage = value; }
 
-        void Move(int x, int y)
+        /*void Move(int x, int y)
         {
             this.YPos = x;
             this.XPos = y;
-        }
+        }*/
     }
 }

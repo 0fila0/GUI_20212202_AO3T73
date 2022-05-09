@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    class Fort : Units
+    class Fort : Terrain
     {
         public Fort()
         {
             this.MaxHp = UnitsConfig.Base.FortConfig.MaxHp;
+            terrainType = TerrainType.Fort;
 
             if (this.Hp == 0)
             {
                 this.Hp = this.MaxHp;
             }
         }
+
+       
     }
 }

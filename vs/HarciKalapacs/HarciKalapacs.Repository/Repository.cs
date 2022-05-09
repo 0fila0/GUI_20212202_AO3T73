@@ -8,16 +8,17 @@
 
     public class Repository : IRepository
     {
-        List<Units> allUnits;
+        List<IMapItem> allUnits;
         List<int> mapSize;
         List<int> otherDetails;
 
         public Repository()
         {
-            this.allUnits = new List<Units>();
+            //lehet szar
+            this.allUnits = new List<IMapItem>();
         }
 
-        public IEnumerable<Units> AllUnits => allUnits;
+        public ICollection<IMapItem> AllUnits => allUnits;
 
         public IEnumerable<int> MapSize => mapSize;
 
@@ -36,7 +37,12 @@
                 if (json != string.Empty)
                 {
                     List<Helicopter> helicopters = JsonConvert.DeserializeObject<List<Helicopter>>(json);
-                    helicopters.ForEach(x => this.allUnits.Add(x));
+                    //helicopters.ForEach(x => this.allUnits.Add(x));
+                    foreach (var item in helicopters)
+                    {
+                        item.UnitType = UnitType.Helicopter;
+                        this.allUnits.Add(item);
+                    }
                 }
 
                 path = relativePath + @"\tank.json";
@@ -44,7 +50,12 @@
                 if (json != string.Empty)
                 {
                     List<Tank> tanks = JsonConvert.DeserializeObject<List<Tank>>(json);
-                    tanks.ForEach(x => this.allUnits.Add(x));
+                    //tanks.ForEach(x => this.allUnits.Add(x));
+                    foreach (var item in tanks)
+                    {
+                        item.UnitType = UnitType.Tank;
+                        this.allUnits.Add(item);
+                    }
                 }
 
                 path = relativePath + @"\infantry.json";
@@ -52,7 +63,12 @@
                 if (json != string.Empty)
                 {
                     List<Infantryman> infantries = JsonConvert.DeserializeObject<List<Infantryman>>(json);
-                    infantries.ForEach(x => this.allUnits.Add(x));
+                    //infantries.ForEach(x => this.allUnits.Add(x));
+                    foreach (var item in infantries)
+                    {
+                        item.UnitType = UnitType.InfantryMan;
+                        this.allUnits.Add(item);
+                    }
                 }
 
                 path = relativePath + @"\truck.json";
@@ -60,7 +76,12 @@
                 if (json != string.Empty)
                 {
                     List<Truck> trucks = JsonConvert.DeserializeObject<List<Truck>>(json);
-                    trucks.ForEach(x => this.allUnits.Add(x));
+                    //trucks.ForEach(x => this.allUnits.Add(x));
+                    foreach (var item in trucks)
+                    {
+                        item.UnitType = UnitType.Truck;
+                        this.allUnits.Add(item);
+                    }
                 }
 
                 path = relativePath + @"\obstacle.json";
@@ -87,6 +108,7 @@
                     forts.ForEach(x => this.allUnits.Add(x));
                 }
 
+                //idle Image 1 to idleimage
                 this.allUnits.ForEach(x => x.IdleImage1 = "");
 
                 path = relativePath + @"\mapSize.json";

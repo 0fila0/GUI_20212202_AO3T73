@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    public class Obstacle : Units
+    public class Obstacle : Terrain
     {
         public Obstacle()
         {
+            terrainType = TerrainType.Obstacle;
             if (this.MaxHp == 0)
             {
                 int rnd = new Random().Next(1, 3);

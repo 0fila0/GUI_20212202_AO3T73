@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    public abstract class Healer : Controllable
+    public interface  Healer 
     {
-        int heal;
+        int heal { get; set; }
 
         public int Heal { get => heal; set => heal = value; }
 
-        void HealUnit(Units target)
-        {
+        void HealUnit(Units target);
+       /* {
             target.Hp += this.heal;
-        }
+        }*/
     }
 }

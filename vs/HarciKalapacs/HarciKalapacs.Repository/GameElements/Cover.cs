@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    class Cover : Units
+    class Cover : Terrain
     {
         int absorption;
 
         public Cover()
         {
+            terrainType = TerrainType.Cover;
             if (this.MaxHp == 0)
             {
                 int rnd = new Random().Next(1, 3);
@@ -22,10 +23,11 @@ namespace HarciKalapacs.Repository.GameElements
                 else
                 {
                     this.MaxHp = 90;
+                    
                 }
             }
         }
 
-        public int Absorption { get => absorption; set => absorption = value; }
+       
     }
 }

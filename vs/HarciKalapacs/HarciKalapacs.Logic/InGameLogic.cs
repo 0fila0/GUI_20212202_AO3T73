@@ -22,24 +22,49 @@ namespace HarciKalapacs.Logic
             throw new NotImplementedException();
         }
 
-        public bool Attack(Attacker attacker, Units target)
+        public bool Attack(Units attacker, Units target)
         {
-            throw new NotImplementedException();
+            if (attacker.CanAttack)
+            {
+                target.Hp = target.Hp - (attacker.AttackValue - target.ArmorValue);
+                return true;
+            }
+            return false;
         }
 
-        public bool Heal(Healer healer, Units target)
+        public bool Heal(Units healer, Units target)
         {
-            throw new NotImplementedException();
+            if (healer.CanHeal)
+            {
+                if(target.MaxHp-target.Hp >= healer.HealValue)
+                {
+                    target.Hp += healer.HealValue;
+                }
+                else
+                {
+                    target.Hp = target.MaxHp;
+                    
+                }
+                return true;
+            }
+            return false;
         }
 
         public bool Move(Units unit, int x, int y)
         {
-            throw new NotImplementedException();
+            int distance = Math.Abs(unit.XPos - x) + Math.Abs(unit.YPos - y);
+            if (unit.MaxMove >= distance)
+            {
+                unit.Move(x, y);
+                return true;
+            }
+            return false;
+            
         }
 
         public void StartTurn()
         {
-            throw new NotImplementedException();
+            this.model.LeftSteps = this.model.PlayerTurn;
         }
 
         public void StepOccured()
@@ -47,17 +72,17 @@ namespace HarciKalapacs.Logic
             this.model.LeftSteps--;
         }
 
-        public void SwitchVerticalPosition(AirUnit airUnit)
+        public void SwitchVerticalPosition(Units airUnit)
         {
             airUnit.SwitchVerticalPosition();
         }
 
-        public bool UpgradeDamage(Attacker unit)
+        public bool UpgradeDamage(Units unit)
         {
             throw new NotImplementedException();
         }
 
-        public bool UpgradeHealer(Healer unit)
+        public bool UpgradeHealer(Units unit)
         {
             throw new NotImplementedException();
         }

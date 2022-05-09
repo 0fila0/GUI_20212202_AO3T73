@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    public abstract class Attacker : Controllable
+    public abstract class Attacker : Controllable //=>Merged with Units
     {
         int damage;
 
