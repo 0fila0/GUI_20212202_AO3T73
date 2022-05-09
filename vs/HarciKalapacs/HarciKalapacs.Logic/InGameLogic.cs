@@ -110,9 +110,18 @@ namespace HarciKalapacs.Logic
             }
         }
 
+        //not tested
         public bool UpgradeHealer(Units unit)
         {
-            throw new NotImplementedException();
+            if (unit.CanHeal)
+            {
+                unit.HealValue = unit.HealValue + 5;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         //not tested
@@ -121,11 +130,11 @@ namespace HarciKalapacs.Logic
             
             if (unit.Hp>0)             
             {  
-                unit.MaxHp = unit.MaxHp + 40;
+                unit.MaxHp = unit.MaxHp + 20;
                 int HPdifference = unit.MaxHp - unit.Hp;
-                if (HPdifference>40)
+                if (HPdifference>20)
                 {
-                    unit.Hp = unit.Hp + 40;
+                    unit.Hp = unit.Hp + 20;
                     return true;
                 }
                 else
