@@ -77,9 +77,37 @@ namespace HarciKalapacs.Logic
             airUnit.SwitchVerticalPosition();
         }
 
+        // not tested
         public bool UpgradeDamage(Units unit)
         {
-            throw new NotImplementedException();
+            if (unit.CanAttack)
+            {
+                if (unit.AttackValue<=15)
+                {
+
+                    unit.AttackValue = unit.AttackValue + 15;
+
+                    return true;
+                }
+                else if (unit.AttackValue >= 15 && unit.AttackValue <=25)                 
+                {
+
+                    unit.AttackValue = unit.AttackValue + 10;
+
+                    return true;
+                }
+                else
+                {
+                    unit.AttackValue = unit.AttackValue + 5;
+
+                    return true;
+                }
+
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool UpgradeHealer(Units unit)
@@ -93,24 +121,24 @@ namespace HarciKalapacs.Logic
             
             if (unit.Hp>0)             
             {  
-             unit.MaxHp = unit.MaxHp + 10;
+                unit.MaxHp = unit.MaxHp + 40;
                 int HPdifference = unit.MaxHp - unit.Hp;
-                if (HPdifference>10)
+                if (HPdifference>40)
                 {
-                    unit.Hp = unit.Hp + 10;
+                    unit.Hp = unit.Hp + 40;
                     return true;
                 }
                 else
                 {
                     unit.Hp = unit.MaxHp;
                     return true;
-                }
-   
+                }  
             }
             else
             {
                 return false;
             }
+
         }
     }
 }
