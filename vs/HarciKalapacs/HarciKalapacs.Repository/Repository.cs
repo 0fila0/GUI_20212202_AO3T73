@@ -145,7 +145,7 @@
         /// <summary>
         /// Functionally same ad LoadMap, but gets items form a save directory, which can be found in this.SavedGames. Nulls mapSive, otherDetails and allUnits before doing anything.
         /// </summary>
-        /// <param name="savedGamePath"> second item of string[] savedGames, first is a nam to write out</param>
+        /// <param name="savedGamePath"> second item of string[] savedGames, first is a name to write out</param>
         /// <returns>True or Fase, according exception</returns>
         public bool LoadSavedGame(string savedGamePath)
         {
@@ -317,6 +317,12 @@
 
                 File.WriteAllText(savedir + @"\mapSize.json", JsonConvert.SerializeObject(this.mapSize));
                 File.WriteAllText(savedir + @"\otherDetails.json", JsonConvert.SerializeObject(this.otherDetails));
+
+                // Adding new save to SavedGames List
+                string dirname = Path.GetFileName(savedir);
+                string[] array = { dirname, savedir };
+                SavedGames.Add(array);
+
                 return true;
                 
             }
