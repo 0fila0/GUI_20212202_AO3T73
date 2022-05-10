@@ -490,7 +490,7 @@ namespace HarciKalapacs.Renderer
             }
         }
 
-        public static void MoveUnit(Grid dest)
+        public static void MoveUnit()
         {
             //Grid p = dest;
 
@@ -505,7 +505,20 @@ namespace HarciKalapacs.Renderer
             //ActualSelectedUnit.DataContext = null;
             //ActualSelectedUnit.Background = null;
             //ActualSelectedUnit.Visibility = Visibility.Hidden;
-            FillOrRefreshUnitPanel();
+            
+            
+           Units u = ActualSelectedUnit.DataContext as Units;
+           double xdes = u.XPos * MapConfig.TileHeight;
+           double ydes = u.YPos * MapConfig.TileWidth;
+           Thickness destination = new Thickness(xdes, ydes, 0, 0);
+           UnitGrids.Where(x => x.Name == ActualSelectedUnit.Name).FirstOrDefault().Margin = destination;
+           ActualSelectedUnit.Margin = destination;
+
+           VisibleMapTiles();
+           HorizontalWhereCanMove(UnitGrids.Where(x => x.Name == ActualSelectedUnit.Name).FirstOrDefault().DataContext as Units);
+           VerticalWhereCanMove(UnitGrids.Where(x => x.Name == ActualSelectedUnit.Name).FirstOrDefault().DataContext as Units);
+            
+            //FillOrRefreshUnitPanel();
             
 
         }      
@@ -713,6 +726,7 @@ namespace HarciKalapacs.Renderer
                         if (ActualSelectedUnit.DataContext == null)
                         {
                             ActualSelectedUnit.DataContext = gridSender.DataContext;
+                            ActualSelectedUnit.Name = gridSender.Name;
                             ActualSelectedUnit.Margin = gridSender.Margin;
                             ActualSelectedUnit.Visibility = Visibility.Visible;
                             FillOrRefreshUnitPanel();

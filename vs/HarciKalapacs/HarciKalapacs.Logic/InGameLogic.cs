@@ -77,19 +77,77 @@ namespace HarciKalapacs.Logic
             airUnit.SwitchVerticalPosition();
         }
 
+        // not tested
         public bool UpgradeDamage(Units unit)
         {
-            throw new NotImplementedException();
+            if (unit.CanAttack)
+            {
+                if (unit.AttackValue<=15)
+                {
+
+                    unit.AttackValue = unit.AttackValue + 15;
+
+                    return true;
+                }
+                else if (unit.AttackValue >= 15 && unit.AttackValue <=25)                 
+                {
+
+                    unit.AttackValue = unit.AttackValue + 10;
+
+                    return true;
+                }
+                else
+                {
+                    unit.AttackValue = unit.AttackValue + 5;
+
+                    return true;
+                }
+
+            }
+            else
+            {
+                return false;
+            }
         }
 
+        //not tested
         public bool UpgradeHealer(Units unit)
         {
-            throw new NotImplementedException();
+            if (unit.CanHeal)
+            {
+                unit.HealValue = unit.HealValue + 5;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
+        //not tested
         public bool UpgradeMaxHp(Units unit)
-        {
-            throw new NotImplementedException();
+        {   
+            
+            if (unit.Hp>0)             
+            {  
+                unit.MaxHp = unit.MaxHp + 20;
+                int HPdifference = unit.MaxHp - unit.Hp;
+                if (HPdifference>20)
+                {
+                    unit.Hp = unit.Hp + 20;
+                    return true;
+                }
+                else
+                {
+                    unit.Hp = unit.MaxHp;
+                    return true;
+                }  
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }
