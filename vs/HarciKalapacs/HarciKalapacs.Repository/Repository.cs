@@ -25,7 +25,8 @@
             var temp = Directory.GetFileSystemEntries(savedir).ToList();
             foreach(var item in temp)
             {
-                string[] array = {item, savedir+@"\"+item };
+                string dirname = Path.GetFileName(item);
+                string[] array = {dirname, savedir+@"\"+dirname };
                 SavedGames.Add(array);
             }
         }
@@ -137,6 +138,7 @@
             {
                 return false;
             }
+
             return true;
         }
 
