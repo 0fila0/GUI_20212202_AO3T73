@@ -29,7 +29,7 @@ namespace HarciKalapacs.Repository
         /// Reads the savedGame.json file. Fills AllUnits list with units.
         /// </summary>
         /// <returns>True if the loading was successful.</returns>
-        public bool LoadSavedGame();
+        public bool LoadSavedGame(string savedGamePath);
 
         /// <summary>
         /// Saves the game.
