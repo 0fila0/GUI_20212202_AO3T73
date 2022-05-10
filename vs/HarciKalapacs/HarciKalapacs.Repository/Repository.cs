@@ -137,7 +137,6 @@
             {
                 return false;
             }
-
             return true;
         }
 
@@ -148,9 +147,9 @@
         /// <returns>True or Fase, according exception</returns>
         public bool LoadSavedGame(string savedGamePath)
         {
-            this.mapSize = null;
-            this.otherDetails = null;
-            this.allUnits = null;
+            this.mapSize.RemoveAll(x => x == x);
+            this.otherDetails.RemoveAll(x => x == x);
+            this.allUnits.RemoveAll(x => x == x);
             string json = string.Empty;
             List<Units> u = new List<Units>();
             try
@@ -262,53 +261,53 @@
         {
             try
             {
-                string savedir = Directory.GetCurrentDirectory() + @"\Maps" + @"\SavedGames" + @"\Game_" + DateTime.Now.ToString();
+                string savedir = Directory.GetCurrentDirectory() + @"\Maps" + @"\SavedGames" + @"\Game_" + DateTime.Now.ToString().Replace(".","_").Replace(":","-").Replace(" ","");
                 Directory.CreateDirectory(savedir);
 
                 List<Tank> tankListToSerialize = new List<Tank>();
-                foreach (Tank item in AllUnits)
+                foreach (Tank item in AllUnits.OfType<Tank>())
                 {
                     tankListToSerialize.Add(item);
                 }
                 File.WriteAllText(savedir + @"\tank.json",JsonConvert.SerializeObject(tankListToSerialize));
 
                 List<Infantryman> infantryListToSerialize = new List<Infantryman>();
-                foreach (Infantryman item in AllUnits)
+                foreach (Infantryman item in AllUnits.OfType<Infantryman>())
                 {
                     infantryListToSerialize.Add(item);
                 }
                 File.WriteAllText(savedir + @"\infantry.json", JsonConvert.SerializeObject(infantryListToSerialize)); 
                 
                 List<Helicopter> helicopterListToSerialize = new List<Helicopter>();
-                foreach (Helicopter item in AllUnits)
+                foreach (Helicopter item in AllUnits.OfType<Helicopter>())
                 {
                     helicopterListToSerialize.Add(item);
                 }
                 File.WriteAllText(savedir + @"\helicopter.json", JsonConvert.SerializeObject(helicopterListToSerialize)); 
                 
                 List<Truck> truckListToSerialize = new List<Truck>();
-                foreach (Truck item in AllUnits)
+                foreach (Truck item in AllUnits.OfType<Truck>())
                 {
                     truckListToSerialize.Add(item);
                 }
                 File.WriteAllText(savedir + @"\truck.json", JsonConvert.SerializeObject(truckListToSerialize)); 
                 
                 List<Cover> coverListToSerialize = new List<Cover>();
-                foreach (Cover item in AllUnits)
+                foreach (Cover item in AllUnits.OfType<Cover>())
                 {
                     coverListToSerialize.Add(item);
                 }
                 File.WriteAllText(savedir + @"\cover.json", JsonConvert.SerializeObject(coverListToSerialize)); 
                 
                 List<Fort> fortListToSerialize = new List<Fort>();
-                foreach (Fort item in AllUnits)
+                foreach (Fort item in AllUnits.OfType<Fort>())
                 {
                     fortListToSerialize.Add(item);
                 }
                 File.WriteAllText(savedir + @"\fort.json", JsonConvert.SerializeObject(fortListToSerialize));
 
                 List<Obstacle> obstacleListToSerialize = new List<Obstacle>();
-                foreach (Obstacle item in AllUnits)
+                foreach (Obstacle item in AllUnits.OfType<Obstacle>())
                 {
                     obstacleListToSerialize.Add(item);
                 }
