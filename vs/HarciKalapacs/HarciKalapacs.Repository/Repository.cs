@@ -138,7 +138,6 @@
             {
                 return false;
             }
-
             return true;
         }
 
@@ -261,6 +260,11 @@
         /// <returns>True ir false according to exception</returns>
         public  bool SaveGame()
         {
+            foreach(var item in allUnits)
+            {
+                item.IdleImage1 = string.Empty;
+                item.DyingImage = string.Empty;
+            }
             try
             {
                 string savedir = Directory.GetCurrentDirectory() + @"\Maps" + @"\SavedGames" + @"\Game_" + DateTime.Now.ToString().Replace(".","_").Replace(":","-").Replace(" ","");

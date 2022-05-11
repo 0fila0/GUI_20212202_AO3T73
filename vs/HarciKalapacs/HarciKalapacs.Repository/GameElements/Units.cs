@@ -66,26 +66,7 @@ namespace HarciKalapacs.Repository.GameElements
                 else if (this.Team == Team.enemy)
                 {
                     this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Enemy\enemy" + type + "Idle1.png";
-                }
-                else
-                {
-                    // Let's be an obstacle.
-                    if (this.MaxHp == UnitsConfig.Natural.Cover.FenceConfig.MaxHp)
-                    {
-                        this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Cover\fence" + type + "Idle1.png";
-                    }
-                    else if (this.MaxHp == UnitsConfig.Natural.Cover.TreeConfig.MaxHp)
-                    {
-                        this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Cover\tree" + type + "Idle1.png";
-                    }
-                    else if (this.MaxHp == UnitsConfig.Natural.Obstacle.HouseConfig.MaxHp)
-                    {
-                        this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Obstacle\house" + type + "Idle1.png";
-                    }
-                    else
-                    {
-                        this.idleImage1 = Directory.GetCurrentDirectory() + @"\Images" + @"\Units" + @"\Natural\Obstacle\mountain" + type + "Idle1.png";
-                    }
+                    
                 }
             }
         }
