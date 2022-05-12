@@ -34,7 +34,7 @@ namespace HarciKalapacs.Logic
         /// <param name="attacker">This unit attacks.</param>
         /// <param name="target">The target.</param>
         /// <returns>True, if the attack was successful</returns>
-        public bool Attack(Units attacker, Units target);
+        public bool Attack(Units attacker, IMapItem target);
 
         /// <summary>
         /// Heals target unit.
@@ -42,7 +42,7 @@ namespace HarciKalapacs.Logic
         /// <param name="healer">This unit heals another one.</param>
         /// <param name="target">This unit needs healing.</param>
         /// <returns>True, if the healing was successful.</returns>
-        public bool Heal(Units healer, Units target);
+        public bool Heal(Units healer, IMapItem target);
 
         /// <summary>
         /// Air unit takes off or lands.
@@ -77,5 +77,13 @@ namespace HarciKalapacs.Logic
         /// 3) The units furthest from the base retreat.
         /// </summary>
         public void AIDecisions();
+
+        public Units AISelectUnit();
+
+        public void AIEnemyUnitsCountNow();
+
+        public void AISetup();
+
+        public void AIDamageDetails();
     }
 }

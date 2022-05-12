@@ -22,8 +22,8 @@ namespace HarciKalapacs.Renderer
         public static Label roundCounter;
         public static Label leftSteps;
         public static Label playerGolds;
+        public static Grid ActualSelectedUnit;
 
-        private static Grid ActualSelectedUnit;
         private static List<Grid> UnitGrids = new List<Grid>();
         private static List<Grid> InvisibleTiles = new List<Grid>();
         private static Grid UnitPanel;
@@ -214,7 +214,7 @@ namespace HarciKalapacs.Renderer
             roundCounter.HorizontalAlignment = HorizontalAlignment.Left;
             roundCounter.VerticalAlignment = VerticalAlignment.Center;
             playerGolds = new Label();
-            playerGolds.Name = "round";
+            playerGolds.Name = "golds";
             playerGolds.FontFamily = MapConfig.FontFamily;
             playerGolds.FontSize = MapConfig.BtFontSize;
             playerGolds.Margin = new Thickness(MainMenuConfig.WindowWidth / 4, 0, 0, 0);
@@ -238,7 +238,7 @@ namespace HarciKalapacs.Renderer
             {
                 invisible.Background = GetImage(MapConfig.TileOutOfSight);
                 invisible.Opacity = 1;
-                invisible.Visibility = Visibility.Visible;
+                invisible.Visibility = Visibility.Hidden;
             }
 
             foreach (Grid unitGrid in UnitGrids)
@@ -348,29 +348,32 @@ namespace HarciKalapacs.Renderer
                         // inSight == null means it is the end of the map.
                         if (inRange != null)
                         {
-                            Grid inRangeUnitGrid = UnitGrids.FirstOrDefault(x => x.Margin == inRange.Margin && x.DataContext is Units);
+                            Grid inRangeUnitGrid = UnitGrids.FirstOrDefault(x => x.Margin == inRange.Margin && x.DataContext is IMapItem);
 
                             // if there is a unit
                             if (inRangeUnitGrid != null)
                             {
-                                Units inRangeUnit = inRangeUnitGrid.DataContext as Units;
-                                if (inRangeUnit.Team == Team.enemy)
+                                IMapItem inRangeUnit = inRangeUnitGrid.DataContext as IMapItem;
+                                if (inRangeUnit is Units)
                                 {
-                                    inRange.Visibility = Visibility.Visible;
-                                    inRange.Opacity = MapTileOpacity;
-                                    inRange.Background = GetImage(MapConfig.TileEnemy);
+                                    if ((inRangeUnit as Units).Team == Team.enemy)
+                                    {
+                                        inRange.Visibility = Visibility.Visible;
+                                        inRange.Opacity = MapTileOpacity;
+                                        inRange.Background = GetImage(MapConfig.TileEnemy);
+                                    }
+                                    else if (selectedUnit is IHealer)
+                                    {
+                                        inRange.Visibility = Visibility.Visible;
+                                        inRange.Opacity = MapTileOpacity;
+                                        inRange.Background = GetImage(MapConfig.TilePlayer);
+                                    }
                                 }
-                                else if (inRangeUnit.Team == Team.natural)
+                                else if (inRangeUnit is Terrain)
                                 {
                                     inRange.Visibility = Visibility.Visible;
                                     inRange.Opacity = MapTileOpacity;
                                     inRange.Background = GetImage(MapConfig.TileNature);
-                                }
-                                else if (selectedUnit is Healer)
-                                {
-                                    inRange.Visibility = Visibility.Visible;
-                                    inRange.Opacity = MapTileOpacity;
-                                    inRange.Background = GetImage(MapConfig.TilePlayer);
                                 }
                             }
                         }
@@ -462,20 +465,20 @@ namespace HarciKalapacs.Renderer
                             // if there is a unit
                             if (inRangeUnitGrid != null)
                             {
-                                Units inRangeUnit = inRangeUnitGrid.DataContext as Units;
-                                if (inRangeUnit.Team == Team.enemy)
+                                IMapItem inRangeUnit = inRangeUnitGrid.DataContext as IMapItem;
+                                if (inRangeUnit is Units && (inRangeUnit as Units).Team == Team.enemy)
                                 {
                                     inRange.Visibility = Visibility.Visible;
                                     inRange.Opacity = MapTileOpacity;
                                     inRange.Background = GetImage(MapConfig.TileEnemy);
                                 }
-                                else if (inRangeUnit.Team == Team.natural)
+                                else if (inRangeUnit is Terrain)
                                 {
                                     inRange.Visibility = Visibility.Visible;
                                     inRange.Opacity = MapTileOpacity;
                                     inRange.Background = GetImage(MapConfig.TileNature);
                                 }
-                                else if (selectedUnit is Healer)
+                                else if (selectedUnit is IHealer)
                                 {
                                     inRange.Visibility = Visibility.Visible;
                                     inRange.Opacity = MapTileOpacity;
@@ -507,21 +510,42 @@ namespace HarciKalapacs.Renderer
             //ActualSelectedUnit.Visibility = Visibility.Hidden;
             
             
-           Units u = ActualSelectedUnit.DataContext as Units;
-           double xdes = u.XPos * MapConfig.TileHeight;
-           double ydes = u.YPos * MapConfig.TileWidth;
-           Thickness destination = new Thickness(xdes, ydes, 0, 0);
-           UnitGrids.Where(x => x.Name == ActualSelectedUnit.Name).FirstOrDefault().Margin = destination;
-           ActualSelectedUnit.Margin = destination;
+            Units u = ActualSelectedUnit.DataContext as Units;
+            double xdes = u.XPos * MapConfig.TileHeight;
+            double ydes = u.YPos * MapConfig.TileWidth;
+            Thickness destination = new Thickness(xdes, ydes, 0, 0);
+            UnitGrids.Where(x => x.Name == ActualSelectedUnit.Name).FirstOrDefault().Margin = destination;
+            ActualSelectedUnit.Margin = destination;
 
-           VisibleMapTiles();
-           HorizontalWhereCanMove(UnitGrids.Where(x => x.Name == ActualSelectedUnit.Name).FirstOrDefault().DataContext as Units);
-           VerticalWhereCanMove(UnitGrids.Where(x => x.Name == ActualSelectedUnit.Name).FirstOrDefault().DataContext as Units);
-            
+            VisibleMapTiles();
+            HorizontalWhereCanMove(UnitGrids.First(x => x.Name == ActualSelectedUnit.Name).DataContext as Units);
+            VerticalWhereCanMove(UnitGrids.First(x => x.Name == ActualSelectedUnit.Name).DataContext as Units);
             //FillOrRefreshUnitPanel();
-            
+        }
 
-        }      
+        public static void MoveEnemyUnit(Units selectedEnemy)
+        {
+            double xdes = selectedEnemy.XPos * MapConfig.TileHeight;
+            double ydes = selectedEnemy.YPos * MapConfig.TileWidth;
+            Thickness destination = new Thickness(xdes, ydes, 0, 0);
+            UnitGrids.First(x => x.DataContext == selectedEnemy).Margin = destination;
+            ActualSelectedUnit.Margin = destination;
+        }
+
+        public static void EnemyAttacksPlayer(Units target)
+        {
+
+        }
+
+        public static void AttackUnit(IMapItem target)
+        {
+            Grid deadUnit = UnitGrids.Where(x => (x.DataContext as IMapItem).XPos == target.XPos && (x.DataContext as IMapItem).YPos == target.YPos).FirstOrDefault();
+            UnitGrids.FirstOrDefault(x => x == deadUnit).Visibility = Visibility.Hidden;
+            UnitGrids.Remove(deadUnit);
+            VisibleMapTiles();
+            HorizontalWhereCanMove(UnitGrids.Where(x => x.Name == ActualSelectedUnit.Name).FirstOrDefault().DataContext as Units);
+            VerticalWhereCanMove(UnitGrids.Where(x => x.Name == ActualSelectedUnit.Name).FirstOrDefault().DataContext as Units);
+        }
 
         #endregion
 
@@ -720,8 +744,8 @@ namespace HarciKalapacs.Renderer
             {
                 if (gridSender.DataContext != null)
                 {
-                    Units unit = gridSender.DataContext as Units;
-                    if (unit.Team == Team.player)
+                    IMapItem unit = gridSender.DataContext as IMapItem;
+                    if ((unit is Units) && (unit as Units).Team == Team.player)
                     {
                         if (ActualSelectedUnit.DataContext == null)
                         {
@@ -731,7 +755,7 @@ namespace HarciKalapacs.Renderer
                             ActualSelectedUnit.Visibility = Visibility.Visible;
                             FillOrRefreshUnitPanel();
                             gridSender.Background = GetImage((gridSender.DataContext as Units).IdleImage1);
-                            CanActivityTiles(unit);
+                            CanActivityTiles(unit as Units);
                         }
                         else if (ActualSelectedUnit.DataContext != null && ActualSelectedUnit.DataContext == gridSender.DataContext)
                         {
@@ -782,7 +806,7 @@ namespace HarciKalapacs.Renderer
             else if (unit.CanHeal)
             {
                 (UnitPanelCenterColumn.Children[1] as Label).Content = "🛠";
-                (UnitPanelLeftColumn.Children[1] as Label).Content = (ActualSelectedUnit.DataContext as Healer).Heal;
+                (UnitPanelLeftColumn.Children[1] as Label).Content = (ActualSelectedUnit.DataContext as Units).HealValue;
                 (UnitPanelRightColumn.Children[1] as Grid).Visibility = Visibility.Visible;
                 (UnitPanelRightColumn.Children[2] as Grid).Visibility = Visibility.Collapsed;
             }

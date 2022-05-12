@@ -11,7 +11,7 @@ namespace HarciKalapacs.Model
         int mapWidth;
         int mapHeight;
         int mapNumber;
-        ICollection<IMapItem> allUnits;
+        IList<IMapItem> allUnits;
         int playerTurn;
         int maxSteps;
         int leftSteps;
@@ -25,7 +25,7 @@ namespace HarciKalapacs.Model
             this.AllUnits = new List<IMapItem>();
         }
 
-        public ICollection<IMapItem> AllUnits { get => allUnits; set => allUnits = value; }
+        public IList<IMapItem> AllUnits { get => allUnits; set => allUnits = value; }
         public int MapWidth { get => mapWidth; set => mapWidth = value; }
         public int MapHeight { get => mapHeight; set => mapHeight = value; }
         public int MapNumber { get => mapNumber; set => mapNumber = value; }
@@ -40,7 +40,7 @@ namespace HarciKalapacs.Model
             (this.AllUnits as List<IMapItem>).Clear();
             bool success = this.repository.LoadMap(level);
             this.mapNumber = level;
-            this.AllUnits = this.repository.AllUnits;
+            this.AllUnits = this.repository.AllUnits as IList<IMapItem>;
             this.ModifyAirUnitsVision();
             this.mapWidth = (this.repository.MapSize as List<int>)[0];
             this.mapHeight = (this.repository.MapSize as List<int>)[1];
