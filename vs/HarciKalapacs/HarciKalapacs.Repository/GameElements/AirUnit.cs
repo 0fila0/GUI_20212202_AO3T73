@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HarciKalapacs.Repository.GameElements
 {
-    public abstract class AirUnit : Attacker
+    public abstract class AirUnit : Attacker//=>Merged with units
     {
         bool isInTheAir;
 

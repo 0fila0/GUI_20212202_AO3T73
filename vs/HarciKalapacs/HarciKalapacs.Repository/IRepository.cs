@@ -11,7 +11,7 @@ namespace HarciKalapacs.Repository
     {
         public IEnumerable<int> MapSize { get; }
 
-        public IEnumerable<Units> AllUnits { get; }
+        public ICollection<IMapItem> AllUnits { get; }
 
         /// <summary>
         /// Contains: [0] round, [1] which player steps, [2] max steps, [3] left steps, [4] player golds, [5] enemy golds
@@ -29,7 +29,7 @@ namespace HarciKalapacs.Repository
         /// Reads the savedGame.json file. Fills AllUnits list with units.
         /// </summary>
         /// <returns>True if the loading was successful.</returns>
-        public bool LoadSavedGame();
+        public bool LoadSavedGame(string savedGamePath);
 
         /// <summary>
         /// Saves the game.

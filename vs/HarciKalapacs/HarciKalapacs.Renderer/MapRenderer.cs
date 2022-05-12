@@ -22,8 +22,8 @@ namespace HarciKalapacs.Renderer
         public static Label roundCounter;
         public static Label leftSteps;
         public static Label playerGolds;
+        public static Grid ActualSelectedUnit;
 
-        private static Grid ActualSelectedUnit;
         private static List<Grid> UnitGrids = new List<Grid>();
         private static List<Grid> InvisibleTiles = new List<Grid>();
         private static Grid UnitPanel;
@@ -32,7 +32,7 @@ namespace HarciKalapacs.Renderer
         // private static Label UnitLevel;
         private static double MapTileOpacity = 0.4;
 
-        public static Canvas Map(int width, int height, List<Units> units)
+        public static Canvas Map(int width, int height, List<IMapItem> mapItems)
         {
             UnitGrids.Clear();
             InvisibleTiles.Clear();
@@ -42,11 +42,11 @@ namespace HarciKalapacs.Renderer
 
             List<Grid> grids = new List<Grid>();
 
-            foreach (Units unit in units)
+            foreach (IMapItem item in mapItems)
             {
-                Grid tileOfUnit = GetGrid("unit_" + unit.YPos + "_" + unit.XPos, MapConfig.TileWidth, MapConfig.TileHeight, string.Empty, unit.IdleImage1);
-                tileOfUnit.Margin = new Thickness(unit.XPos * MapConfig.TileHeight, unit.YPos * MapConfig.TileWidth, 0, 0);
-                tileOfUnit.DataContext = unit;
+                Grid tileOfUnit = GetGrid("unit_" + item.YPos + "_" + item.XPos, MapConfig.TileWidth, MapConfig.TileHeight, string.Empty, item.IdleImage1);
+                tileOfUnit.Margin = new Thickness(item.XPos * MapConfig.TileHeight, item.YPos * MapConfig.TileWidth, 0, 0);                
+                tileOfUnit.DataContext = item;
                 grids.Add(tileOfUnit);
                 UnitGrids.Add(tileOfUnit);
             }
@@ -214,7 +214,7 @@ namespace HarciKalapacs.Renderer
             roundCounter.HorizontalAlignment = HorizontalAlignment.Left;
             roundCounter.VerticalAlignment = VerticalAlignment.Center;
             playerGolds = new Label();
-            playerGolds.Name = "round";
+            playerGolds.Name = "golds";
             playerGolds.FontFamily = MapConfig.FontFamily;
             playerGolds.FontSize = MapConfig.BtFontSize;
             playerGolds.Margin = new Thickness(MainMenuConfig.WindowWidth / 4, 0, 0, 0);
@@ -238,23 +238,29 @@ namespace HarciKalapacs.Renderer
             {
                 invisible.Background = GetImage(MapConfig.TileOutOfSight);
                 invisible.Opacity = 1;
-                invisible.Visibility = Visibility.Visible;
+                invisible.Visibility = Visibility.Hidden;
             }
 
             foreach (Grid unitGrid in UnitGrids)
             {
-                Units unit = unitGrid.DataContext as Units;
-                if (unit.Team == Team.player && unit is Controllable)
+                if (unitGrid.DataContext is Units )
                 {
-                    Controllable controllableUnit = unit as Controllable;
-                    HorizontalVision(controllableUnit);
-                    VerticalVision(controllableUnit);
-                    DiagonalVision(controllableUnit);
+                    Units unit = unitGrid.DataContext as Units;
+                    //if (unit.Team == Team.player && unit is Controllable)
+                    if (unit.Team == Team.player)
+                    {
+                        //Controllable controllableUnit = unit as Controllable;
+                        HorizontalVision(unit);
+                        VerticalVision(unit);
+                        DiagonalVision(unit);
+                    }
                 }
+                
+                
             }
         }
 
-        public static void CanActivityTiles(Controllable unit)
+        public static void CanActivityTiles(Units unit)
         {
             HorizontalWhereCanMove(unit);
             HorizontalAttack(unit);
@@ -264,10 +270,12 @@ namespace HarciKalapacs.Renderer
             // DiagonalActivities(unit);
         }
 
-        private static void HorizontalWhereCanMove(Controllable selectedUnit)
+        #region Movement&Actack
+
+        private static void HorizontalWhereCanMove(Units selectedUnit)
         {
             // if it is an airunit and it is on the ground it can't move.
-            if (!(selectedUnit is AirUnit) || (selectedUnit as AirUnit).IsInTheAir)
+            if (!(selectedUnit.CanFly) || (selectedUnit.IsInTheAir))
             {
                 for (int leftRight = -1; leftRight <= 1; leftRight += 2)
                 {
@@ -296,7 +304,7 @@ namespace HarciKalapacs.Renderer
                             if (inSightUnitGrid != null)
                             {
                                 Units inSightUnit = inSightUnitGrid.DataContext as Units;
-                                if (!(selectedUnit is AirUnit))
+                                if (!(selectedUnit.CanFly))
                                 {
                                     foundObstacle = true;
                                 }
@@ -315,10 +323,10 @@ namespace HarciKalapacs.Renderer
             }
         }
 
-        private static void HorizontalAttack(Controllable selectedUnit)
+        private static void HorizontalAttack(Units selectedUnit)
         {
             // if it is an airunit and it is on the ground it can't move.
-            if (!(selectedUnit is AirUnit) || (selectedUnit as AirUnit).IsInTheAir)
+            if (!(selectedUnit.CanFly) || (selectedUnit.IsInTheAir))
             {
                 for (int leftRight = -1; leftRight <= 1; leftRight += 2)
                 {
@@ -340,29 +348,32 @@ namespace HarciKalapacs.Renderer
                         // inSight == null means it is the end of the map.
                         if (inRange != null)
                         {
-                            Grid inRangeUnitGrid = UnitGrids.FirstOrDefault(x => x.Margin == inRange.Margin);
+                            Grid inRangeUnitGrid = UnitGrids.FirstOrDefault(x => x.Margin == inRange.Margin && x.DataContext is IMapItem);
 
                             // if there is a unit
                             if (inRangeUnitGrid != null)
                             {
-                                Units inRangeUnit = inRangeUnitGrid.DataContext as Units;
-                                if (inRangeUnit.Team == Team.enemy)
+                                IMapItem inRangeUnit = inRangeUnitGrid.DataContext as IMapItem;
+                                if (inRangeUnit is Units)
                                 {
-                                    inRange.Visibility = Visibility.Visible;
-                                    inRange.Opacity = MapTileOpacity;
-                                    inRange.Background = GetImage(MapConfig.TileEnemy);
+                                    if ((inRangeUnit as Units).Team == Team.enemy)
+                                    {
+                                        inRange.Visibility = Visibility.Visible;
+                                        inRange.Opacity = MapTileOpacity;
+                                        inRange.Background = GetImage(MapConfig.TileEnemy);
+                                    }
+                                    else if (selectedUnit is IHealer)
+                                    {
+                                        inRange.Visibility = Visibility.Visible;
+                                        inRange.Opacity = MapTileOpacity;
+                                        inRange.Background = GetImage(MapConfig.TilePlayer);
+                                    }
                                 }
-                                else if (inRangeUnit.Team == Team.natural)
+                                else if (inRangeUnit is Terrain)
                                 {
                                     inRange.Visibility = Visibility.Visible;
                                     inRange.Opacity = MapTileOpacity;
                                     inRange.Background = GetImage(MapConfig.TileNature);
-                                }
-                                else if (selectedUnit is Healer)
-                                {
-                                    inRange.Visibility = Visibility.Visible;
-                                    inRange.Opacity = MapTileOpacity;
-                                    inRange.Background = GetImage(MapConfig.TilePlayer);
                                 }
                             }
                         }
@@ -373,10 +384,10 @@ namespace HarciKalapacs.Renderer
             }
         }
 
-        private static void VerticalWhereCanMove(Controllable selectedUnit)
+        private static void VerticalWhereCanMove(Units selectedUnit)
         {
             // if it is an airunit and it is on the ground it can't move.
-            if (!(selectedUnit is AirUnit) || (selectedUnit as AirUnit).IsInTheAir)
+            if (!(selectedUnit.CanFly) || (selectedUnit.IsInTheAir))
             {
                 for (int downUp = -1; downUp <= 1; downUp += 2)
                 {
@@ -405,7 +416,7 @@ namespace HarciKalapacs.Renderer
                             if (inSightUnitGrid != null)
                             {
                                 Units inSightUnit = inSightUnitGrid.DataContext as Units;
-                                if (!(selectedUnit is AirUnit))
+                                if (!(selectedUnit.CanFly))
                                 {
                                     foundObstacle = true;
                                 }
@@ -424,10 +435,10 @@ namespace HarciKalapacs.Renderer
             }
         }
 
-        private static void VerticalAttack(Controllable selectedUnit)
+        private static void VerticalAttack(Units selectedUnit)
         {
             // if it is an airunit and it is on the ground it can't move.
-            if (!(selectedUnit is AirUnit) || (selectedUnit as AirUnit).IsInTheAir)
+            if (!(selectedUnit.CanFly) || (selectedUnit.IsInTheAir))
             {
                 for (int downUp = -1; downUp <= 1; downUp += 2)
                 {
@@ -454,20 +465,20 @@ namespace HarciKalapacs.Renderer
                             // if there is a unit
                             if (inRangeUnitGrid != null)
                             {
-                                Units inRangeUnit = inRangeUnitGrid.DataContext as Units;
-                                if (inRangeUnit.Team == Team.enemy)
+                                IMapItem inRangeUnit = inRangeUnitGrid.DataContext as IMapItem;
+                                if (inRangeUnit is Units && (inRangeUnit as Units).Team == Team.enemy)
                                 {
                                     inRange.Visibility = Visibility.Visible;
                                     inRange.Opacity = MapTileOpacity;
                                     inRange.Background = GetImage(MapConfig.TileEnemy);
                                 }
-                                else if (inRangeUnit.Team == Team.natural)
+                                else if (inRangeUnit is Terrain)
                                 {
                                     inRange.Visibility = Visibility.Visible;
                                     inRange.Opacity = MapTileOpacity;
                                     inRange.Background = GetImage(MapConfig.TileNature);
                                 }
-                                else if (selectedUnit is Healer)
+                                else if (selectedUnit is IHealer)
                                 {
                                     inRange.Visibility = Visibility.Visible;
                                     inRange.Opacity = MapTileOpacity;
@@ -482,7 +493,65 @@ namespace HarciKalapacs.Renderer
             }
         }
 
-        private static void HorizontalVision(Controllable controllableUnit)
+        public static void MoveUnit()
+        {
+            //Grid p = dest;
+
+            //ActualSelectedUnit.Margin = dest.Margin;
+            //dest.DataContext = u;
+            //dest.
+            //ActualSelectedUnit.DataContext = null;
+            //dest.DataContext = ActualSelectedUnit.DataContext;
+            //dest.Background = ActualSelectedUnit.Background;
+            //dest.Margin = ActualSelectedUnit.Margin;
+            //dest.Visibility = Visibility.Visible;
+            //ActualSelectedUnit.DataContext = null;
+            //ActualSelectedUnit.Background = null;
+            //ActualSelectedUnit.Visibility = Visibility.Hidden;
+            
+            
+            Units u = ActualSelectedUnit.DataContext as Units;
+            double xdes = u.XPos * MapConfig.TileHeight;
+            double ydes = u.YPos * MapConfig.TileWidth;
+            Thickness destination = new Thickness(xdes, ydes, 0, 0);
+            UnitGrids.Where(x => x.Name == ActualSelectedUnit.Name).FirstOrDefault().Margin = destination;
+            ActualSelectedUnit.Margin = destination;
+
+            VisibleMapTiles();
+            HorizontalWhereCanMove(UnitGrids.First(x => x.Name == ActualSelectedUnit.Name).DataContext as Units);
+            VerticalWhereCanMove(UnitGrids.First(x => x.Name == ActualSelectedUnit.Name).DataContext as Units);
+            //FillOrRefreshUnitPanel();
+        }
+
+        public static void MoveEnemyUnit(Units selectedEnemy)
+        {
+            double xdes = selectedEnemy.XPos * MapConfig.TileHeight;
+            double ydes = selectedEnemy.YPos * MapConfig.TileWidth;
+            Thickness destination = new Thickness(xdes, ydes, 0, 0);
+            UnitGrids.First(x => x.DataContext == selectedEnemy).Margin = destination;
+            ActualSelectedUnit.Margin = destination;
+        }
+
+        public static void EnemyAttacksPlayer(Units target)
+        {
+
+        }
+
+        public static void AttackUnit(IMapItem target)
+        {
+            Grid deadUnit = UnitGrids.Where(x => (x.DataContext as IMapItem).XPos == target.XPos && (x.DataContext as IMapItem).YPos == target.YPos).FirstOrDefault();
+            UnitGrids.FirstOrDefault(x => x == deadUnit).Visibility = Visibility.Hidden;
+            UnitGrids.Remove(deadUnit);
+            VisibleMapTiles();
+            HorizontalWhereCanMove(UnitGrids.Where(x => x.Name == ActualSelectedUnit.Name).FirstOrDefault().DataContext as Units);
+            VerticalWhereCanMove(UnitGrids.Where(x => x.Name == ActualSelectedUnit.Name).FirstOrDefault().DataContext as Units);
+        }
+
+        #endregion
+
+        #region Vision
+
+        private static void HorizontalVision(Units Unit)
         {
             for (int leftRight = -1; leftRight <= 1; leftRight += 2)
             {
@@ -490,14 +559,14 @@ namespace HarciKalapacs.Renderer
                 int vision = 0;
 
                 // Right then left vision.
-                while (!foundObstacle && Math.Abs(vision) <= controllableUnit.Vision)
+                while (!foundObstacle && Math.Abs(vision) <= Unit.Vision)
                 {
-                    Grid inSight = InvisibleTiles.FirstOrDefault(x => x.Name.Contains((controllableUnit.XPos + vision) + "_" + controllableUnit.YPos));
+                    Grid inSight = InvisibleTiles.FirstOrDefault(x => x.Name.Contains((Unit.XPos + vision) + "_" + Unit.YPos));
                     if (inSight != null)
                     {
                         inSight.Visibility = Visibility.Hidden;
                         Grid inSightUnit = UnitGrids.FirstOrDefault(x => x.Margin == inSight.Margin);
-                        if (inSightUnit != null && inSightUnit.DataContext is Obstacle && (!(controllableUnit is AirUnit) || (controllableUnit is AirUnit) && !(controllableUnit as AirUnit).IsInTheAir))
+                        if (inSightUnit != null && inSightUnit.DataContext is Obstacle && (Unit.CanFly == false ||Unit.IsInTheAir == false))
                         {
                             foundObstacle = true;
                         }
@@ -514,7 +583,7 @@ namespace HarciKalapacs.Renderer
             }
         }
 
-        private static void VerticalVision(Controllable controllableUnit)
+        private static void VerticalVision(Units Unit)
         {
             for (int downUp = -1; downUp <= 1; downUp += 2)
             {
@@ -522,14 +591,14 @@ namespace HarciKalapacs.Renderer
                 int vision = 0;
 
                 // Right then left vision.
-                while (!foundObstacle && Math.Abs(vision) <= controllableUnit.Vision)
+                while (!foundObstacle && Math.Abs(vision) <= Unit.Vision)
                 {
-                    Grid inSight = InvisibleTiles.FirstOrDefault(x => x.Name.Contains(controllableUnit.XPos + "_" + (controllableUnit.YPos + vision)));
+                    Grid inSight = InvisibleTiles.FirstOrDefault(x => x.Name.Contains(Unit.XPos + "_" + (Unit.YPos + vision)));
                     if (inSight != null)
                     {
                         inSight.Visibility = Visibility.Hidden;
                         Grid inSightUnit = UnitGrids.FirstOrDefault(x => x.Margin == inSight.Margin);
-                        if (inSightUnit != null && inSightUnit.DataContext is Obstacle && (!(controllableUnit is AirUnit) || (controllableUnit is AirUnit) && !(controllableUnit as AirUnit).IsInTheAir))
+                        if (inSightUnit != null && inSightUnit.DataContext is Obstacle && (Unit.CanFly == false || Unit.IsInTheAir == false))
                         {
                             foundObstacle = true;
                         }
@@ -546,27 +615,27 @@ namespace HarciKalapacs.Renderer
             }
         }
 
-        private static void DiagonalVision(Controllable controllableUnit)
+        private static void DiagonalVision(Units Unit)
         {
             for (int x = -1; x <= 1; x += 2)
             {
                 for (int y = -1; y <= 1; y += 2)
                 {
-                    Grid inSight = InvisibleTiles.FirstOrDefault(grid => grid.Name.Contains((controllableUnit.XPos + x) + "_" + (controllableUnit.YPos + y)));
+                    Grid inSight = InvisibleTiles.FirstOrDefault(grid => grid.Name.Contains((Unit.XPos + x) + "_" + (Unit.YPos + y)));
 
                     if (inSight != null)
                     {
                         inSight.Visibility = Visibility.Hidden;
                         Grid inSightUnit = UnitGrids.FirstOrDefault(x => x.Margin == inSight.Margin);
-                        if (!(inSightUnit != null && inSightUnit.DataContext is Obstacle && (!(controllableUnit is AirUnit) || (controllableUnit is AirUnit) && !(controllableUnit as AirUnit).IsInTheAir)))
+                        if (!(inSightUnit != null && inSightUnit.DataContext is Obstacle && (Unit.CanFly == false || Unit.IsInTheAir == false)))
                         {
-                            Grid diagonal_1 = InvisibleTiles.FirstOrDefault(grid => grid.Name.Contains((controllableUnit.XPos + x + x) + "_" + (controllableUnit.YPos + y)));
+                            Grid diagonal_1 = InvisibleTiles.FirstOrDefault(grid => grid.Name.Contains((Unit.XPos + x + x) + "_" + (Unit.YPos + y)));
                             if (diagonal_1 != null)
                             {
                                 diagonal_1.Visibility = Visibility.Hidden;
                             }
 
-                            Grid diagonal_2 = InvisibleTiles.FirstOrDefault(grid => grid.Name.Contains((controllableUnit.XPos + x) + "_" + (controllableUnit.YPos + y + y)));
+                            Grid diagonal_2 = InvisibleTiles.FirstOrDefault(grid => grid.Name.Contains((Unit.XPos + x) + "_" + (Unit.YPos + y + y)));
                             if (diagonal_2 != null)
                             {
                                 diagonal_2.Visibility = Visibility.Hidden;
@@ -576,18 +645,9 @@ namespace HarciKalapacs.Renderer
                 }
             }
         }
+        #endregion
 
-        private static void MoveUnit(Grid grid)
-        {
-            Units u = grid.DataContext as Units;
-            double x = u.XPos * MapConfig.TileHeight;
-            double y = u.YPos * MapConfig.TileWidth;
-            u.XPos += 1;
-            double xdes = u.XPos * MapConfig.TileHeight;
-            double ydes = u.YPos * MapConfig.TileWidth;
-            Thickness destination = new Thickness(xdes, ydes, 0, 0);
-            grid.Margin = destination;
-        }
+        
 
         private static ImageBrush GetImage(string image)
         {
@@ -684,23 +744,24 @@ namespace HarciKalapacs.Renderer
             {
                 if (gridSender.DataContext != null)
                 {
-                    Units unit = gridSender.DataContext as Units;
-                    if (unit.Team == Team.player)
+                    IMapItem unit = gridSender.DataContext as IMapItem;
+                    if ((unit is Units) && (unit as Units).Team == Team.player)
                     {
                         if (ActualSelectedUnit.DataContext == null)
                         {
                             ActualSelectedUnit.DataContext = gridSender.DataContext;
+                            ActualSelectedUnit.Name = gridSender.Name;
                             ActualSelectedUnit.Margin = gridSender.Margin;
                             ActualSelectedUnit.Visibility = Visibility.Visible;
                             FillOrRefreshUnitPanel();
                             gridSender.Background = GetImage((gridSender.DataContext as Units).IdleImage1);
-                            CanActivityTiles(unit as Controllable);
+                            CanActivityTiles(unit as Units);
                         }
                         else if (ActualSelectedUnit.DataContext != null && ActualSelectedUnit.DataContext == gridSender.DataContext)
                         {
-                            HorizontalVision(ActualSelectedUnit.DataContext as Controllable);
-                            VerticalVision(ActualSelectedUnit.DataContext as Controllable);
-                            DiagonalVision(ActualSelectedUnit.DataContext as Controllable);
+                            HorizontalVision(ActualSelectedUnit.DataContext as Units);
+                            VerticalVision(ActualSelectedUnit.DataContext as Units);
+                            DiagonalVision(ActualSelectedUnit.DataContext as Units);
                             ActualSelectedUnit.DataContext = null;
                             ActualSelectedUnit.Visibility = Visibility.Hidden;
                             UnitPanel.Visibility = Visibility.Hidden;
@@ -734,25 +795,26 @@ namespace HarciKalapacs.Renderer
 
             (UnitPanelLeftColumn.Children[0] as Label).Content = (ActualSelectedUnit.DataContext as Units).Hp + "/" + (ActualSelectedUnit.DataContext as Units).MaxHp;
 
-            if (ActualSelectedUnit.DataContext is Attacker)
+            Units unit = ActualSelectedUnit.DataContext as Units;
+            if (unit.CanAttack)
             {
                 (UnitPanelCenterColumn.Children[1] as Label).Content = "🗡";
-                (UnitPanelLeftColumn.Children[1] as Label).Content = (ActualSelectedUnit.DataContext as Attacker).Damage;
+                (UnitPanelLeftColumn.Children[1] as Label).Content = unit.AttackValue;
                 (UnitPanelRightColumn.Children[2] as Grid).Visibility = Visibility.Visible;
                 (UnitPanelRightColumn.Children[1] as Grid).Visibility = Visibility.Collapsed;
             }
-            else if (ActualSelectedUnit.DataContext is Healer)
+            else if (unit.CanHeal)
             {
                 (UnitPanelCenterColumn.Children[1] as Label).Content = "🛠";
-                (UnitPanelLeftColumn.Children[1] as Label).Content = (ActualSelectedUnit.DataContext as Healer).Heal;
+                (UnitPanelLeftColumn.Children[1] as Label).Content = (ActualSelectedUnit.DataContext as Units).HealValue;
                 (UnitPanelRightColumn.Children[1] as Grid).Visibility = Visibility.Visible;
                 (UnitPanelRightColumn.Children[2] as Grid).Visibility = Visibility.Collapsed;
             }
 
-            if (ActualSelectedUnit.DataContext is AirUnit)
+            if (unit.CanFly)
             {
                 (UnitPanelLeftColumn.Children[3] as Grid).Visibility = Visibility.Visible;
-                if ((ActualSelectedUnit.DataContext as AirUnit).IsInTheAir)
+                if (unit.IsInTheAir)
                 {
                     (UnitPanelLeftColumn.Children[3] as Grid).Background = GetImage(MapConfig.BtLandingBackground);
                     (UnitPanelLeftColumn.Children[3] as Grid).DataContext = true;
@@ -799,7 +861,7 @@ namespace HarciKalapacs.Renderer
         /// Not a perfect solution.
         /// </summary>
         /// <param name="selectedUnit"></param>
-        private static void DiagonalActivities(Controllable selectedUnit)
+        private static void DiagonalActivities(Units selectedUnit)
         {
             for (int x = -1; x <= 1; x += 2)
             {
@@ -812,11 +874,11 @@ namespace HarciKalapacs.Renderer
                         inSight.Visibility = Visibility.Visible;
                         inSight.Opacity = MapTileOpacity;
                         Grid inSightUnit = UnitGrids.FirstOrDefault(x => x.Margin == inSight.Margin);
-                        if (!(inSightUnit != null && inSightUnit.DataContext is Obstacle && (!(selectedUnit is AirUnit) || (selectedUnit is AirUnit) && !(selectedUnit as AirUnit).IsInTheAir)))
+                        if (!(inSightUnit != null && inSightUnit.DataContext is Obstacle && (!selectedUnit.CanFly || selectedUnit.CanFly && !selectedUnit.IsInTheAir)))
                         {
                             if (inSightUnit != null)
                             {
-                                if (inSightUnit.DataContext is Obstacle && (!(selectedUnit is AirUnit) || (selectedUnit is AirUnit) && !(selectedUnit as AirUnit).IsInTheAir))
+                                if (inSightUnit.DataContext is Obstacle && (!selectedUnit.CanFly || selectedUnit.CanFly && !selectedUnit.IsInTheAir))
                                 {
                                     inSight.Background = GetImage(MapConfig.TileNature);
                                 }
@@ -844,11 +906,11 @@ namespace HarciKalapacs.Renderer
                                 diagonal_1.Visibility = Visibility.Visible;
                                 diagonal_1.Opacity = MapTileOpacity;
                                 inSightUnit = UnitGrids.FirstOrDefault(x => x.Margin == diagonal_1.Margin);
-                                if (!(inSightUnit != null && inSightUnit.DataContext is Obstacle && (!(selectedUnit is AirUnit) || (selectedUnit is AirUnit) && !(selectedUnit as AirUnit).IsInTheAir)))
+                                if (!(inSightUnit != null && inSightUnit.DataContext is Obstacle && (!selectedUnit.CanFly || selectedUnit.CanFly && !selectedUnit.IsInTheAir)))
                                 {
                                     if (inSightUnit != null)
                                     {
-                                        if (inSightUnit.DataContext is Obstacle && (!(selectedUnit is AirUnit) || (selectedUnit is AirUnit) && !(selectedUnit as AirUnit).IsInTheAir))
+                                        if (inSightUnit.DataContext is Obstacle && (!selectedUnit.CanFly || selectedUnit.CanFly && !selectedUnit.IsInTheAir))
                                         {
                                             diagonal_1.Background = GetImage(MapConfig.TileNature);
                                         }
@@ -878,11 +940,11 @@ namespace HarciKalapacs.Renderer
                                 diagonal_2.Visibility = Visibility.Visible;
                                 diagonal_2.Opacity = MapTileOpacity;
                                 inSightUnit = UnitGrids.FirstOrDefault(x => x.Margin == diagonal_2.Margin);
-                                if (!(inSightUnit != null && inSightUnit.DataContext is Obstacle && (!(selectedUnit is AirUnit) || (selectedUnit is AirUnit) && !(selectedUnit as AirUnit).IsInTheAir)))
+                                if (!(inSightUnit != null && inSightUnit.DataContext is Obstacle && (!selectedUnit.CanFly || selectedUnit.CanFly && !selectedUnit.IsInTheAir)))
                                 {
                                     if (inSightUnit != null)
                                     {
-                                        if (inSightUnit.DataContext is Obstacle && (!(selectedUnit is AirUnit) || (selectedUnit is AirUnit) && !(selectedUnit as AirUnit).IsInTheAir))
+                                        if (inSightUnit.DataContext is Obstacle && (!selectedUnit.CanFly || selectedUnit.CanFly && !selectedUnit.IsInTheAir))
                                         {
                                             diagonal_2.Background = GetImage(MapConfig.TileNature);
                                         }

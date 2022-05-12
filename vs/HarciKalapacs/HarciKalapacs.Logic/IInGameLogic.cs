@@ -34,7 +34,7 @@ namespace HarciKalapacs.Logic
         /// <param name="attacker">This unit attacks.</param>
         /// <param name="target">The target.</param>
         /// <returns>True, if the attack was successful</returns>
-        public bool Attack(Attacker attacker, Units target);
+        public bool Attack(Units attacker, IMapItem target);
 
         /// <summary>
         /// Heals target unit.
@@ -42,13 +42,13 @@ namespace HarciKalapacs.Logic
         /// <param name="healer">This unit heals another one.</param>
         /// <param name="target">This unit needs healing.</param>
         /// <returns>True, if the healing was successful.</returns>
-        public bool Heal(Healer healer, Units target);
+        public bool Heal(Units healer, IMapItem target);
 
         /// <summary>
         /// Air unit takes off or lands.
         /// </summary>
         /// <param name="airUnit">This unit switch its vertical position.</param>
-        public void SwitchVerticalPosition(AirUnit airUnit);
+        public void SwitchVerticalPosition(Units airUnit);
 
         /// <summary>
         /// Upgrade unit's max hp.
@@ -62,14 +62,14 @@ namespace HarciKalapacs.Logic
         /// </summary>
         /// <param name="unit">This unit.</param>
         /// <returns>True, if upgrade was successful.</returns>
-        public bool UpgradeDamage(Attacker unit);
+        public bool UpgradeDamage(Units unit);
 
         /// <summary>
         /// Upgrade heal.
         /// </summary>
         /// <param name="unit">This unit.</param>
         /// <returns>True, if upgrade was successful.</returns>
-        public bool UpgradeHealer(Healer unit);
+        public bool UpgradeHealer(Units unit);
 
         /// <summary>
         /// 1) A simple step such as move, attack or heal.
@@ -77,5 +77,13 @@ namespace HarciKalapacs.Logic
         /// 3) The units furthest from the base retreat.
         /// </summary>
         public void AIDecisions();
+
+        public Units AISelectUnit();
+
+        public void AIEnemyUnitsCountNow();
+
+        public void AISetup();
+
+        public void AIDamageDetails();
     }
 }

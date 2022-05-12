@@ -1,0 +1,592 @@
+{
+  "MapSize": [
+    15,
+    15
+  ],
+  "Turn": {
+    "Player": 0,
+    "Turn" : 3
+  },
+  "otherDetails": [
+    1,
+    1,
+    6,
+    6,
+    5,
+    0
+  ],
+  "MapItems": [
+    {
+      "MapItemType": 1,
+      "Type": 3,
+      "yPos": 10,
+      "xPos": 1,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 3,
+      "yPos": 2,
+      "xPos": 4,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 3,
+      "yPos": 2,
+      "xPos": 6,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 3,
+      "yPos": 7,
+      "xPos": 7,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 3,
+      "yPos": 0,
+      "xPos": 8,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 3,
+      "yPos": 1,
+      "xPos": 8,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 3,
+      "yPos": 5,
+      "xPos": 9,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 3,
+      "yPos": 12,
+      "xPos": 9,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 3,
+      "yPos": 5,
+      "xPos": 12,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 3,
+      "yPos": 6,
+      "xPos": 12,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 3,
+      "yPos": 8,
+      "xPos": 12,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 3,
+      "yPos": 13,
+      "xPos": 12,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 3,
+      "yPos": 1,
+      "xPos": 13,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 3,
+      "yPos": 5,
+      "xPos": 13,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 1,
+      "yPos": 10,
+      "xPos": 1,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 1,
+      "yPos": 2,
+      "xPos": 4,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 1,
+      "yPos": 11,
+      "xPos": 5,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 1,
+      "yPos": 2,
+      "xPos": 6,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 1,
+      "yPos": 7,
+      "xPos": 7,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 1,
+      "yPos": 0,
+      "xPos": 8,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 1,
+      "yPos": 1,
+      "xPos": 8,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 1,
+      "yPos": 5,
+      "xPos": 9,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 1,
+      "yPos": 12,
+      "xPos": 9,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 1,
+      "yPos": 5,
+      "xPos": 12,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 1,
+      "yPos": 6,
+      "xPos": 12,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 1,
+      "yPos": 8,
+      "xPos": 12,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 1,
+      "yPos": 13,
+      "xPos": 12,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 1,
+      "yPos": 1,
+      "xPos": 13,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 1,
+      "yPos": 5,
+      "xPos": 13,
+      "hp": 0,
+      "team": 3
+    },
+    {
+      "MapItemType": 1,
+      "Type": 2,
+      "yPos": 7,
+      "xPos": 14,
+      "hp": 0,
+      "team": 2
+    },
+    {
+      "MapItemType": 2,
+      "Type": 2,
+      "yPos": 13,
+      "xPos": 1,
+      "hp": 0,
+      "team": 1
+    },
+    {
+      "MapItemType": 2,
+      "Type": 2,
+      "yPos": 1,
+      "xPos": 2,
+      "hp": 0,
+      "team": 1
+    },
+    {
+      "MapItemType": 2,
+      "Type": 2,
+      "yPos": 2,
+      "xPos": 2,
+      "hp": 0,
+      "team": 1
+    },
+    {
+      "MapItemType": 2,
+      "Type": 2,
+      "yPos": 12,
+      "xPos": 1,
+      "hp": 0,
+      "team": 1
+    },
+    {
+      "MapItemType": 2,
+      "Type": 2,
+      "yPos": 13,
+      "xPos": 1,
+      "hp": 0,
+      "team": 1
+    },
+    {
+      "MapItemType": 2,
+      "Type": 2,
+      "yPos": 6,
+      "xPos": 7,
+      "hp": 0,
+      "team": 2
+    },
+    {
+      "MapItemType": 2,
+      "Type": 2,
+      "yPos": 7,
+      "xPos": 8,
+      "hp": 0,
+      "team": 2
+    },
+    {
+      "MapItemType": 2,
+      "Type": 2,
+      "yPos": 0,
+      "xPos": 10,
+      "hp": 0,
+      "team": 2
+    },
+    {
+      "MapItemType": 2,
+      "Type": 2,
+      "yPos": 1,
+      "xPos": 10,
+      "hp": 0,
+      "team": 2
+    },
+    {
+      "MapItemType": 2,
+      "Type": 2,
+      "yPos": 12,
+      "xPos": 10,
+      "hp": 0,
+      "team": 2
+    },
+    {
+      "MapItemType": 2,
+      "Type": 2,
+      "yPos": 14,
+      "xPos": 10,
+      "hp": 0,
+      "team": 2
+    },
+    {
+      "MapItemType": 2,
+      "Type": 2,
+      "yPos": 10,
+      "xPos": 14,
+      "hp": 0,
+      "team": 2
+    },
+    {
+      "MapItemType": 2,
+      "Type": 2,
+      "yPos": 11,
+      "xPos": 14,
+      "hp": 0,
+      "team": 2
+    },
+    {
+      "MapItemType": 2,
+      "Type": 1,
+      "yPos": 0,
+      "xPos": 1,
+      "hp": 0,
+      "team": 1
+    },
+    {
+      "MapItemType": 2,
+      "Type": 1,
+      "yPos": 5,
+      "xPos": 1,
+      "hp": 0,
+      "team": 1
+    },
+    {
+      "MapItemType": 2,
+      "Type": 1,
+      "yPos": 6,
+      "xPos": 1,
+      "hp": 0,
+      "team": 1
+    },
+    {
+      "MapItemType": 2,
+      "Type": 1,
+      "yPos": 8,
+      "xPos": 1,
+      "hp": 0,
+      "team": 1
+    },
+    {
+      "MapItemType": 2,
+      "Type": 1,
+      "yPos": 9,
+      "xPos": 1,
+      "hp": 0,
+      "team": 1
+    },
+    {
+      "MapItemType": 2,
+      "Type": 1,
+      "yPos": 0,
+      "xPos": 9,
+      "hp": 0,
+      "team": 2
+    },
+    {
+      "MapItemType": 2,
+      "Type": 1,
+      "yPos": 13,
+      "xPos": 9,
+      "hp": 0,
+      "team": 2
+    },
+    {
+      "MapItemType": 2,
+      "Type": 1,
+      "yPos": 14,
+      "xPos": 9,
+      "hp": 0,
+      "team": 2
+    },
+    {
+      "MapItemType": 2,
+      "Type": 1,
+      "yPos": 6,
+      "xPos": 13,
+      "hp": 0,
+      "team": 2
+    },
+    {
+      "MapItemType": 2,
+      "Type": 1,
+      "yPos": 8,
+      "xPos": 13,
+      "hp": 0,
+      "team": 2
+    },
+    {
+      "MapItemType": 2,
+      "Type": 4,
+      "yPos": 4,
+      "xPos": 0,
+      "hp": 0,
+      "team": 1,
+      "isInTheAir": true
+    },
+    {
+      "MapItemType": 2,
+      "Type": 4,
+      "yPos": 5,
+      "xPos": 0,
+      "hp": 0,
+      "team": 1,
+      "isInTheAir": true
+    },
+    {
+      "MapItemType": 2,
+      "Type": 4,
+      "yPos": 6,
+      "xPos": 0,
+      "hp": 0,
+      "team": 1,
+      "isInTheAir": true
+    },
+    {
+      "MapItemType": 2,
+      "Type": 4,
+      "yPos": 8,
+      "xPos": 0,
+      "hp": 0,
+      "team": 1,
+      "isInTheAir": true
+    },
+    {
+      "MapItemType": 2,
+      "Type": 4,
+      "yPos": 9,
+      "xPos": 0,
+      "hp": 0,
+      "team": 1,
+      "isInTheAir": true
+    },
+    {
+      "MapItemType": 2,
+      "Type": 4,
+      "yPos": 10,
+      "xPos": 0,
+      "hp": 0,
+      "team": 1,
+      "isInTheAir": true
+    },
+    {
+      "MapItemType": 2,
+      "Type": 4,
+      "yPos": 0,
+      "xPos": 9,
+      "hp": 0,
+      "team": 2,
+      "isInTheAir": true
+    },
+    {
+      "MapItemType": 2,
+      "Type": 4,
+      "yPos": 5,
+      "xPos": 9,
+      "hp": 0,
+      "team": 2,
+      "isInTheAir": true
+    },
+    {
+      "MapItemType": 2,
+      "Type": 4,
+      "yPos": 13,
+      "xPos": 10,
+      "hp": 0,
+      "team": 2,
+      "isInTheAir": true
+    },
+    {
+      "MapItemType": 2,
+      "Type": 4,
+      "yPos": 2,
+      "xPos": 11,
+      "hp": 0,
+      "team": 2,
+      "isInTheAir": false
+    },
+    {
+      "MapItemType": 2,
+      "Type": 4,
+      "yPos": 0,
+      "xPos": 14,
+      "hp": 0,
+      "team": 2,
+      "isInTheAir": false
+    },
+    {
+      "MapItemType": 2,
+      "Type": 4,
+      "yPos": 10,
+      "xPos": 14,
+      "hp": 0,
+      "team": 2,
+      "isInTheAir": true
+    },
+    {
+      "MapItemType": 2,
+      "Type": 3,
+      "yPos": 2,
+      "xPos": 0,
+      "hp": 0,
+      "team": 1
+    },
+    {
+      "MapItemType": 2,
+      "Type": 3,
+      "yPos": 12,
+      "xPos": 0,
+      "hp": 0,
+      "team": 1
+    },
+    {
+      "MapItemType": 2,
+      "Type": 3,
+      "yPos": 6,
+      "xPos": 2,
+      "hp": 0,
+      "team": 1
+    },
+    {
+      "MapItemType": 2,
+      "Type": 3,
+      "yPos": 1,
+      "xPos": 11,
+      "hp": 0,
+      "team": 2
+    },
+    {
+      "MapItemType": 2,
+      "Type": 3,
+      "yPos": 6,
+      "xPos": 14,
+      "hp": 0,
+      "team": 2
+    }
+  ]
+}

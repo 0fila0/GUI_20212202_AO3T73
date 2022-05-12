@@ -12,7 +12,7 @@ namespace HarciKalapacs.Model
         /// <summary>
         /// Contains all units that can find on the actual map.
         /// </summary>
-        IEnumerable<Units> AllUnits { get; set; }
+        IList<IMapItem> AllUnits { get; set; }
 
         public int MapWidth { get; set; }
         public int MapHeight { get; set; }

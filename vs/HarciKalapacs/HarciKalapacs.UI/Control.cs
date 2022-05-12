@@ -14,6 +14,8 @@
     using System.Windows.Input;
     using HarciKalapacs.Renderer.Config;
     using HarciKalapacs.Logic;
+    using System.Linq;
+    using System.Threading;
 
     class Control : ContentControl
     {
@@ -53,13 +55,70 @@
             MapRenderer.playerGolds.Content = this.model.PlayerGold + " arany";
             MapRenderer.roundCounter.Content = this.model.Round + ". kör";
 
+
+
             if (this.model.LeftSteps <= 0)
             {
-                for (int i = 0; i < this.model.MaxSteps; i++)
+                // MapRenderer.ActualSelectedUnit.Visibility = Visibility.Hidden;
+                MapRenderer.ActualSelectedUnit.DataContext = null;
+                actualSelectedUnit = null;
+
+                int step = 0;
+                while (step < this.model.MaxSteps)
                 {
+                    bool success = false;
                     this.inGameLogic.AIDecisions();
-                    MapRenderer.VisibleMapTiles();
+                    Units temp = this.inGameLogic.AISelectUnit();
+                    if (temp != null)
+                    {
+                        switch (InGameLogic.AIDecision)
+                        {
+                            case Decision.move:
+                                success = this.inGameLogic.Move(temp, InGameLogic.MoveHereX, InGameLogic.MoveHereY);
+                                break;
+                            case Decision.attack:
+                                success = this.inGameLogic.Attack(temp, this.model.AllUnits[InGameLogic.EnemyAttackThisPlayerIndex]);
+                                break;
+                            case Decision.heal:
+                                success = this.inGameLogic.Heal(temp, this.model.AllUnits[InGameLogic.EnemyToHealIndex]);
+                                break;
+                            case Decision.huntingDown:
+                                success = this.inGameLogic.Move(temp, InGameLogic.MoveHereX, InGameLogic.MoveHereY);
+                                break;
+                            case Decision.retreat:
+                                success = this.inGameLogic.Move(temp, InGameLogic.MoveHereX, InGameLogic.MoveHereY);
+                                break;
+                        }
+
+                        if (success)
+                        {
+                            switch (InGameLogic.AIDecision)
+                            {
+                                case Decision.move:
+                                    MapRenderer.MoveEnemyUnit(temp);
+                                    break;
+                                case Decision.attack:
+                                    MapRenderer.EnemyAttacksPlayer(this.model.AllUnits[InGameLogic.EnemyAttackThisPlayerIndex] as Units);
+                                    break;
+                                case Decision.heal:
+                                    break;
+                                case Decision.huntingDown:
+                                    MapRenderer.MoveEnemyUnit(temp);
+                                    break;
+                                case Decision.retreat:
+                                    MapRenderer.MoveEnemyUnit(temp);
+                                    break;
+                            }
+
+                            step++;
+                            MapRenderer.VisibleMapTiles();
+                            Thread.Sleep(100);
+                        }
+                    }
                 }
+
+                this.model.LeftSteps = this.model.MaxSteps;
+                MapRenderer.leftSteps.Content = this.model.LeftSteps + "/" + this.model.MaxSteps + " lépés maradt hátra";
             }
         }
 
@@ -83,6 +142,7 @@
                         this.ActualContent = Contents.InGame;
                         break;
                     case "btBack":
+                        actualSelectedUnit = null;
                         this.ActualContent = Contents.MainMenu;
                         break;
                     case "map1":
@@ -114,7 +174,7 @@
                 case Contents.InGame:
                     int width = this.model.MapWidth;
                     int height = this.model.MapHeight;
-                    this.Content = MapRenderer.Map(width, height, this.model.AllUnits as List<Units>);
+                    this.Content = MapRenderer.Map(width, height, this.model.AllUnits.ToList());
                     break;
                 default:
                     this.Content = MenuRenderer.MainMenu();
@@ -139,6 +199,7 @@
 
             if (this.ActualContent == Contents.InGame)
             {
+                this.inGameLogic.AISetup();
                 GameControl();
             }
         }
@@ -204,19 +265,19 @@
             switch ((sender as Grid).Name)
             {
                 case "upgradeDamage":
-                    successful = this.inGameLogic.UpgradeDamage(actualSelectedUnit as Attacker);
+                    successful = this.inGameLogic.UpgradeDamage(actualSelectedUnit);
                     break;
                 case "upgradeHp":
                     successful = this.inGameLogic.UpgradeMaxHp(actualSelectedUnit);
                     break;
                 case "upgradeHeal":
-                    successful = this.inGameLogic.UpgradeHealer(actualSelectedUnit as Healer);
+                    successful = this.inGameLogic.UpgradeHealer(actualSelectedUnit);
                     break;
                 case "airStateButton":
                     successful = true;
-                    this.inGameLogic.SwitchVerticalPosition(actualSelectedUnit as AirUnit);
+                    this.inGameLogic.SwitchVerticalPosition(actualSelectedUnit);
                     MapRenderer.VisibleMapTiles();
-                    MapRenderer.CanActivityTiles(actualSelectedUnit as Controllable);
+                    MapRenderer.CanActivityTiles(actualSelectedUnit);
                     break;
             }
 
@@ -285,12 +346,12 @@
 
         private void Unit_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Units unit = (sender as Grid).DataContext as Units;
+            IMapItem unit = (sender as Grid).DataContext as IMapItem;
             if (unit == null)
             {
                 int x = (int)((sender as Grid).Margin.Left / MapConfig.TileWidth);
                 int y = (int)((sender as Grid).Margin.Top / MapConfig.TileHeight);
-                unit = (this.model.AllUnits as List<Units>).Find(u => u.XPos == x && u.YPos == y);
+                unit = (this.model.AllUnits as List<IMapItem>)?.Find(u => u.XPos == x && u.YPos == y);
             }
 
             // Unselect unit.
@@ -300,24 +361,24 @@
             }
 
             // Select player unit.
-            else if (actualSelectedUnit == null && unit.Team == Team.player)
+            else if (actualSelectedUnit == null && (unit is Units) && (unit as Units).Team == Team.player)
             {
-                actualSelectedUnit = unit;
-                if (unit is AirUnit)
+                actualSelectedUnit = (unit as Units);
+                if ((unit as Units).CanFly)
                 {
                     this.musicPlayer.PlaySoundEffect(SoundEffectType.selectHelicopter);
                 }
-                else if (unit is Healer)
+                else if ((unit as Units).CanHeal)
                 {
                     this.musicPlayer.PlaySoundEffect(SoundEffectType.selectTruck);
                 }
-                else if (unit is Attacker)
+                else if ((unit as Units).CanAttack)
                 {
-                    if (unit.GetType().Name == "Infantryman")
+                    if ((unit as Units).UnitType == UnitType.InfantryMan)
                     {
                         this.musicPlayer.PlaySoundEffect(SoundEffectType.selectInfantryman);
                     }
-                    else if (unit.GetType().Name == "Tank")
+                    else if ((unit as Units).UnitType == UnitType.Tank)
                     {
                         this.musicPlayer.PlaySoundEffect(SoundEffectType.selectTank);
                     }
@@ -332,15 +393,16 @@
                 int y = (int)(destination.Margin.Top / MapConfig.TileHeight);
                 if (this.inGameLogic.Move(actualSelectedUnit, x, y))
                 {
+                    MapRenderer.MoveUnit();
                     this.inGameLogic.StepOccured();
                     GameControl();
                 }
             }
 
             // Heal any unit.
-            else if (actualSelectedUnit != null && actualSelectedUnit is Healer && unit != null)
+            else if (actualSelectedUnit != null && actualSelectedUnit is IHealer && unit != null)
             {
-                if (this.inGameLogic.Heal(actualSelectedUnit as Healer, unit))
+                if (this.inGameLogic.Heal(actualSelectedUnit, unit))
                 {
                     this.inGameLogic.StepOccured();
                     this.musicPlayer.PlaySoundEffect(SoundEffectType.truckFire);
@@ -349,17 +411,17 @@
             }
 
             // Attack unit.
-            else if (actualSelectedUnit != null && unit.Team != Team.player)
+            else if (actualSelectedUnit != null && (unit is IMapItem) && ((unit is Terrain) || (unit as Units).Team == Team.enemy))
             {
-                if (this.inGameLogic.Attack(actualSelectedUnit as Attacker, unit))
+                if (this.inGameLogic.Attack(actualSelectedUnit, unit))
                 {
                     this.inGameLogic.StepOccured();
 
-                    if (actualSelectedUnit is AirUnit)
+                    if (actualSelectedUnit.UnitType == UnitType.Helicopter)
                     {
                         this.musicPlayer.PlaySoundEffect(SoundEffectType.helicopterFire);
                     }
-                    else if (actualSelectedUnit is Tank)
+                    else if (actualSelectedUnit.UnitType == UnitType.Tank)
                     {
                         this.musicPlayer.PlaySoundEffect(SoundEffectType.tankFire);
                     }
@@ -367,6 +429,13 @@
                     {
                         this.musicPlayer.PlaySoundEffect(SoundEffectType.infantrymanFire);
                     }
+
+                    if (unit.Hp <= 0)
+                    {
+                        MapRenderer.AttackUnit(unit);
+                    }
+
+                    MapRenderer.CanActivityTiles(actualSelectedUnit);
 
                     GameControl();
                 }
